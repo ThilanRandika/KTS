@@ -4,7 +4,6 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 //middleware
-const mongoose = require("mongoose");
 const morgan = require("morgan");
 const app = express();
 

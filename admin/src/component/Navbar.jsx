@@ -1,5 +1,5 @@
 function Navbar() {
-  return <div className="font-barlows">Navbar</div>;
+  return <div className="">Navbar</div>;
 }
 
 export default Navbar;

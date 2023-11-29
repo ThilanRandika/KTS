@@ -1,16 +1,18 @@
 import { Checkbox } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useState } from "react";
+
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
+
   return (
-    <div className="flex h-screen w-full font-roboto">
-      <div className="w-[34%] flex items-center flex-col">
+    <div className="flex h-screen w-full font-roboto ">
+      <div className="w-[34%] flex items-center flex-col justify-center">
         <div className="flex flex-col items-center">
           <img
             src="https://res.cloudinary.com/dnoobzfxo/image/upload/v1701275328/Kotelawala_Defence_University_crest-removebg-preview_1_qprg9r.png"
             alt=""
-            className="w-[210px] mt-[10%]"
+            className="w-[210px]"
           />
           <div className="font-roboto_slab text-[30px] font-bold flex flex-col items-center leading-[92%]">
             <p>General</p>
@@ -66,6 +68,7 @@ function Login() {
                   fontSize="medium"
                   color={showPassword ? "inherit" : "disabled"}
                   onClick={() => {
+                    console.log("as");
                     setShowPassword((pre) => !pre);
                   }}
                 />

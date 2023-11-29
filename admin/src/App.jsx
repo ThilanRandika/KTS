@@ -4,7 +4,7 @@ function App() {
   return (
     <div>
       <Navbar />
-      sdsddd
+      sdsddd admin
     </div>
   );
 }

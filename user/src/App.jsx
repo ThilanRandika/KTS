@@ -8,7 +8,7 @@ import Navbar from "./component/navbar";
 import Footer from "./component/footer";
 import Login from "./pages/loginpage";
 
-const user = null;
+const user = "sds";
 
 const ProtectedRoute = ({ children }) => {
   if (!user) {
@@ -20,7 +20,7 @@ const ProtectedRoute = ({ children }) => {
 function App() {
   return (
     <div className="app flex flex-col overflow-y-scroll min-h-screen">
-      <div className={`${!user} ? hidden : ""`}>
+      <div className={!user ? "hidden" : ""}>
         <Navbar />
       </div>
       <div className="w-full h-full flex-1  ">
@@ -39,7 +39,7 @@ function App() {
           <Route path="/login" element={<Login />} />
         </Routes>
       </div>
-      <div className={`${!user} ? hidden : "mt-auto"`}>
+      <div className={!user ? "hidden" : "mt-auto"}>
         <Footer />
       </div>
     </div>

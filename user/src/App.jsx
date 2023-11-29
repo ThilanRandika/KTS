@@ -8,7 +8,7 @@ import Navbar from "./component/navbar";
 import Footer from "./component/footer";
 import Login from "./pages/loginpage";
 
-const user = "sds";
+const user = null;
 
 const ProtectedRoute = ({ children }) => {
   if (!user) {

@@ -9,7 +9,7 @@ import Footer from "./component/footer";
 
 function App() {
   return (
-    <div className="app flex flex-col overflow-scroll min-h-screen">
+    <div className="app flex flex-col overflow-y-scroll min-h-screen">
       <Navbar />
       <div className="w-full h-full flex-1 ">
         <Routes>

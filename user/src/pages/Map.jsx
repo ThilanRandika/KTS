@@ -22,7 +22,7 @@ function Map() {
       </GoogleMap>
     </div>
   ) : (
-    <div>Loading...</div>
+    <div>Loading</div>
   );
 }
 

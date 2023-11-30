@@ -1,10 +1,31 @@
 import { Checkbox } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useState } from "react";
+import userAxios from "../../baseURL";
+import { useUserContext } from "../../hooks/useUserAuthContext";
 
 function Login() {
+  const { user, dispatch } = useUserContext();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const [showPassword, setShowPassword] = useState(false);
 
+  const login = async (e) => {
+    e.preventDefault();
+    console.log(email, password);
+    try {
+      const res = await userAxios.post("/api/users/login", {
+        email,
+        password,
+      });
+      console.log(res.data);
+      localStorage.setItem("user", JSON.stringify(res.data));
+      dispatch({ type: "LOGIN", payload: res.data });
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
   return (
     <div className="flex h-screen w-full font-roboto ">
       <div className="w-[34%] flex items-center flex-col justify-center">
@@ -41,6 +62,9 @@ function Login() {
                     background: "#FFF",
                   }}
                   placeholder="Enter your email address"
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
                 />
               </div>
             </div>
@@ -62,6 +86,9 @@ function Login() {
                     background: "#FFF",
                   }}
                   placeholder="Enter your password"
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
                 />
                 <VisibilityIcon
                   className="absolute top-[40px] right-4"
@@ -93,6 +120,9 @@ function Login() {
                 <button
                   type="submit"
                   className="w-full text-white bg-main_blue h-[60px] rounded-lg text-[20px] font-medium"
+                  onClick={(e) => {
+                    login(e);
+                  }}
                 >
                   Login
                 </button>

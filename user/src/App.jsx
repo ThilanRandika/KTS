@@ -7,41 +7,26 @@ import Booking from "./pages/booking";
 import Navbar from "./component/navbar";
 import Footer from "./component/footer";
 import Login from "./pages/loginpage";
-
-const user = 5;
-
-const ProtectedRoute = ({ children }) => {
-  if (!user) {
-    return <Navigate to="/login" />;
-  }
-  return children;
-};
+import { useUserContext } from "./hooks/useUserAuthContext";
+import { useEffect } from "react";
 
 function App() {
+  const { user } = useUserContext();
+  console.log(user);
+
   return (
     <div className="app flex flex-col overflow-y-scroll min-h-screen">
-      <div className={!user ? "hidden" : ""}>
-        <Navbar />
-      </div>
-      <div className="w-full h-full flex-1  ">
+      {false && <Navbar />}
+      <div className="w-full h-full flex-1">
         <Routes>
           <Route
             path="/"
-            element={
-              <ProtectedRoute>
-                <Home />
-              </ProtectedRoute>
-            }
+            element={user ? <Home /> : <Navigate to="/login" />}
           />
-          <Route path="/routes" element={<RoadRoutes />} />
-          <Route path="journey/" element={<Journey />} />
-          <Route path="/booking" element={<Booking />} />
           <Route path="/login" element={<Login />} />
         </Routes>
       </div>
-      <div className={!user ? "hidden" : "mt-auto"}>
-        <Footer />
-      </div>
+      {false && <Footer />}
     </div>
   );
 }

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema({
-  sId: {
+const managerSchema = new mongoose.Schema({
+  eId: {
     type: String,
     required: true,
     unique: true,
@@ -29,37 +29,17 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  dob: {
-    type: Date,
-    required: true,
-  },
-  address: {
-    type: String,
-    required: true,
-  },
-  year: {
-    type: String,
-    required: true,
-  },
-  DateOfEntry: {
-    type: Date,
-    required: true,
-  },
-  type: {
-    type: String,
-    required: true,
-    enum: ["student", "lecture"],
-  },
+
   photo: {
     type: String,
     required: true,
   },
-  department: {
+  location: {
     type: String,
     required: true,
   },
 });
 
-const User = mongoose.model("User", userSchema);
+const Manager = mongoose.model("Manager", managerSchema);
 
-module.exports = User;
+module.exports = Manager;

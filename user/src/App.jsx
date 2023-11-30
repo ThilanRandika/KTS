@@ -20,11 +20,20 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={
-              user ? <Home /> : <Navigate to="/dashboard" replace={true} />
-            }
+            element={user ? <Home /> : <Navigate to="/login" />}
           />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/routes"
+            element={user ? <RoadRoutes /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/journey"
+            element={user ? <Journey /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/login"
+            element={user ? <Navigate to="/" /> : <Login />}
+          />
         </Routes>
       </div>
       {user && <Footer />}

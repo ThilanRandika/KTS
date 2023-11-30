@@ -30,7 +30,15 @@ const managerLogin = asyncHandler(async (req, res) => {
 
   if (isMatch) {
     const token = generateToken(manager._id);
-    res.status(200).json({ email, token });
+    res.status(200).json({
+      email,
+      eid: manager.eid,
+      fullName: manager.fullName,
+      mobileNo: manager.mobileNo,
+      photo: manager.photo,
+      location: manager.location,
+      token,
+    });
   } else {
     res.status(400);
     throw new Error("Invalid Email or password");

@@ -25,7 +25,7 @@ const userLogin = asyncHandler(async (req, res) => {
 
   if (!user) {
     res.status(400);
-    throw new Error("Invalid user data");
+    throw new Error("Please enter a valid email");
   }
 
   //check if password match
@@ -33,10 +33,25 @@ const userLogin = asyncHandler(async (req, res) => {
 
   if (isMatch) {
     const token = generateToken(user._id);
-    res.status(200).json({ email, token });
+    //exclude password
+    res.status(200).json({
+      _id: user._id,
+      sId: user.sId,
+      fullName: user.fullName,
+      email: user.email,
+      mobileNo: user.mobileNo,
+      dob: user.dob,
+      address: user.address,
+      year: user.year,
+      type: user.type,
+      photo: user.photo,
+      department: user.department,
+      dateOfEntry: user.dateOfEntry,
+      token,
+    });
   } else {
     res.status(400);
-    throw new Error("Invalid Email or password");
+    throw new Error("Please check your password");
   }
 });
 

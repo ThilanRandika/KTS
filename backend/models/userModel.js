@@ -41,7 +41,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  DateOfEntry: {
+  dateOfEntry: {
     type: Date,
     required: true,
   },

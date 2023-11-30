@@ -2,28 +2,101 @@ import { Checkbox } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useState } from "react";
 import userAxios from "../../baseURL";
-// import { useUserContext } from "../../hooks/useUserAuthContext";
+import { useUserContext } from "../../hooks/useUserAuthContext";
+import { toast } from "react-toastify";
 
+const normalStyle =
+  "w-full  h-[56px] pl-[20px] py-[7px] font-normal text-sm text-[#515151] focus:outline-none ";
+const errorStyle =
+  "w-full  h-[56px] pl-[20px] py-[7px] font-normal text-sm text-red-400 focus:outline-none ";
 function Login() {
-  // const { user, dispatch } = useUserContext();
+  const { dispatch } = useUserContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
 
   const [showPassword, setShowPassword] = useState(false);
 
   const login = async (e) => {
     e.preventDefault();
-    console.log(email, password);
+
+    if (!email || !password) {
+      setError("Please fill all the fields");
+      toast.error("Please fill all the fields", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      return;
+    }
+
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+    if (!emailRegex.test(email)) {
+      toast.error("Invalid Email Address", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      setError("Invalid Email Address");
+      setEmailError(true);
+      return;
+    }
+    setEmailError(false);
+    setError(null);
     try {
       const res = await userAxios.post("/api/users/login", {
         email,
         password,
       });
-      console.log(res.data);
-      localStorage.setItem("user", JSON.stringify(res.data.email));
-      // dispatch({ type: "LOGIN", payload: res.data });
+
+      localStorage.setItem("user", JSON.stringify(res.data));
+      dispatch({ type: "LOGIN", payload: res.data });
     } catch (error) {
-      console.log(error.response.data);
+      console.log(error.response.data.message);
+      if (error.response.data.message === "Please enter a valid email") {
+        toast.error("Please enter a valid emails", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+        setError("Please enter a valid email");
+        setEmailError(true);
+      } else {
+        setEmailError(false);
+      }
+      if (error.response.data.message === "Please check your password") {
+        toast.error("Please check your password", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+        setError("Please check your password");
+        setPasswordError(true);
+      } else {
+        setPasswordError(false);
+      }
     }
   };
   return (
@@ -55,10 +128,12 @@ function Login() {
                 <input
                   id="email"
                   type="text"
-                  className="w-full bg-red-100 h-[56px] pl-[20px] py-[7px] font-normal text-sm text-[#515151]"
+                  className={emailError ? errorStyle : normalStyle}
                   style={{
                     borderRadius: "7.979px",
-                    border: "1px solid #747474",
+                    border: emailError
+                      ? "1px solid #FF0000"
+                      : "1px solid #747474",
                     background: "#FFF",
                   }}
                   placeholder="Enter your email address"
@@ -79,10 +154,12 @@ function Login() {
                 <input
                   id="password"
                   type={showPassword ? "text" : "password"}
-                  className="w-full bg-red-100 h-[56px] pl-[20px] py-[7px] font-normal text-sm text-[#515151]"
+                  className={passwordError ? errorStyle : normalStyle}
                   style={{
                     borderRadius: "7.979px",
-                    border: "1px solid #747474",
+                    border: passwordError
+                      ? "1px solid #FF0000"
+                      : "1px solid #747474",
                     background: "#FFF",
                   }}
                   placeholder="Enter your password"
@@ -115,6 +192,15 @@ function Login() {
                 </div>
               </div>
             </div>
+            {error && (
+              <div className="flex flex-col items-center">
+                <div className="w-[75%]">
+                  <p className="text-red-500 text-[15px] font-normal text-center">
+                    {error}
+                  </p>
+                </div>
+              </div>
+            )}
             <div className="flex flex-col items-center mt-[15px]">
               <div className="w-[75%] ">
                 <button

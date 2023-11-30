@@ -2,10 +2,10 @@ import { Checkbox } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useState } from "react";
 import userAxios from "../../baseURL";
-import { useUserContext } from "../../hooks/useUserAuthContext";
+// import { useUserContext } from "../../hooks/useUserAuthContext";
 
 function Login() {
-  const { user, dispatch } = useUserContext();
+  // const { user, dispatch } = useUserContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -20,8 +20,8 @@ function Login() {
         password,
       });
       console.log(res.data);
-      localStorage.setItem("user", JSON.stringify(res.data));
-      dispatch({ type: "LOGIN", payload: res.data });
+      localStorage.setItem("user", JSON.stringify(res.data.email));
+      // dispatch({ type: "LOGIN", payload: res.data });
     } catch (error) {
       console.log(error.response.data);
     }

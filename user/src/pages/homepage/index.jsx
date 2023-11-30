@@ -1,9 +1,9 @@
-import { useUserContext } from "../../hooks/useUserAuthContext";
+//import { useUserContext } from "../../hooks/useUserAuthContext";
 
 function Home() {
-  const { user } = useUserContext();
+  // const { user } = useUserContext();
   //console.log("home " + user?.email);
-  return <div></div>;
+  return <div>Home</div>;
 }
 
 export default Home;

@@ -8,25 +8,26 @@ import Navbar from "./component/navbar";
 import Footer from "./component/footer";
 import Login from "./pages/loginpage";
 import { useUserContext } from "./hooks/useUserAuthContext";
-import { useEffect } from "react";
 
 function App() {
   const { user } = useUserContext();
-  console.log(user);
+  console.log("app " + user);
 
   return (
     <div className="app flex flex-col overflow-y-scroll min-h-screen">
-      {false && <Navbar />}
+      {user && <Navbar />}
       <div className="w-full h-full flex-1">
         <Routes>
           <Route
             path="/"
-            element={user ? <Home /> : <Navigate to="/login" />}
+            element={
+              user ? <Home /> : <Navigate to="/dashboard" replace={true} />
+            }
           />
           <Route path="/login" element={<Login />} />
         </Routes>
       </div>
-      {false && <Footer />}
+      {user && <Footer />}
     </div>
   );
 }

@@ -63,6 +63,7 @@ function Login() {
       if (res.status === 200) {
         localStorage.setItem("manager", JSON.stringify(res.data));
         dispatch({ type: "LOGIN", payload: res.data });
+        toast.dismiss();
       }
     } catch (error) {
       console.log(error.response.data.message);

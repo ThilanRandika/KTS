@@ -52,7 +52,7 @@ function Home() {
         </div>
 
         <div className="flex gap-[80px] mt-[20px]">
-          <div className="w-[60%] ">
+          <div className="w-[63%] ">
             <div className="images">
               <p className="text-main_blue text-[37px] font-semibold font-barlows">
                 KTS Services
@@ -203,7 +203,105 @@ function Home() {
               </div>
             </div>
           </div>
-          <div className="flex-1 bg-red-100"></div>
+          <div className="flex-1 ">
+            <div className="flex flex-col gap-7">
+              <div className="top bg-[#F8F8F8]">
+                <div className="font-roboto text-[21px] font-medium text-center py-[7px] bg-main_red text-white">
+                  For Better Experience and Ease
+                </div>
+                <div className="flex items-center gap-4">
+                  <div>
+                    <img
+                      src="https://res.cloudinary.com/dnoobzfxo/image/upload/v1701415495/mybus_bxybtq.jpg"
+                      alt=""
+                      className="w-[180px]"
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <p className="font-barlows text-[24px] leading-5">
+                      KTS-Mobile
+                    </p>
+                    <p className="text-[#087506] text-[12px] font-semibold">
+                      Student and staff only - with seasons
+                    </p>
+                    <div className="flex items-center gap-1 mb-1">
+                      <p
+                        className="font-rowdies text-[14px]"
+                        style={{ transform: "rotate(-24.216deg)" }}
+                      >
+                        E
+                      </p>
+                      <p className="font-roboto text-[11px] font-semibold">
+                        Everyone
+                      </p>
+                    </div>
+                    <p
+                      className="font-roboto text-[11px] pr-7 text-justify"
+                      style={{ lineHeight: "normal" }}
+                    >
+                      Only can be access through university emails Be careful
+                      when you save your payment methods in the app
+                    </p>
+                    <p
+                      className="font-roboto text-[11px] "
+                      style={{ lineHeight: "normal" }}
+                    >
+                      Make sure to enable location features
+                    </p>
+                  </div>
+                </div>
+                <div className="px-8 flex justify-between mt-2 mb-4">
+                  <div className="flex border-[1px] border-black rounded-[7px] font-roboto items-center gap-1 pr-2 h-[46px] w-[155px]">
+                    <div>
+                      <img
+                        src="https://res.cloudinary.com/dnoobzfxo/image/upload/v1701422022/google-play-icon-2048x2048-487quz63-removebg-preview_x8k77l.png"
+                        alt=""
+                        className="w-[46px]"
+                      />
+                    </div>
+                    <div className="">
+                      <p className="font-medium text-[11px]">GET IT ON</p>
+                      <p className="font-bold text-[17px] leading-none">
+                        Google Play
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex border-[1px] border-black rounded-[7px] font-roboto items-center gap-1 pr-2 h-[46px] w-[155px]">
+                    <div>
+                      <img
+                        src="https://res.cloudinary.com/dnoobzfxo/image/upload/v1701422090/2560px-Apple_Pay_logo.svg-removebg-preview_qe2h9a.png"
+                        alt=""
+                        className="w-[34px] ml-3"
+                      />
+                    </div>
+                    <div className="">
+                      <p className="font-medium text-[11px]">GET IT ON</p>
+                      <p className="font-bold text-[17px] leading-none">
+                        Google Play
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="font-roboto text-[15px] font-normal text-center py-[6px] bg-main_red text-white">
+                  Click here to view the manual{" "}
+                </div>
+              </div>
+              <div className="middle bg-[#F8F8F8]">
+                <div className="font-roboto text-[21px] font-medium text-center py-[7px] bg-main_red text-white">
+                  Notice Board
+                </div>
+                <div>
+                  <div>up</div>
+                  <div>down</div>
+                </div>
+                <div className="font-roboto text-[15px]  text-center py-[6px]  text-main_red font-semibold ">
+                  Open Notice Page
+                </div>
+              </div>
+
+              <div className="bottom">bootm</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

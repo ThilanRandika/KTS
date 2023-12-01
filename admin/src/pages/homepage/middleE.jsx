@@ -7,7 +7,7 @@ const chartData = [
 ];
 function MiddleD() {
   return (
-    <div className="w-full h-full bg-gray-200">
+    <div className="w-full h-full bg-gray-200 rounded-[10px] ">
       <div className="flex flex-col items-center pt-1">
         <div className="relative flex items-center flex-col">
           <div className="font-tinos font-semibold text-lg text-gray-700 text-center">

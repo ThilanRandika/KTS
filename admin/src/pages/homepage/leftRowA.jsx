@@ -6,7 +6,7 @@ import { FaMoneyCheckAlt } from "react-icons/fa";
 import { FaBusAlt } from "react-icons/fa";
 function LeftRowA() {
   return (
-    <div className="h-full bg-main_blue w-full font-roboto  ">
+    <div className="h-full bg-main_blue w-full font-roboto rounded-[10px]  ">
       <div className="flex flex-col items-center h-full w-full font-roboto text-white font-medium text-2xl pb-3 pt-5">
         <div className=" text tracking-wide font-semibold mb-1">
           {dayjs().format("MMMM - YYYY")}

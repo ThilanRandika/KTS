@@ -4,7 +4,7 @@ import { MdOutlineQrCodeScanner } from "react-icons/md";
 function MiddleD() {
   return (
     <div
-      className="w-full h-full  bg-contain pl-8 pr-8 flex justify-center items-center"
+      className="w-full h-full  bg-contain pl-8 pr-8 flex justify-center items-center rounded-[10px] "
       style={{
         backgroundImage:
           "url(https://cdn11.bigcommerce.com/s-l2xlls5oyw/images/stencil/original/products/31352/46634/15c5a9b1-2996-44cf-beb9-c8e2b8559058__87246.1661175221.jpg)",

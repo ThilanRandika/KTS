@@ -7,7 +7,7 @@ const chartData = [
 ];
 function MiddleB() {
   return (
-    <div className="w-full h-full bg-gray-200">
+    <div className="w-full h-full bg-gray-200 rounded-[10px] ">
       <div className="flex justify-between items-center h-full pl-7 pr-7 gap-14 pt-1">
         <div className="chart  h-full  flex flex-col  items-center relative">
           <div className="font-tinos font-semibold text-lg text-gray-700">

@@ -64,7 +64,7 @@ const data = [
 
 function LastG() {
   return (
-    <div className="w-full h-full bg-gray-200">
+    <div className="w-full h-full bg-gray-200 rounded-[10px] ">
       <div className="flex flex-col w-full h-full pl-2 pr-2">
         <div className="flex  flex-col items-center pt-2">
           <div className="font-tinos font-semibold text-lg text-gray-700 text-center">

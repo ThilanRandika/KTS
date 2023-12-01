@@ -6,7 +6,7 @@ function Home() {
   return (
     <div>
       <div
-        className="w-full h-[500px] bg-cov bg-no-repeat text-white pl-[100px] pt-[80px]"
+        className="w-full h-[500px] bg-cover bg-no-repeat text-white pl-[100px] pt-[80px]"
         style={{
           backgroundImage:
             "url(https://res.cloudinary.com/dnoobzfxo/image/upload/v1701410129/pexels-l%C3%AA-minh-977237_jo0kom.png)",

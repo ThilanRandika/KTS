@@ -25,7 +25,7 @@ function Login() {
     if (!email || !password) {
       setError("Please fill all the fields");
       toast.error("Please fill all the fields", {
-        position: "top-right",
+        position: "top-left",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -40,7 +40,7 @@ function Login() {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
     if (!emailRegex.test(email)) {
       toast.error("Invalid Email Address", {
-        position: "top-right",
+        position: "top-left",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -56,7 +56,7 @@ function Login() {
     setEmailError(false);
     setError(null);
     try {
-      const res = await userAxios.post("/api/users/login", {
+      const res = await userAxios.post("/api/managers/login", {
         email,
         password,
       });
@@ -67,7 +67,7 @@ function Login() {
       console.log(error.response.data.message);
       if (error.response.data.message === "Please enter a valid email") {
         toast.error("Please enter a valid email", {
-          position: "top-right",
+          position: "top-left",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -83,7 +83,7 @@ function Login() {
       }
       if (error.response.data.message === "Please check your password") {
         toast.error("Please check your password", {
-          position: "top-right",
+          position: "top-left",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -101,6 +101,13 @@ function Login() {
   };
   return (
     <div className="flex h-screen w-full font-roboto ">
+      <div
+        className="flex-1 bg-no-repeat bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url(https://res.cloudinary.com/dnoobzfxo/image/upload/v1701395916/valentyn-chernetskyi-m0_o8QB-JGg-unsplash_1_jcfwxf.png)",
+        }}
+      ></div>
       <div className="w-[34%] flex items-center flex-col justify-center">
         <div className="flex flex-col items-center">
           <img
@@ -123,7 +130,7 @@ function Login() {
                   htmlFor="email"
                   className="font-semibold text-[#383838] "
                 >
-                  University Email Address
+                  Manager Email Address
                 </label>
                 <input
                   id="email"
@@ -217,13 +224,6 @@ function Login() {
           </form>
         </div>
       </div>
-      <div
-        className="flex-1 bg-no-repeat bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url(https://res.cloudinary.com/dnoobzfxo/image/upload/v1701274834/bg-girl_qwuwun.png)",
-        }}
-      ></div>
     </div>
   );
 }

@@ -70,7 +70,7 @@ function Navbar() {
             1
           </span>
         </div>
-      </div>{" "}
+      </div>
       {profileClicked && (
         <div className=" bg-white absolute right-[160px] top-[40px] w-[230px]  z-10 font-roboto border-[1px] rounded-md border-gray-400 text-black">
           <div className="px-3 py-2 w-full h-full text-sm font-normal flex-col flex">

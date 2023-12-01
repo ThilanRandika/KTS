@@ -22,7 +22,7 @@ const managerLogin = asyncHandler(async (req, res) => {
 
   if (!manager) {
     res.status(400);
-    throw new Error("Invalid user data");
+    throw new Error("Please enter a valid email");
   }
 
   //check if password match
@@ -32,7 +32,7 @@ const managerLogin = asyncHandler(async (req, res) => {
     const token = generateToken(manager._id);
     res.status(200).json({
       email,
-      eid: manager.eid,
+      eId: manager.eId,
       fullName: manager.fullName,
       mobileNo: manager.mobileNo,
       photo: manager.photo,
@@ -41,7 +41,7 @@ const managerLogin = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(400);
-    throw new Error("Invalid Email or password");
+    throw new Error("Please check your password");
   }
 });
 

@@ -20,7 +20,7 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={user ? <Journey /> : <Navigate to="/login" />}
+            element={user ? <Home /> : <Navigate to="/login" />}
           />
           <Route
             path="/routes"
@@ -29,6 +29,10 @@ function App() {
           <Route
             path="/journey"
             element={user ? <Journey /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/booking"
+            element={user ? <Booking /> : <Navigate to="/login" />}
           />
           <Route
             path="/login"

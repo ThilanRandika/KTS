@@ -24,7 +24,7 @@ function Home() {
         </p>
       </div>
 
-      <div className="w-full  px-[70px] mt-[30px]">
+      <div className="w-full  px-[70px] mt-[20px]">
         <div className="font-barlows ">
           <p className="text-main_blue text-[37px] font-semibold">
             Read this carefully

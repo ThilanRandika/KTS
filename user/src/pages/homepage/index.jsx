@@ -1,4 +1,7 @@
 import LocalActivityIcon from "@mui/icons-material/LocalActivity";
+import { BsClipboardData } from "react-icons/bs";
+import { FaPhone } from "react-icons/fa6";
+
 function Home() {
   return (
     <div>
@@ -51,7 +54,7 @@ function Home() {
           </div>
         </div>
 
-        <div className="flex gap-[80px] mt-[20px]">
+        <div className="flex gap-[80px] mt-[20px] mb-[60px]">
           <div className="w-[63%] ">
             <div className="images">
               <p className="text-main_blue text-[37px] font-semibold font-barlows">
@@ -206,7 +209,7 @@ function Home() {
           <div className="flex-1 ">
             <div className="flex flex-col gap-7">
               <div className="top bg-[#F8F8F8]">
-                <div className="font-roboto text-[21px] font-medium text-center py-[7px] bg-main_red text-white">
+                <div className="font-roboto text-[19px] font-medium text-center py-[7px] bg-main_red text-white">
                   For Better Experience and Ease
                 </div>
                 <div className="flex items-center gap-4">
@@ -283,23 +286,188 @@ function Home() {
                   </div>
                 </div>
                 <div className="font-roboto text-[15px] font-normal text-center py-[6px] bg-main_red text-white">
-                  Click here to view the manual{" "}
+                  Click here to view the manual
                 </div>
               </div>
               <div className="middle bg-[#F8F8F8]">
-                <div className="font-roboto text-[21px] font-medium text-center py-[7px] bg-main_red text-white">
+                <div className="font-roboto text-[19px] font-medium text-center py-[7px] bg-main_red text-white">
                   Notice Board
                 </div>
-                <div>
-                  <div>up</div>
-                  <div>down</div>
+                <div className="notices">
+                  <div className="pt-[15px] pb-[10px] px-6  border-[1px]">
+                    <div className="flex gap-5 items-center">
+                      <div className="text-[20px] text-main_red">
+                        <BsClipboardData />
+                      </div>
+                      <p
+                        className="font-roboto text-[14px]"
+                        style={{ lineHeight: "normal" }}
+                      >
+                        B04343 Bus has bean arrived from Panadura at 7.00am
+                        expected arrive at 8.30
+                      </p>
+                    </div>
+                    <div className="flex justify-between items-center mt-[4px]">
+                      <p className="text-[9px] font-barlows font-light">
+                        8 hours 16 mins ago
+                      </p>
+                      <p className="font-roboto_slab text-[10px] text-main_red">
+                        View Full Notification
+                      </p>
+                    </div>
+                  </div>
+                  <div className="pt-[15px] pb-[10px] px-6  border-[1px]">
+                    <div className="flex gap-5 items-center">
+                      <div className="text-[20px] text-main_red">
+                        <BsClipboardData />
+                      </div>
+                      <p
+                        className="font-roboto text-[14px]"
+                        style={{ lineHeight: "normal" }}
+                      >
+                        B04343 Bus has bean arrived from Panadura at 7.00am
+                        expected arrive at 8.30
+                      </p>
+                    </div>
+                    <div className="flex justify-between items-center mt-[4px]">
+                      <p className="text-[9px] font-barlows font-light">
+                        8 hours 16 mins ago
+                      </p>
+                      <p className="font-roboto_slab text-[10px] text-main_red">
+                        View Full Notification
+                      </p>
+                    </div>
+                  </div>
+                  <div className="pt-[15px] pb-[10px] px-6  border-[1px]">
+                    <div className="flex gap-5 items-center">
+                      <div className="text-[20px] text-main_red">
+                        <BsClipboardData />
+                      </div>
+                      <p
+                        className="font-roboto text-[14px]"
+                        style={{ lineHeight: "normal" }}
+                      >
+                        B04343 Bus has bean arrived from Panadura at 7.00am
+                        expected arrive at 8.30
+                      </p>
+                    </div>
+                    <div className="flex justify-between items-center mt-[4px]">
+                      <p className="text-[9px] font-barlows font-light">
+                        8 hours 16 mins ago
+                      </p>
+                      <p className="font-roboto_slab text-[10px] text-main_red">
+                        View Full Notification
+                      </p>
+                    </div>
+                  </div>
+                  <div className="pt-[15px] pb-[10px] px-6  border-[1px]">
+                    <div className="flex gap-5 items-center">
+                      <div className="text-[20px] text-main_red">
+                        <BsClipboardData />
+                      </div>
+                      <p
+                        className="font-roboto text-[14px]"
+                        style={{ lineHeight: "normal" }}
+                      >
+                        B04343 Bus has bean arrived from Panadura at 7.00am
+                        expected arrive at 8.30
+                      </p>
+                    </div>
+                    <div className="flex justify-between items-center mt-[4px]">
+                      <p className="text-[9px] font-barlows font-light">
+                        8 hours 16 mins ago
+                      </p>
+                      <p className="font-roboto_slab text-[10px] text-main_red">
+                        View Full Notification
+                      </p>
+                    </div>
+                  </div>
                 </div>
+
                 <div className="font-roboto text-[15px]  text-center py-[6px]  text-main_red font-semibold ">
                   Open Notice Page
                 </div>
               </div>
+              <div className="bottom">
+                <div className="font-roboto text-[19px] font-medium text-center py-[7px] bg-main_red text-white">
+                  Quick access
+                </div>
+                <div>
+                  <div className="flex pl-7 pt-4  pb-3 gap-7 items-center border-[1px] ">
+                    <div className="text-[33px] text-white bg-main_red flex items-center justify-center rounded-md h-[47px] w-[47px]">
+                      <FaPhone />
+                    </div>
 
-              <div className="bottom">bootm</div>
+                    <div className="flex flex-col font-roboto">
+                      <p
+                        className="text-[19px]"
+                        style={{ lineHeight: "normal" }}
+                      >
+                        Head Transport Manager
+                      </p>
+                      <p
+                        className="text-[13px] text-[#545454]"
+                        style={{ lineHeight: "normal" }}
+                      >
+                        S.Malinda Gamage Disanayake
+                      </p>
+                      <p className="font-barlows font-medium text-[18px]">
+                        0112386480
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex pl-7 pt-4  pb-3 gap-7 items-center border-[1px] ">
+                    <div className="text-[33px] text-white bg-main_red flex items-center justify-center rounded-md h-[47px] w-[47px]">
+                      <FaPhone />
+                    </div>
+
+                    <div className="flex flex-col font-roboto">
+                      <p
+                        className="text-[19px]"
+                        style={{ lineHeight: "normal" }}
+                      >
+                        Defence University - Dehiwala
+                      </p>
+                      <p
+                        className="text-[13px] text-[#545454]"
+                        style={{ lineHeight: "normal" }}
+                      >
+                        p.Muthuhetti Rajakaruana
+                      </p>
+                      <p className="font-barlows font-medium text-[18px]">
+                        0114334564
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex pl-7 pt-4  pb-3 gap-7 items-center border-[1px] ">
+                    <div className="text-[33px] text-white bg-main_red flex items-center justify-center rounded-md h-[47px] w-[47px]">
+                      <FaPhone />
+                    </div>
+
+                    <div className="flex flex-col font-roboto">
+                      <p
+                        className="text-[19px]"
+                        style={{ lineHeight: "normal" }}
+                      >
+                        Defence University - Hambanthta
+                      </p>
+                      <p
+                        className="text-[13px] text-[#545454]"
+                        style={{ lineHeight: "normal" }}
+                      >
+                        K.P.Priyantha Gamage
+                      </p>
+                      <p className="font-barlows font-medium text-[18px]">
+                        0113456789
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="font-roboto text-[15px] font-normal text-center py-[6px] bg-main_red text-white">
+                  Open Contact to more information
+                </div>
+              </div>
             </div>
           </div>
         </div>

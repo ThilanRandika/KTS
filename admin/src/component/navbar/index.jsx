@@ -15,7 +15,7 @@ function Navbar() {
   const logoutFun = () => {
     setProfileClicked(false);
     dispatch({ type: "LOGOUT" });
-    localStorage.removeItem("user");
+    localStorage.removeItem("manager");
   };
   return (
     <div className="flex justify-between pt-1 items-center pr-4 pl-3">

@@ -5,6 +5,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/homepage";
 import Login from "./pages/loginpage";
 import { useUserContext } from "./hooks/useUserAuthContext";
+import AddRoute from "./pages/addRoutes";
 function App() {
   const { user } = useUserContext();
 
@@ -22,7 +23,11 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={user ? <HomePage /> : <Navigate to="/login" />}
+              element={user ? <AddRoute /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/add-routes"
+              element={user ? <AddRoute /> : <Navigate to="/login" />}
             />
             <Route
               path="/login"

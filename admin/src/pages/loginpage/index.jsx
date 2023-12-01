@@ -60,9 +60,10 @@ function Login() {
         email,
         password,
       });
-
-      localStorage.setItem("user", JSON.stringify(res.data));
-      dispatch({ type: "LOGIN", payload: res.data });
+      if (res.status === 200) {
+        localStorage.setItem("manager", JSON.stringify(res.data));
+        dispatch({ type: "LOGIN", payload: res.data });
+      }
     } catch (error) {
       console.log(error.response.data.message);
       if (error.response.data.message === "Please enter a valid email") {

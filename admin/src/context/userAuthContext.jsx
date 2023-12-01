@@ -20,7 +20,7 @@ export const UserContextProvider = ({ children }) => {
 
   console.log("state", state);
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = JSON.parse(localStorage.getItem("manager"));
     console.log(user);
     if (user) {
       dispatch({ type: "LOGIN", payload: user });

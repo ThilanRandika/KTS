@@ -9,6 +9,10 @@ export default {
         barlows: ["Barlow Semi Condensed"],
         crimsonPro: ["Crimson Pro"],
       },
+      colors: {
+        main_blue: "#002147",
+        main_red: "#7A0736",
+      },
     },
   },
   plugins: [],

@@ -170,7 +170,7 @@ function Login() {
                 <VisibilityIcon
                   className="absolute top-[40px] right-4"
                   fontSize="medium"
-                  color={showPassword ? "inherit" : "disabled"}
+                  color={passwordError ? "error" : "disabled"}
                   onClick={() => {
                     console.log("as");
                     setShowPassword((pre) => !pre);

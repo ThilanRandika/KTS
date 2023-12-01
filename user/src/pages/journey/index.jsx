@@ -1,5 +1,11 @@
+import Bus from "./component/Bus";
+
 function Journey() {
-  return <div>Journey</div>;
+  return (
+    <div>
+      <Bus />
+    </div>
+  );
 }
 
 export default Journey;

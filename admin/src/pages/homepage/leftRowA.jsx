@@ -1,4 +1,3 @@
-import React from "react";
 import dayjs from "dayjs";
 import { GiReceiveMoney } from "react-icons/gi";
 import { FaMoneyBillTrendUp } from "react-icons/fa6";

@@ -1,4 +1,3 @@
-import React from "react";
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
 const chartData = [
@@ -86,7 +85,7 @@ function LastF() {
 
         <div className="flex justify-between w-full px-4 mt-3">
           {chartData.map((city) => (
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center" key={city.color}>
               <div
                 className={`h-[8px] w-[8px] rounded-full `}
                 style={{ backgroundColor: city.color }}

@@ -7,6 +7,7 @@ import Login from "./pages/loginpage";
 import { useUserContext } from "./hooks/useUserAuthContext";
 import AddRoute from "./pages/addRoutes";
 import EmployeesPage from "./pages/employees";
+import AddNoticesPage from "./pages/addNotices";
 function App() {
   const { user } = useUserContext();
 
@@ -24,7 +25,7 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={user ? <EmployeesPage /> : <Navigate to="/login" />}
+              element={user ? <AddNoticesPage /> : <Navigate to="/login" />}
             />
             <Route
               path="/add-routes"
@@ -37,6 +38,10 @@ function App() {
             <Route
               path="/employees"
               element={user ? <EmployeesPage /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/add-notices"
+              element={user ? <AddNoticesPage /> : <Navigate to="/login" />}
             />
             <Route
               path="/login"

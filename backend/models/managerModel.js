@@ -38,6 +38,10 @@ const managerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  shortName: {
+    type: String,
+    required: true,
+  },
 });
 
 const Manager = mongoose.model("Manager", managerSchema);

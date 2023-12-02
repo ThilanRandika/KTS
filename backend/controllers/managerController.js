@@ -37,6 +37,7 @@ const managerLogin = asyncHandler(async (req, res) => {
       mobileNo: manager.mobileNo,
       photo: manager.photo,
       location: manager.location,
+      shortName: manager.shortName,
       token,
     });
   } else {

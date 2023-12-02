@@ -47,6 +47,7 @@ const userLogin = asyncHandler(async (req, res) => {
       photo: user.photo,
       department: user.department,
       dateOfEntry: user.dateOfEntry,
+      shortName: user.shortName,
       token,
     });
   } else {

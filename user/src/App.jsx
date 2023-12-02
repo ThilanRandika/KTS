@@ -8,10 +8,10 @@ import Navbar from "./component/navbar";
 import Footer from "./component/footer";
 import Login from "./pages/loginpage";
 import { useUserContext } from "./hooks/useUserAuthContext";
+import ProfilePage from "./pages/profilepage";
 
 function App() {
   const { user } = useUserContext();
-  console.log("app " + user);
 
   return (
     <div className="app flex flex-col overflow-y-scroll min-h-screen">
@@ -20,7 +20,7 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={user ? <Home /> : <Navigate to="/login" />}
+            element={user ? <ProfilePage /> : <Navigate to="/login" />}
           />
           <Route
             path="/routes"
@@ -33,6 +33,10 @@ function App() {
           <Route
             path="/booking"
             element={user ? <Booking /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/profile"
+            element={user ? <ProfilePage /> : <Navigate to="/login" />}
           />
           <Route
             path="/login"

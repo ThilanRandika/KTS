@@ -1,19 +1,27 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { IoIosNotifications } from "react-icons/io";
 import { useUserContext } from "../../hooks/useUserAuthContext";
 import { useState } from "react";
 import { ImCancelCircle } from "react-icons/im";
 import { BsFillPersonFill } from "react-icons/bs";
 import { HiMiniInboxArrowDown } from "react-icons/hi2";
+
 const linkClassNames =
   "w-[125px]  pt-[2px]  pl-[6px]  pr-[6px]  pb-[7px] flex justify-center items-center border-l-[1px]";
+
 function Navbar() {
   const { user, dispatch } = useUserContext();
   const [profileClicked, setProfileClicked] = useState(false);
+  const navigate = useNavigate();
 
   const logoutFun = () => {
     dispatch({ type: "LOGOUT" });
     localStorage.removeItem("user");
+  };
+
+  const clickToProfile = () => {
+    setProfileClicked(false);
+    navigate("/profile");
   };
   return (
     <div className="bg-main_blue h-[60px] flex justify-between font-roboto text-white">
@@ -62,7 +70,7 @@ function Navbar() {
         />
         <div>
           <p>{user ? user.sId : "loading"}</p>
-          <p className="text-[17px]">{user ? user.fullName : "loading"}</p>
+          <p className="text-[17px]">{user ? user.shortName : "loading"}</p>
         </div>
         <div className="relative ml-2">
           <IoIosNotifications className="text-[23px]" />
@@ -104,7 +112,7 @@ function Navbar() {
                   {user ? user.sId : "loading"}
                 </p>
                 <p className="text-[12px] font-normalt">
-                  {user ? user.fullName : "loading"}
+                  {user ? user.shortName : "loading"}
                 </p>
                 <p className="text-[9px] font-normal">
                   {user ? user.email : "loading"}
@@ -112,11 +120,14 @@ function Navbar() {
               </div>
             </div>
             <div className="px-2 flex flex-col w-full pt-4 pb-4 font-roboto">
-              <div className=" flex  justify-between items-center border-t-[1px] border-b-[1px] border-gray-300 py-2 px-4 hover:bg-gray-100">
+              <div
+                className=" flex  justify-between items-center border-t-[1px] border-b-[1px] border-gray-300 py-2 px-4 hover:bg-gray-100 cursor-pointer"
+                onClick={clickToProfile}
+              >
                 <div className="w-10 h-10 bg-[#E5FAFB]  rounded-md text-[20px] flex items-center justify-center text-main-blue ">
                   <BsFillPersonFill />
                 </div>
-                <div className="font-medium">
+                <div className="font-medium ">
                   <p>My profile</p>
                   <p className="text-xs font-light">Account Settings</p>
                   <p></p>

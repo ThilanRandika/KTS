@@ -167,9 +167,9 @@ function ProfilePage() {
                 </div>
                 <div className="mt-[10px]">
                   <p className="font-medium leading-4">Date of Birth :</p>
-                  <p- className="font- text-[14px]">
+                  <p className="font- text-[14px]">
                     {user ? dayjs(user.dob).format("Do MMMM YYYY") : "loading"}
-                  </p->
+                  </p>
                 </div>
                 <div className="mt-[10px]">
                   <p className="font-medium leading-4">Current Address :</p>
@@ -196,11 +196,11 @@ function ProfilePage() {
                 </div>
                 <div className="mt-[10px]">
                   <p className="font-medium leading-4">Date of Entry :</p>
-                  <p- className="font- text-[14px]">
+                  <p className="font- text-[14px]">
                     {user
                       ? dayjs(user.dateOfEntry).format("Do MMMM YYYY")
                       : "loading"}
-                  </p->
+                  </p>
                 </div>
                 <div className="mt-[10px]">
                   <p className="font-medium leading-4">Current Year :</p>

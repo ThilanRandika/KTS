@@ -6,13 +6,22 @@ import { BrowserRouter } from "react-router-dom";
 import { UserContextProvider } from "./context/userAuthContext.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { EmployeeContextProvider } from "./context/employeeContext.jsx";
+import { BusContextProvider } from "./context/busContext.jsx";
+import { UsersContextProvider } from "./context/usersContext.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <UserContextProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-      <ToastContainer />
+      <EmployeeContextProvider>
+        <BusContextProvider>
+          <UsersContextProvider>
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+            <ToastContainer />
+          </UsersContextProvider>
+        </BusContextProvider>
+      </EmployeeContextProvider>
     </UserContextProvider>
   </React.StrictMode>
 );

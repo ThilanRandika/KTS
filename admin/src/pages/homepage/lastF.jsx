@@ -10,7 +10,6 @@ var total = chartData.reduce(
   (accumulator, city) => accumulator + city.value,
   0
 );
-console.log(total);
 
 function LastF() {
   return (

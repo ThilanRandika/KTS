@@ -8,6 +8,7 @@ export default {
         roboto_slab: ["Roboto Slab"],
         barlows: ["Barlow Semi Condensed"],
         crimsonPro: ["Crimson Pro"],
+        rowdies: ["Rowdies"],
       },
       colors: {
         main_blue: "#002147",

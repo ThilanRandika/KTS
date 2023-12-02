@@ -17,6 +17,7 @@ function Navbar() {
     dispatch({ type: "LOGOUT" });
     localStorage.removeItem("manager");
   };
+
   return (
     <div className="flex justify-between pt-1 items-center pr-4 pl-3">
       <div className="text-[25px] text-main_blue">
@@ -47,7 +48,7 @@ function Navbar() {
           </div>
 
           <p className="font-roboto font-bold text-main_blue">
-            {user ? user.fullName : "loading.."}
+            {user ? user.shortName : "loading.."}
           </p>
         </div>
         <div className="relative ml-5">

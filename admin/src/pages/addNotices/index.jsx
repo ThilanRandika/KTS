@@ -8,8 +8,11 @@ function AddNoticesPage() {
   const handleSubmitNotice = async (e) => {
     e.preventDefault();
     console.log(notice);
-    const res = await setDoc(doc(db, "chats", "notices"), {
-      messages: notice,
+
+    //generate a random ID
+
+    const res = await setDoc(doc(db, "notices", "13"), {
+      messages1: notice,
     });
     console.log(res);
   };

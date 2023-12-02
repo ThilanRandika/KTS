@@ -1,8 +1,36 @@
 import LocalActivityIcon from "@mui/icons-material/LocalActivity";
 import { BsClipboardData } from "react-icons/bs";
 import { FaPhone } from "react-icons/fa6";
+import { doc, onSnapshot } from "firebase/firestore";
+import { useEffect } from "react";
+import { db } from "../../firebase";
+import { useState } from "react";
 
 function Home() {
+  const [notices, setNotices] = useState([]);
+  //get real time snapshot from firebase and update notices
+
+  useEffect(() => {
+    const unsub = onSnapshot(doc(db, "notices", "13"), (doc) => {
+      console.log("Current data: ", doc.data());
+      setNotices((prev) => [...prev, doc.data().messages1]);
+    });
+
+    return () => {
+      unsub();
+    };
+  }, []);
+
+  // const unsub = onSnapshot(doc(db, "notices", "13"), (doc) => {
+  //   console.log("Current data: ", doc.data());
+  // });
+
+  // useEffect(() => {
+  //   return () => {
+  //     unsub();
+
+  //   };
+  // }, []);
   return (
     <div>
       <div
@@ -294,94 +322,32 @@ function Home() {
                   Notice Board
                 </div>
                 <div className="notices">
-                  <div className="pt-[15px] pb-[10px] px-6  border-[1px]">
-                    <div className="flex gap-5 items-center">
-                      <div className="text-[20px] text-main_red">
-                        <BsClipboardData />
+                  {notices.map((notice) => (
+                    <div
+                      className="pt-[15px] pb-[10px] px-6  border-[1px]"
+                      key={notice}
+                    >
+                      <div className="flex gap-5 items-center">
+                        <div className="text-[20px] text-main_red">
+                          <BsClipboardData />
+                        </div>
+                        <p
+                          className="font-roboto text-[14px]"
+                          style={{ lineHeight: "normal" }}
+                        >
+                          {notice}
+                        </p>
                       </div>
-                      <p
-                        className="font-roboto text-[14px]"
-                        style={{ lineHeight: "normal" }}
-                      >
-                        B04343 Bus has bean arrived from Panadura at 7.00am
-                        expected arrive at 8.30
-                      </p>
-                    </div>
-                    <div className="flex justify-between items-center mt-[4px]">
-                      <p className="text-[9px] font-barlows font-light">
-                        8 hours 16 mins ago
-                      </p>
-                      <p className="font-roboto_slab text-[10px] text-main_red">
-                        View Full Notification
-                      </p>
-                    </div>
-                  </div>
-                  <div className="pt-[15px] pb-[10px] px-6  border-[1px]">
-                    <div className="flex gap-5 items-center">
-                      <div className="text-[20px] text-main_red">
-                        <BsClipboardData />
+                      <div className="flex justify-between items-center mt-[4px]">
+                        <p className="text-[9px] font-barlows font-light">
+                          8 hours 16 mins ago
+                        </p>
+                        <p className="font-roboto_slab text-[10px] text-main_red">
+                          View Full Notification
+                        </p>
                       </div>
-                      <p
-                        className="font-roboto text-[14px]"
-                        style={{ lineHeight: "normal" }}
-                      >
-                        B04343 Bus has bean arrived from Panadura at 7.00am
-                        expected arrive at 8.30
-                      </p>
                     </div>
-                    <div className="flex justify-between items-center mt-[4px]">
-                      <p className="text-[9px] font-barlows font-light">
-                        8 hours 16 mins ago
-                      </p>
-                      <p className="font-roboto_slab text-[10px] text-main_red">
-                        View Full Notification
-                      </p>
-                    </div>
-                  </div>
-                  <div className="pt-[15px] pb-[10px] px-6  border-[1px]">
-                    <div className="flex gap-5 items-center">
-                      <div className="text-[20px] text-main_red">
-                        <BsClipboardData />
-                      </div>
-                      <p
-                        className="font-roboto text-[14px]"
-                        style={{ lineHeight: "normal" }}
-                      >
-                        B04343 Bus has bean arrived from Panadura at 7.00am
-                        expected arrive at 8.30
-                      </p>
-                    </div>
-                    <div className="flex justify-between items-center mt-[4px]">
-                      <p className="text-[9px] font-barlows font-light">
-                        8 hours 16 mins ago
-                      </p>
-                      <p className="font-roboto_slab text-[10px] text-main_red">
-                        View Full Notification
-                      </p>
-                    </div>
-                  </div>
-                  <div className="pt-[15px] pb-[10px] px-6  border-[1px]">
-                    <div className="flex gap-5 items-center">
-                      <div className="text-[20px] text-main_red">
-                        <BsClipboardData />
-                      </div>
-                      <p
-                        className="font-roboto text-[14px]"
-                        style={{ lineHeight: "normal" }}
-                      >
-                        B04343 Bus has bean arrived from Panadura at 7.00am
-                        expected arrive at 8.30
-                      </p>
-                    </div>
-                    <div className="flex justify-between items-center mt-[4px]">
-                      <p className="text-[9px] font-barlows font-light">
-                        8 hours 16 mins ago
-                      </p>
-                      <p className="font-roboto_slab text-[10px] text-main_red">
-                        View Full Notification
-                      </p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
 
                 <div className="font-roboto text-[15px]  text-center py-[6px]  text-main_red font-semibold ">

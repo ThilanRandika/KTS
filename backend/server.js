@@ -5,7 +5,11 @@ dotenv.config();
 const connectDb = require("./config/db");
 const userRoutes = require("./routes/userRoutes");
 const managerRoutes = require("./routes/managerRoutes");
+const employeeRoutes = require("./routes/employeeRoutes");
+const busRoutes = require("./routes/busRoutes");
+const roadRouteRoutes = require("./routes/roadRouteRoutes");
 const errorHandler = require("./middleware/errorMiddleware");
+
 //middleware
 const morgan = require("morgan");
 const app = express();
@@ -18,6 +22,9 @@ app.use(morgan("dev"));
 //routes
 app.use("/api/users", userRoutes);
 app.use("/api/managers", managerRoutes);
+app.use("/api/employees", employeeRoutes);
+app.use("/api/buses", busRoutes);
+app.use("/api/roadRoutes", roadRouteRoutes);
 
 //ERROR Middleware
 app.use(errorHandler);

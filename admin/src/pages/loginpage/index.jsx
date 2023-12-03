@@ -130,7 +130,9 @@ function Login() {
               <div className="w-[75%]">
                 <label
                   htmlFor="email"
-                  className="font-semibold text-[#383838] "
+                  className={`font-semibold ${
+                    emailError ? "text-red-500" : "text-[#383838]"
+                  }`}
                 >
                   Manager Email Address
                 </label>
@@ -156,7 +158,9 @@ function Login() {
               <div className="w-[75%] relative">
                 <label
                   htmlFor="password"
-                  className="font-semibold text-[#383838]"
+                  className={`font-semibold ${
+                    passwordError ? "text-red-500" : "text-[#383838]"
+                  }`}
                 >
                   Password
                 </label>

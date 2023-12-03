@@ -221,7 +221,9 @@ function ProfilePage() {
               <div className="relative flex flex-col">
                 <label
                   htmlFor="password"
-                  className="font-semibold text-[#383838]"
+                  className={`font-semibold ${
+                    oldPasswordError ? "text-red-500" : "text-[#383838]"
+                  }`}
                 >
                   Old Password
                 </label>
@@ -242,7 +244,9 @@ function ProfilePage() {
               <div className="relative flex flex-col">
                 <label
                   htmlFor="password"
-                  className="font-semibold text-[#383838]"
+                  className={`font-semibold ${
+                    newPasswordError ? "text-red-500" : "text-[#383838]"
+                  }`}
                 >
                   New password
                 </label>
@@ -271,7 +275,9 @@ function ProfilePage() {
               <div className="relative flex flex-col">
                 <label
                   htmlFor="password"
-                  className="font-semibold text-[#383838]"
+                  className={`font-semibold ${
+                    newPasswordError ? "text-red-500" : "text-[#383838]"
+                  }`}
                 >
                   Confirm password
                 </label>

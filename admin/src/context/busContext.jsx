@@ -8,9 +8,9 @@ export const BusContext = createContext();
 export const busReducer = (state, action) => {
   switch (action.type) {
     case "SET_BUSES":
-      return { bus: action.payload };
+      return { buses: action.payload };
     case "ADD_BUS":
-      return [...state, action.payload];
+      return { buses: [...state.buses, action.payload] };
     case "DELETE_BUS":
       return state.filter((bus) => bus.id !== action.payload);
     case "UPDATE_BUS":
@@ -23,7 +23,7 @@ export const busReducer = (state, action) => {
 };
 
 export const BusContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(busReducer, { bus: [] });
+  const [state, dispatch] = useReducer(busReducer, { buses: [] });
 
   useEffect(() => {
     const getBus = async () => {
@@ -34,6 +34,7 @@ export const BusContextProvider = ({ children }) => {
         console.log(error);
       }
     };
+    getBus();
   }, []);
 
   return (

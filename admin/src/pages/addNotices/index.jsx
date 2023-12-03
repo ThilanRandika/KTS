@@ -1,6 +1,7 @@
-import { doc, setDoc, updateDoc } from "firebase/firestore";
-import React, { useState } from "react";
+import { doc, setDoc } from "firebase/firestore";
+
 import { db } from "../../firebase";
+import { useState } from "react";
 
 function AddNoticesPage() {
   const [notice, setNotice] = useState("");

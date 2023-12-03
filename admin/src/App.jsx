@@ -8,6 +8,10 @@ import { useUserContext } from "./hooks/useUserAuthContext";
 import AddRoute from "./pages/addRoutes";
 import EmployeesPage from "./pages/employees";
 import AddNoticesPage from "./pages/addNotices";
+import AddBusPage from "./pages/addBusPage";
+import BusesPage from "./pages/buses";
+import AddEmployeePage from "./pages/addEmployeePage";
+
 function App() {
   const { user } = useUserContext();
 
@@ -25,7 +29,7 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={user ? <AddNoticesPage /> : <Navigate to="/login" />}
+              element={user ? <HomePage /> : <Navigate to="/login" />}
             />
             <Route
               path="/add-routes"
@@ -35,13 +39,26 @@ function App() {
               path="/journey"
               element={user ? <HomePage /> : <Navigate to="/login" />}
             />
+
+            <Route
+              path="/add-notices"
+              element={user ? <AddNoticesPage /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/insert-buses"
+              element={user ? <AddBusPage /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/buses"
+              element={user ? <BusesPage /> : <Navigate to="/login" />}
+            />
             <Route
               path="/employees"
               element={user ? <EmployeesPage /> : <Navigate to="/login" />}
             />
             <Route
-              path="/add-notices"
-              element={user ? <AddNoticesPage /> : <Navigate to="/login" />}
+              path="/insert-employees"
+              element={user ? <AddEmployeePage /> : <Navigate to="/login" />}
             />
             <Route
               path="/login"

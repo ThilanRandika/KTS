@@ -8,7 +8,7 @@ export const employeeReducer = (state, action) => {
     case "SET_EMPLOYEES":
       return { employees: action.payload };
     case "ADD_EMPLOYEE":
-      return [...state, action.payload];
+      return { employees: [...state.employees, action.payload] };
     case "DELETE_EMPLOYEE":
       return state.filter((employee) => employee.id !== action.payload);
     case "UPDATE_EMPLOYEE":

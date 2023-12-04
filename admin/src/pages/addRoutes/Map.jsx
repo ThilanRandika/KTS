@@ -141,6 +141,7 @@ function Map() {
           {center && (
             <>
               <Marker
+                title="sadsadddd"
                 position={center}
                 label={{ text: `assadas sadsadasdasd`, color: "#fff" }}
               />

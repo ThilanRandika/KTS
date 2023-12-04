@@ -140,7 +140,10 @@ function Map() {
 
           {center && (
             <>
-              <Marker position={center} label="asss" />
+              <Marker
+                position={center}
+                label={{ text: `assadas sadsadasdasd`, color: "#fff" }}
+              />
               <Circle center={center} radius={1000} options={closeOptions} />
               <Circle center={center} radius={20000} options={middleOptions} />
               <Circle center={center} radius={30000} options={farOptions} />

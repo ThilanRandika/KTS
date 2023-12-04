@@ -287,6 +287,7 @@ function AddEmployeePage() {
                   className={normalInputStyle}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter Employee Email..."
                 />
               </div>
             </div>
@@ -301,6 +302,7 @@ function AddEmployeePage() {
                   className={normalInputStyle}
                   value={mobile}
                   onChange={(e) => setMobile(e.target.value)}
+                  placeholder="Enter Mobile Number..."
                 />
               </div>
               <div className="flex flex-col flex-1 gap-[5px]">
@@ -313,6 +315,7 @@ function AddEmployeePage() {
                   className={normalInputStyle}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Enter Password..."
                 />
               </div>
             </div>

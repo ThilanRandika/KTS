@@ -29,7 +29,7 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={user ? <HomePage /> : <Navigate to="/login" />}
+              element={user ? <AddRoute /> : <Navigate to="/login" />}
             />
             <Route
               path="/add-routes"

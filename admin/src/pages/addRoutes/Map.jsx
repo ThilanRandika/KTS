@@ -31,6 +31,7 @@ function Map() {
   const [startLocation, setStartLocation] = useState(null);
 
   const [directions, setDirections] = useState(null);
+  const [directionsWithWayPoints, setDirectionsWithWayPoints] = useState(null);
 
   const service = new google.maps.DirectionsService();
 
@@ -43,21 +44,44 @@ function Map() {
           travelMode: google.maps.TravelMode.DRIVING,
           provideRouteAlternatives: true,
           waypoints: [
-            // {
-            //   location: new google.maps.LatLng(
-            //     7.052441339221655,
-            //     79.97548690865251
-            //   ),
-            //   stopover: true,
-            // },
-            // {
-            //   location: new google.maps.LatLng(
-            //     7.085911607875086,
-            //     80.03327518000306
-            //   ),
-            //   stopover: true,
-            // },
+            {
+              location: new google.maps.LatLng(
+                7.066256254932193,
+                80.01205094665697
+              ),
+              stopover: true,
+            },
+            {
+              location: new google.maps.LatLng(
+                6.984911366726646,
+                79.96610582931704
+              ),
+              stopover: true,
+            },
+            {
+              location: new google.maps.LatLng(
+                6.844217298430227,
+                79.97949870794335
+              ),
+              stopover: true,
+            },
           ],
+        },
+        (result, status) => {
+          if (status === google.maps.DirectionsStatus.OK) {
+            setDirectionsWithWayPoints(result);
+          } else {
+            console.error(`error fetching directions ${result}`);
+          }
+        }
+      );
+
+      service.route(
+        {
+          origin: startLocation,
+          destination: center,
+          travelMode: google.maps.TravelMode.DRIVING,
+          provideRouteAlternatives: true,
         },
         (result, status) => {
           if (status === google.maps.DirectionsStatus.OK) {
@@ -93,8 +117,9 @@ function Map() {
             // Do something with the right-clicked location, if needed
           }}
         >
+          {directions && <DirectionsRenderer directions={directions} />}
           {/* show the route[0]*/}
-          {/* {directions && (
+          {directions && (
             <DirectionsRenderer
               options={{
                 directions,
@@ -107,13 +132,27 @@ function Map() {
                 },
               }}
             />
+          )}
+          {/* show the route[0]*/}
+          {/* {directions && (
+            <DirectionsRenderer
+              options={{
+                directionsWithWayPoints,
+                routeIndex: 0,
+                suppressMarkers: true,
+                polylineOptions: {
+                  strokeColor: "black",
+                  strokeWeight: 20,
+                  strokeOpacity: 0.5,
+                },
+              }}
+            />
           )} */}
-
           {directions && (
             <DirectionsRenderer
               options={{
-                directions,
-                routeIndex: 1,
+                directionsWithWayPoints,
+                routeIndex: 0,
                 suppressMarkers: true,
                 polylineOptions: {
                   strokeColor: "blue",
@@ -127,7 +166,7 @@ function Map() {
             <DirectionsRenderer
               options={{
                 directions,
-                routeIndex: 2,
+                routeIndex: 1,
                 suppressMarkers: true,
                 polylineOptions: {
                   strokeColor: "green",
@@ -137,7 +176,21 @@ function Map() {
               }}
             />
           )}
-
+          {directions && (
+            <DirectionsRenderer
+              options={{
+                directions,
+                routeIndex: 2,
+                suppressMarkers: true,
+                polylineOptions: {
+                  strokeColor: "red",
+                  strokeWeight: 6,
+                  strokeOpacity: 0.5,
+                },
+              }}
+            />
+          )}{" "}
+          */}
           {center && (
             <>
               <Marker
@@ -145,7 +198,7 @@ function Map() {
                 position={center}
                 label={{ text: `assadas sadsadasdasd`, color: "#fff" }}
               />
-              <Circle center={center} radius={1000} options={closeOptions} />
+              <Circle center={center} radius={10000} options={closeOptions} />
               <Circle center={center} radius={20000} options={middleOptions} />
               <Circle center={center} radius={30000} options={farOptions} />
             </>

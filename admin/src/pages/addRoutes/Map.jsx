@@ -39,7 +39,7 @@ function Map() {
       service.route(
         {
           origin: startLocation,
-          destination: "Colombo",
+          destination: center,
           travelMode: google.maps.TravelMode.DRIVING,
           provideRouteAlternatives: true,
           waypoints: [

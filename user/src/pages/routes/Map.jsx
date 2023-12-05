@@ -33,18 +33,18 @@ function Map({ routes }) {
   const [startLocation, setStartLocation] = useState(null);
   const [directions, setDirections] = useState(null);
   //console.log("from map", routes[0].startLocation);
-
   useEffect(() => {
-    if (routes) {
-      setStartLocation(routes[0].startLocation);
+    if (routes && routes.length > 0 && routes[0].googleRoute) {
+      setDirections(routes[0].googleRoute.directions);
     }
-    if (routes) {
-      setDirections(routes[0].googleRoute);
-    }
-  }, []);
-  console.log("from map", startLocation);
-  console.log("from map", directions);
+  }, [routes]);
 
+  // console.log("from map", startLocation);
+  // console.log("from map", directions);
+
+  if (routes) {
+    // console.log(routes[0].googleRoute.directions);
+  }
   return (
     <div>
       <div>ass</div>
@@ -59,7 +59,7 @@ function Map({ routes }) {
           {directions && (
             <DirectionsRenderer
               options={{
-                directions,
+                directions: directions,
                 routeIndex: 0,
                 suppressMarkers: true,
                 polylineOptions: {

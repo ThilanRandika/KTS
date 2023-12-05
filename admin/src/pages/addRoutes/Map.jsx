@@ -40,35 +40,7 @@ function Map() {
     try {
       const res = await adminAxios.post("api/roadRoutes/", {
         googleRoute: {
-          distance: directions.routes[0].legs[0].distance.text,
-          duration: directions.routes[0].legs[0].duration.text,
-          endAddress: directions.routes[0].legs[0].end_address,
-          endLocation: {
-            lat: directions.routes[0].legs[0].end_location.lat(),
-            lng: directions.routes[0].legs[0].end_location.lng(),
-          },
-          startAddress: directions.routes[0].legs[0].start_address,
-          startLocation: {
-            lat: directions.routes[0].legs[0].start_location.lat(),
-            lng: directions.routes[0].legs[0].start_location.lng(),
-          },
-          steps: directions.routes[0].legs[0].steps.map((step) => {
-            return {
-              distance: step.distance.text,
-              duration: step.duration.text,
-              endLocation: {
-                lat: step.end_location.lat(),
-                lng: step.end_location.lng(),
-              },
-              htmlInstructions: step.html_instructions,
-              maneuver: step.maneuver,
-              startLocation: {
-                lat: step.start_location.lat(),
-                lng: step.start_location.lng(),
-              },
-              travelMode: step.travel_mode,
-            };
-          }),
+          directions: directions,
         },
         startLocation: {
           lat: directions.request.origin.location.lat(),

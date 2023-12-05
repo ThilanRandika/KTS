@@ -33,7 +33,7 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={user ? <TicketsPage /> : <Navigate to="/login" />}
+              element={user ? <HomePage /> : <Navigate to="/login" />}
             />
             <Route
               path="/routes"

@@ -214,10 +214,12 @@ function Map() {
     }
 
     let startName = "";
+
     if (startLocationName == "") {
       startName = await getLocationName(startLocation);
       console.log("hitting");
     }
+
     let directionId;
     if (route0 == true) {
       directionId = 0;
@@ -263,7 +265,7 @@ function Map() {
             directions: directions,
           },
           startLocation: {
-            name: startLocationName,
+            name: startLocationName ? startLocationName : startName,
             latlng: {
               lat: startLocation.lat,
               lng: startLocation.lng,

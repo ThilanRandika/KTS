@@ -3,10 +3,11 @@ const {
   createRoadRoute,
   getAllRoadRoutes,
 } = require("../controllers/roadRouteController");
+const protect = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
-router.post("/", createRoadRoute);
+router.post("/", protect, createRoadRoute);
 router.get("/", getAllRoadRoutes);
 
 module.exports = router;

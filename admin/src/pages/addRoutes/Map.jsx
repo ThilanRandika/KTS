@@ -14,9 +14,15 @@ import PlacesAutocomplete from "./MapSearch";
 import adminAxios from "../../baseURL";
 import StationsOutput from "./StationsOutput";
 import StationsInput from "./StationsInput";
+import { useUserContext } from "../../hooks/useUserAuthContext";
+import { toast } from "react-toastify";
+import { useRoadRouteContext } from "../../hooks/useRoadRouteContext";
 // ... (existing imports)
 
 function Map() {
+  const { user } = useUserContext();
+  const { roadRoutes } = useRoadRouteContext();
+
   const mapRef = useRef();
 
   const center = useMemo(
@@ -41,6 +47,10 @@ function Map() {
     lat: 0,
     lng: 0,
   });
+
+  const [routeId, setRouteId] = useState(0);
+
+  const [startLocationName, setStartLocationName] = useState("");
 
   const [directions, setDirections] = useState(null);
 
@@ -67,22 +77,13 @@ function Map() {
 
   const service = new google.maps.DirectionsService();
 
-  const createRoadRoute = async () => {
-    try {
-      const res = await adminAxios.post("api/roadRoutes/", {
-        googleRoute: {
-          directions: directions,
-        },
-        startLocation: {
-          lat: directions.request.origin.location.lat(),
-          lng: directions.request.origin.location.lng(),
-        },
-      });
-      console.log(res);
-    } catch (err) {
-      console.log(err);
+  useEffect(() => {
+    if (roadRoutes && roadRoutes.length > 0) {
+      setRouteId(`RR#kts${roadRoutes.length + 1}`);
+    } else {
+      setRouteId("RR#kts1");
     }
-  };
+  }, [roadRoutes]);
 
   useEffect(() => {
     if (startLocation.lat && startLocation.lng) {
@@ -147,34 +148,144 @@ function Map() {
     });
   };
 
-  const holts = [
-    {
-      id: 1,
-      name: "Gamapha",
-      lat: 6.833813409471106,
-      lng: 79.88634319394335,
-      price: 100,
-      distance: 1000,
-    },
-    {
-      id: 2,
-      name: "Kadawatha",
-      lat: 6.833813409471106,
-      lng: 79.88634319394335,
-      price: 100,
-      distance: 1000,
-    },
-  ];
+  function getLocationName(latLng) {
+    return new Promise((resolve, reject) => {
+      const geocoder = new google.maps.Geocoder();
+      geocoder.geocode({ location: latLng }, (results, status) => {
+        if (status === "OK" && results[0]) {
+          const placeName = results[0].formatted_address;
+          console.log("Place Name:", placeName);
+          resolve(placeName);
+        } else {
+          console.error("Geocoder failed due to:", status);
+          reject(status);
+        }
+      });
+    });
+  }
 
-  console.log("marker", currentMarker);
-  console.log("start", startLocation);
+  const createRoadRoute = async () => {
+    if (route0 && route1) {
+      toast.error("Please select on Route", {
+        position: "top-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      return;
+    }
+    if (route2 && route1) {
+      toast.error("Please select on Route", {
+        position: "top-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      return;
+    }
+
+    if (route0 && route2) {
+      toast.error("Please select on Route", {
+        position: "top-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      return;
+    }
+
+    let startName = "";
+    if (startLocationName == "") {
+      startname = await getLocationName(startLocation);
+      console.log("hitting");
+    }
+    let directionId;
+    if (route0 == true) {
+      directionId = 0;
+    } else if (route1 == true) {
+      directionId = 1;
+    } else if (route2 == true) {
+      directionId = 2;
+    }
+
+    if (setStartLocationName === "" && startName === "") {
+      toast.error("Select a another Start Location", {
+        position: "top-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
+
+    if (directions === null) {
+      toast.error("Directions are empty", {
+        position: "top-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
+
+    try {
+      const res = await adminAxios.post(
+        "/api/roadRoutes/",
+        {
+          rId: routeId,
+          googleRoute: {
+            routeId: directionId,
+            directions: directions,
+          },
+          startLocation: {
+            name: startLocationName,
+            latlng: {
+              lat: startLocation.lat,
+              lng: startLocation.lng,
+            },
+          },
+          stations: stations,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="flex justify-between mt-[20px]">
       <div className="w-[5ddd00px]">
         <div className="flex place-self-start  items-center gap-[5px]">
           <div className="flex gap-[10px] ">
             <div className="">
-              <PlacesAutocomplete setLocation={setStartLocation} />
+              <PlacesAutocomplete
+                setLocation={setStartLocation}
+                setStartLocationName={setStartLocationName}
+              />
             </div>
             <input
               type="number"
@@ -234,159 +345,171 @@ function Map() {
           }`}
         >
           <div className="flex font-roboto justify-between">
-            <div className="flex flex-col items-center">
-              <input
-                checked={route0}
-                type="checkbox"
-                onChange={(e) => {
-                  console.log(e.target.checked);
-                  setRoute0(e.target.checked);
-                }}
-                className="w-4 h-4  bg-gray-100 border-gray-300 focus:outline-none "
-              />
-              <div className="flex flex-col items-center text-center gap-[7px]">
-                {directions && (
-                  <>
-                    <p
-                      className="text-[18px] font-semibold"
-                      style={{ lineHeight: "normal" }}
-                    >
-                      Route 1
-                    </p>
-                    <div>
+            {/*  */}
+
+            {directions && directions.routes[0] && (
+              <div className="flex flex-col items-center">
+                <input
+                  checked={route0}
+                  type="checkbox"
+                  onChange={(e) => {
+                    console.log(e.target.checked);
+                    setRoute0(e.target.checked);
+                  }}
+                  className="w-4 h-4  bg-gray-100 border-gray-300 focus:outline-none "
+                />
+                <div className="flex flex-col items-center text-center gap-[7px]">
+                  {directions && (
+                    <>
                       <p
-                        className="text-[16px] font-semibold text-gray-900 "
+                        className="text-[18px] font-semibold"
                         style={{ lineHeight: "normal" }}
                       >
-                        Distance :
+                        Route 1
                       </p>
-                      <p
-                        className="text-[14px] font-medium"
-                        style={{ lineHeight: "normal" }}
-                      >
-                        {directions.routes[0].legs[0].distance.text}
-                      </p>
-                    </div>
-                    <div className="flex flex-col justify-center">
-                      <p
-                        className="text-[16px] font-semibold text-gray-900 "
-                        style={{ lineHeight: "normal" }}
-                      >
-                        Duration :
-                      </p>
-                      <p
-                        className="text-[14px] font-medium"
-                        style={{ lineHeight: "normal" }}
-                      >
-                        {directions.routes[0].legs[0].duration.text}
-                      </p>
-                    </div>
-                  </>
-                )}
+                      <div>
+                        <p
+                          className="text-[16px] font-semibold text-gray-900 "
+                          style={{ lineHeight: "normal" }}
+                        >
+                          Distance :
+                        </p>
+                        <p
+                          className="text-[14px] font-medium"
+                          style={{ lineHeight: "normal" }}
+                        >
+                          {directions.routes[0].legs[0].distance.text}
+                        </p>
+                      </div>
+                      <div className="flex flex-col justify-center">
+                        <p
+                          className="text-[16px] font-semibold text-gray-900 "
+                          style={{ lineHeight: "normal" }}
+                        >
+                          Duration :
+                        </p>
+                        <p
+                          className="text-[14px] font-medium"
+                          style={{ lineHeight: "normal" }}
+                        >
+                          {directions.routes[0].legs[0].duration.text}
+                        </p>
+                      </div>
+                    </>
+                  )}
+                </div>
               </div>
-            </div>
-            <div className="flex flex-col items-center">
-              <input
-                checked={route1}
-                type="checkbox"
-                onChange={(e) => {
-                  console.log(e.target.checked);
-                  setRoute1(e.target.checked);
-                }}
-                className="w-4 h-4  bg-gray-100 border-gray-300 focus:outline-none "
-              />
-              <div className="flex flex-col items-center text-center gap-[7px]">
-                {directions && (
-                  <>
-                    <p
-                      className="text-[18px] font-semibold"
-                      style={{ lineHeight: "normal" }}
-                    >
-                      Route 2
-                    </p>
-                    <div>
+            )}
+
+            {/*  */}
+
+            {directions && directions.routes[1] && (
+              <div className="flex flex-col items-center">
+                <input
+                  checked={route1}
+                  type="checkbox"
+                  onChange={(e) => {
+                    console.log(e.target.checked);
+                    setRoute1(e.target.checked);
+                  }}
+                  className="w-4 h-4  bg-gray-100 border-gray-300 focus:outline-none "
+                />
+                <div className="flex flex-col items-center text-center gap-[7px]">
+                  {directions && (
+                    <>
                       <p
-                        className="text-[16px] font-semibold text-gray-900 "
+                        className="text-[18px] font-semibold"
                         style={{ lineHeight: "normal" }}
                       >
-                        Distance :
+                        Route 2
                       </p>
-                      <p
-                        className="text-[14px] font-medium"
-                        style={{ lineHeight: "normal" }}
-                      >
-                        {directions.routes[1].legs[0].distance.text}
-                      </p>
-                    </div>
-                    <div className="flex flex-col justify-center">
-                      <p
-                        className="text-[16px] font-semibold text-gray-900 "
-                        style={{ lineHeight: "normal" }}
-                      >
-                        Duration :
-                      </p>
-                      <p
-                        className="text-[14px] font-medium"
-                        style={{ lineHeight: "normal" }}
-                      >
-                        {directions.routes[1].legs[0].duration.text}
-                      </p>
-                    </div>
-                  </>
-                )}
+                      <div>
+                        <p
+                          className="text-[16px] font-semibold text-gray-900 "
+                          style={{ lineHeight: "normal" }}
+                        >
+                          Distance :
+                        </p>
+                        <p
+                          className="text-[14px] font-medium"
+                          style={{ lineHeight: "normal" }}
+                        >
+                          {directions.routes[1].legs[0].distance.text}
+                        </p>
+                      </div>
+                      <div className="flex flex-col justify-center">
+                        <p
+                          className="text-[16px] font-semibold text-gray-900 "
+                          style={{ lineHeight: "normal" }}
+                        >
+                          Duration :
+                        </p>
+                        <p
+                          className="text-[14px] font-medium"
+                          style={{ lineHeight: "normal" }}
+                        >
+                          {directions.routes[1].legs[0].duration.text}
+                        </p>
+                      </div>
+                    </>
+                  )}
+                </div>
               </div>
-            </div>
-            <div className="flex flex-col items-center">
-              <input
-                checked={route2}
-                type="checkbox"
-                onChange={(e) => {
-                  console.log(e.target.checked);
-                  setRoute2(e.target.checked);
-                }}
-                className="w-4 h-4  bg-gray-100 border-gray-300 focus:outline-none "
-              />
-              <div className="flex flex-col items-center text-center gap-[7px]">
-                {directions && (
-                  <>
-                    <p
-                      className="text-[18px] font-semibold"
-                      style={{ lineHeight: "normal" }}
-                    >
-                      Route 3
-                    </p>
-                    <div>
+            )}
+
+            {directions && directions.routes[2] && (
+              <div className="flex flex-col items-center">
+                <input
+                  checked={route2}
+                  type="checkbox"
+                  onChange={(e) => {
+                    console.log(e.target.checked);
+                    setRoute2(e.target.checked);
+                  }}
+                  className="w-4 h-4  bg-gray-100 border-gray-300 focus:outline-none "
+                />
+                <div className="flex flex-col items-center text-center gap-[7px]">
+                  {directions && (
+                    <>
                       <p
-                        className="text-[16px] font-semibold text-gray-900 "
+                        className="text-[18px] font-semibold"
                         style={{ lineHeight: "normal" }}
                       >
-                        Distance :
+                        Route 3
                       </p>
-                      <p
-                        className="text-[14px] font-medium"
-                        style={{ lineHeight: "normal" }}
-                      >
-                        {directions.routes[2].legs[0].distance.text}
-                      </p>
-                    </div>
-                    <div className="flex flex-col justify-center">
-                      <p
-                        className="text-[16px] font-semibold text-gray-900 "
-                        style={{ lineHeight: "normal" }}
-                      >
-                        Duration :
-                      </p>
-                      <p
-                        className="text-[14px] font-medium"
-                        style={{ lineHeight: "normal" }}
-                      >
-                        {directions.routes[2].legs[0].duration.text}
-                      </p>
-                    </div>
-                  </>
-                )}
+                      <div>
+                        <p
+                          className="text-[16px] font-semibold text-gray-900 "
+                          style={{ lineHeight: "normal" }}
+                        >
+                          Distance :
+                        </p>
+                        <p
+                          className="text-[14px] font-medium"
+                          style={{ lineHeight: "normal" }}
+                        >
+                          {directions.routes[2].legs[0].distance.text}
+                        </p>
+                      </div>
+                      <div className="flex flex-col justify-center">
+                        <p
+                          className="text-[16px] font-semibold text-gray-900 "
+                          style={{ lineHeight: "normal" }}
+                        >
+                          Duration :
+                        </p>
+                        <p
+                          className="text-[14px] font-medium"
+                          style={{ lineHeight: "normal" }}
+                        >
+                          {directions.routes[2].legs[0].duration.text}
+                        </p>
+                      </div>
+                    </>
+                  )}
+                </div>
               </div>
-            </div>
+            )}
             <div>
               <div className="flex items-center ">
                 <input
@@ -455,6 +578,14 @@ function Map() {
               </div>
             )}
         </div>
+        <button
+          type="submit"
+          className="bg-main_blue text-[14px] font-roboto text-white font-medium   px-[20px] py-[7px] rounded-md place-self-center mt-[20px]
+            "
+          onClick={createRoadRoute}
+        >
+          Submit Route
+        </button>
       </div>
 
       <div className="min-w-[650px] h-[600px]">

@@ -4,7 +4,7 @@ import usePlacesAutocomplete, {
 } from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
 
-const PlacesAutocomplete = ({ setLocation }) => {
+const PlacesAutocomplete = ({ setLocation, setStartLocationName }) => {
   const {
     ready,
     value,
@@ -34,6 +34,8 @@ const PlacesAutocomplete = ({ setLocation }) => {
         const { lat, lng } = getLatLng(results[0]);
         console.log("📍 Coordinates: ", { lat, lng });
         setLocation({ lat, lng });
+        const placeName = results[0].formatted_address;
+        setStartLocationName(placeName);
       });
     };
 

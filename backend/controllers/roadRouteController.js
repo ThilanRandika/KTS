@@ -2,9 +2,9 @@ const RoadRoute = require("../models/roadRouteModel");
 const asyncHandler = require("express-async-handler");
 
 const createRoadRoute = asyncHandler(async (req, res) => {
-  const { startLocation, googleRoute, stations } = req.body;
+  const { rId, startLocation, googleRoute, stations } = req.body;
   const roadRoute = new RoadRoute({
-    rId: "r1",
+    rId,
     startLocation,
     googleRoute,
     stations,
@@ -17,4 +17,5 @@ const getAllRoadRoutes = asyncHandler(async (req, res) => {
   const roadRoutes = await RoadRoute.find({});
   res.json(roadRoutes);
 });
+
 module.exports = { createRoadRoute, getAllRoadRoutes };

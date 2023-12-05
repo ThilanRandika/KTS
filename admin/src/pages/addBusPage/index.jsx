@@ -42,6 +42,7 @@ function AddBusPage() {
       setBusId("B#kts1");
     }
   }, [buses]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 

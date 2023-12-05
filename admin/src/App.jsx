@@ -12,6 +12,7 @@ import AddBusPage from "./pages/addBusPage";
 import BusesPage from "./pages/buses";
 import AddEmployeePage from "./pages/addEmployeePage";
 import Journey from "./pages/journey";
+import CurrentRoutes from "./pages/currentRoutes";
 
 function App() {
   const { user } = useUserContext();
@@ -30,7 +31,11 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={user ? <AddRoute /> : <Navigate to="/login" />}
+              element={user ? <CurrentRoutes /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/routes"
+              element={user ? <CurrentRoutes /> : <Navigate to="/login" />}
             />
             <Route
               path="/add-routes"

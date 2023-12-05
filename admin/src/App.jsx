@@ -13,6 +13,8 @@ import BusesPage from "./pages/buses";
 import AddEmployeePage from "./pages/addEmployeePage";
 import Journey from "./pages/journey";
 import CurrentRoutes from "./pages/currentRoutes";
+import UsersPage from "./pages/users";
+import TicketsPage from "./pages/tickets";
 
 function App() {
   const { user } = useUserContext();
@@ -31,7 +33,7 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={user ? <HomePage /> : <Navigate to="/login" />}
+              element={user ? <TicketsPage /> : <Navigate to="/login" />}
             />
             <Route
               path="/routes"
@@ -44,6 +46,14 @@ function App() {
             <Route
               path="/journey"
               element={user ? <Journey /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/users"
+              element={user ? <UsersPage /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/tickets"
+              element={user ? <TicketsPage /> : <Navigate to="/login" />}
             />
 
             <Route

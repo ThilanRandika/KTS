@@ -84,11 +84,7 @@ function Booking() {
                 </div>
               </div>
               <div className="">
-                <img
-                  src="https://res.cloudinary.com/dnoobzfxo/image/upload/v1700669192/download_rvegos.png"
-                  alt=""
-                  className="w-[230px] "
-                />
+                <img src={ticket.qrCode} alt="" className="w-[230px] " />
               </div>
               <div className="absolute top-[0px] left-[360px] text-white h-[45px] w-[100px] bg-main_red pt-[10px] flex justify-center rounded-b-[10px]  text-[18px] font-roboto font-medium">
                 Valid

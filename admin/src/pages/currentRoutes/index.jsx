@@ -24,7 +24,7 @@ function CurrentRoutes() {
       field: "stations",
       headerName: "Stations",
       width: 90,
-      flex: 0.2,
+      flex: 0.3,
       align: "center",
       headerAlign: "center",
 
@@ -42,7 +42,7 @@ function CurrentRoutes() {
       field: "prices",
       headerName: "Prices",
       width: 90,
-      flex: 0.2,
+      flex: 0.1,
       align: "center",
       headerAlign: "center",
 
@@ -60,7 +60,7 @@ function CurrentRoutes() {
       field: "distance",
       headerName: "Distance",
       width: 90,
-      flex: 0.2,
+      flex: 0.1,
       align: "center",
       headerAlign: "center",
 
@@ -97,7 +97,7 @@ function CurrentRoutes() {
       field: "edit",
       headerName: "Edit",
       sortable: false,
-      flex: 0.15,
+      flex: 0.1,
       align: "center",
       headerAlign: "center",
       renderCell: (params) => (
@@ -114,7 +114,7 @@ function CurrentRoutes() {
       field: "delete",
       headerName: "Edit",
       sortable: false,
-      flex: 0.15,
+      flex: 0.1,
       align: "center",
       headerAlign: "center",
       renderCell: (params) => (
@@ -195,7 +195,7 @@ function CurrentRoutes() {
                 backgroundColor: "#fff",
                 color: "#000",
                 fontFamily: "roboto",
-                fontSize: "16px",
+                fontSize: "13px",
                 fontWeight: "500",
               },
               // "& .MuiDataGrid-footerContainer": {

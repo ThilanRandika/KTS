@@ -282,6 +282,14 @@ function Map() {
       console.log(res);
       if (res.status === 201) {
         dispatch({ type: "ADD_ROAD_ROUTE", payload: res.data });
+        toast.success("Route added successfully", {
+          position: "top-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          draggable: true,
+          theme: "colored",
+        });
         navigate("/routes");
       }
     } catch (err) {

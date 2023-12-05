@@ -10,6 +10,7 @@ import { EmployeeContextProvider } from "./context/employeeContext.jsx";
 import { BusContextProvider } from "./context/busContext.jsx";
 import { UsersContextProvider } from "./context/usersContext.jsx";
 import { RoadRouteContextProvider } from "./context/roadRouteContext.jsx";
+import { TicketContextProvider } from "./context/ticketContext.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <UserContextProvider>
@@ -17,10 +18,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <BusContextProvider>
           <UsersContextProvider>
             <RoadRouteContextProvider>
-              <BrowserRouter>
-                <App />
-              </BrowserRouter>
-              <ToastContainer />
+              <TicketContextProvider>
+                <BrowserRouter>
+                  <App />
+                </BrowserRouter>
+                <ToastContainer />
+              </TicketContextProvider>
             </RoadRouteContextProvider>
           </UsersContextProvider>
         </BusContextProvider>

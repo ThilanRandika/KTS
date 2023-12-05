@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { IoAddCircle } from "react-icons/io5";
 import { MdDeleteOutline } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
@@ -17,11 +18,11 @@ import StationsInput from "./StationsInput";
 import { useUserContext } from "../../hooks/useUserAuthContext";
 import { toast } from "react-toastify";
 import { useRoadRouteContext } from "../../hooks/useRoadRouteContext";
-// ... (existing imports)
 
 function Map() {
+  const navigate = useNavigate();
   const { user } = useUserContext();
-  const { roadRoutes } = useRoadRouteContext();
+  const { roadRoutes, dispatch } = useRoadRouteContext();
 
   const mapRef = useRef();
 
@@ -57,8 +58,8 @@ function Map() {
   const [stations, setStations] = useState([]);
 
   const [route0, setRoute0] = useState(true);
-  const [route1, setRoute1] = useState(true);
-  const [route2, setRoute2] = useState(true);
+  const [route1, setRoute1] = useState(false);
+  const [route2, setRoute2] = useState(false);
 
   const [currentMarker, setCurrentMarker] = useState({
     lat: 0,
@@ -166,7 +167,7 @@ function Map() {
 
   const createRoadRoute = async () => {
     if (route0 && route1) {
-      toast.error("Please select on Route", {
+      toast.error("Please select one Route", {
         position: "top-left",
         autoClose: 5000,
         hideProgressBar: false,
@@ -179,7 +180,7 @@ function Map() {
       return;
     }
     if (route2 && route1) {
-      toast.error("Please select on Route", {
+      toast.error("Please select one Route", {
         position: "top-left",
         autoClose: 5000,
         hideProgressBar: false,
@@ -193,7 +194,7 @@ function Map() {
     }
 
     if (route0 && route2) {
-      toast.error("Please select on Route", {
+      toast.error("Please select one Route", {
         position: "top-left",
         autoClose: 5000,
         hideProgressBar: false,
@@ -208,7 +209,7 @@ function Map() {
 
     let startName = "";
     if (startLocationName == "") {
-      startname = await getLocationName(startLocation);
+      startName = await getLocationName(startLocation);
       console.log("hitting");
     }
     let directionId;
@@ -271,8 +272,22 @@ function Map() {
         }
       );
       console.log(res);
+      if (res.status === 201) {
+        dispatch({ type: "ADD_ROAD_ROUTE", payload: res.data });
+        navigate("/routes");
+      }
     } catch (err) {
       console.log(err);
+      toast.error(err.response.data.message, {
+        position: "top-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     }
   };
 

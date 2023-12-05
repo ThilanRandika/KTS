@@ -6,7 +6,7 @@ import {
   DirectionsRenderer,
 } from "@react-google-maps/api";
 
-function RouteTableMap({ googleRoutes, stations }) {
+function RouteTableMap({ googleRoutes, stations, startLocation }) {
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_API_KEY,
     libraries: ["places"],
@@ -31,6 +31,7 @@ function RouteTableMap({ googleRoutes, stations }) {
 
   const onLoad = useCallback((map) => (mapRef.current = map), []);
 
+  console.log("ass", googleRoutes);
   return (
     <div className="w-full h-full">
       {isLoaded ? (
@@ -55,6 +56,28 @@ function RouteTableMap({ googleRoutes, stations }) {
               }}
             />
           )}
+          {center && (
+            <Marker
+              position={center}
+              icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+            ></Marker>
+          )}
+          {startLocation && (
+            <Marker
+              position={startLocation.latlng}
+              icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+            ></Marker>
+          )}
+          {stations &&
+            stations.map((station) => (
+              <Marker
+                key={`${station.id} ${station.lat} ${station.lng}`}
+                position={{ lat: station.lat, lng: station.lng }}
+                icon={{
+                  scaledSize: new window.google.maps.Size(15, 15),
+                }}
+              ></Marker>
+            ))}
         </GoogleMap>
       ) : (
         <h1>not loaded</h1>

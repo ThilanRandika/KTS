@@ -81,8 +81,9 @@ const columns = [
     renderCell: (params) => (
       <div className="w-full h-full">
         <RouteTableMap
-          googleRoutes={params.row.googleRoutes}
+          googleRoutes={params.row.googleRoute}
           stations={params.row.stations}
+          startLocation={params.row.startLocation}
         />
       </div>
     ),

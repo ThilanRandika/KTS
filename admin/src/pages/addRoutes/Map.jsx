@@ -9,6 +9,7 @@ import {
 } from "@react-google-maps/api";
 import MapSearch from "./MapSearch";
 import PlacesAutocomplete from "./MapSearch";
+import adminAxios from "../../baseURL";
 // ... (existing imports)
 
 function Map() {
@@ -34,6 +35,51 @@ function Map() {
   const [directionsWithWayPoints, setDirectionsWithWayPoints] = useState(null);
 
   const service = new google.maps.DirectionsService();
+
+  const createRoadRoute = async () => {
+    try {
+      const res = await adminAxios.post("api/roadRoutes/", {
+        googleRoute: {
+          distance: directions.routes[0].legs[0].distance.text,
+          duration: directions.routes[0].legs[0].duration.text,
+          endAddress: directions.routes[0].legs[0].end_address,
+          endLocation: {
+            lat: directions.routes[0].legs[0].end_location.lat(),
+            lng: directions.routes[0].legs[0].end_location.lng(),
+          },
+          startAddress: directions.routes[0].legs[0].start_address,
+          startLocation: {
+            lat: directions.routes[0].legs[0].start_location.lat(),
+            lng: directions.routes[0].legs[0].start_location.lng(),
+          },
+          steps: directions.routes[0].legs[0].steps.map((step) => {
+            return {
+              distance: step.distance.text,
+              duration: step.duration.text,
+              endLocation: {
+                lat: step.end_location.lat(),
+                lng: step.end_location.lng(),
+              },
+              htmlInstructions: step.html_instructions,
+              maneuver: step.maneuver,
+              startLocation: {
+                lat: step.start_location.lat(),
+                lng: step.start_location.lng(),
+              },
+              travelMode: step.travel_mode,
+            };
+          }),
+        },
+        startLocation: {
+          lat: directions.request.origin.location.lat(),
+          lng: directions.request.origin.location.lng(),
+        },
+      });
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
     if (startLocation) {
@@ -100,6 +146,12 @@ function Map() {
     <div className="flex">
       <div>
         <PlacesAutocomplete setLocation={setStartLocation} />
+        <button
+          className="bg-main_blue px-3 py-1 text-white"
+          onClick={createRoadRoute}
+        >
+          Create Route
+        </button>
       </div>
       <div className="w-[700px] h-[700px] ">
         <GoogleMap
@@ -189,8 +241,8 @@ function Map() {
                 },
               }}
             />
-          )}{" "}
-          */}
+          )}
+
           {center && (
             <>
               <Marker

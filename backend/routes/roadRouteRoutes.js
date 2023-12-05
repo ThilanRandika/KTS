@@ -1,9 +1,12 @@
 const express = require("express");
+const {
+  createRoadRoute,
+  getAllRoadRoutes,
+} = require("../controllers/roadRouteController");
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.send("Hello from road route routes");
-});
+router.post("/", createRoadRoute);
+router.get("/", getAllRoadRoutes);
 
 module.exports = router;

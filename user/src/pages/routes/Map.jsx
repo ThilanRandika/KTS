@@ -1,0 +1,79 @@
+import React from "react";
+import {
+  GoogleMap,
+  Marker,
+  DirectionsRenderer,
+  Circle,
+  MarkerClusterer,
+  Autocomplete,
+} from "@react-google-maps/api";
+import { useCallback } from "react";
+import { useMemo } from "react";
+import { useRef } from "react";
+import { useState } from "react";
+import { useEffect } from "react";
+
+function Map({ routes }) {
+  const mapRef = useRef();
+
+  const center = useMemo(
+    () => ({ lat: 6.833813409471106, lng: 79.88634319394335 }),
+    []
+  );
+  const options = useMemo(
+    () => ({
+      mapId: "958725da470cbe5e",
+      //disableDefaultUI: true,
+      //clickableIcons: false,
+    }),
+    []
+  );
+  const onLoad = useCallback((map) => (mapRef.current = map), []);
+
+  const [startLocation, setStartLocation] = useState(null);
+  const [directions, setDirections] = useState(null);
+  //console.log("from map", routes[0].startLocation);
+
+  useEffect(() => {
+    if (routes) {
+      setStartLocation(routes[0].startLocation);
+    }
+    if (routes) {
+      setDirections(routes[0].googleRoute);
+    }
+  }, []);
+  console.log("from map", startLocation);
+  console.log("from map", directions);
+
+  return (
+    <div>
+      <div>ass</div>
+      <div className="w-[400px] h-[400px]">
+        <GoogleMap
+          zoom={10}
+          center={center}
+          mapContainerClassName="map-container"
+          options={options}
+          onLoad={onLoad}
+        >
+          {directions && (
+            <DirectionsRenderer
+              options={{
+                directions,
+                routeIndex: 0,
+                suppressMarkers: true,
+                polylineOptions: {
+                  strokeColor: "red",
+                  strokeWeight: 6,
+                  strokeOpacity: 0.5,
+                },
+              }}
+            />
+          )}
+        </GoogleMap>
+      </div>
+    </div>
+  );
+}
+
+export default Map;

@@ -27,7 +27,7 @@ function App() {
             element={user ? <RoadRoutes /> : <Navigate to="/login" />}
           />
           <Route
-            path="/journey"
+            path="/journey/:id"
             element={user ? <Journey /> : <Navigate to="/login" />}
           />
           <Route

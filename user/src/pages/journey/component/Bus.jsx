@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Seat from "./Seat";
 import ReservedSeat, { DriverSeat } from "./CustomSeats";
 
-function Bus() {
+function Bus({ setSeatCount }) {
   const [seats, setSeats] = useState([
     { number: 1, booked: "booked" },
     { number: 2, booked: "booked" },
@@ -46,6 +46,10 @@ function Bus() {
     { number: 40, booked: "booked" },
   ]);
 
+  useEffect(() => {
+    setSeatCount(seats.filter((seat) => seat.booked == "selected").length);
+  }, [seats]);
+
   const firstRow = [1, 5, 9, 13, 17, 21, 25, 29, 33];
   const secondRow = [2, 6, 10, 14, 18, 22, 26, 30, 34];
   const thirdRowUp = [3, 7, 11, 15, 19, 23];
@@ -53,9 +57,8 @@ function Bus() {
   const fourthRowUp = [4, 8, 12, 16, 20, 24];
   const fourthRowDown = [28, 32, 36];
 
-  console.log(seats.find((item) => item.number == 1).booked);
   return (
-    <div className="w-[338px] m-10 border-4 h-[600px]">
+    <div className="w-[338px]  border-[2px] h-[530px] rounded-lg ">
       <div className="px-[30px] flex justify-end mt-[30px]">
         <DriverSeat />
       </div>

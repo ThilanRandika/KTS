@@ -195,8 +195,8 @@ function CurrentRoutes() {
                 backgroundColor: "#fff",
                 color: "#000",
                 fontFamily: "roboto",
-                fontSize: "12px",
-                fontWeight: "400",
+                fontSize: "16px",
+                fontWeight: "500",
               },
               // "& .MuiDataGrid-footerContainer": {
               //   backgroundColor: "#fff",

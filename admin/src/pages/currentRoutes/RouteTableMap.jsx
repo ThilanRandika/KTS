@@ -49,9 +49,9 @@ function RouteTableMap({ googleRoutes, stations, startLocation }) {
                 routeIndex: googleRoutes.routeId,
                 suppressMarkers: true,
                 polylineOptions: {
-                  strokeColor: "red",
+                  strokeColor: "blue",
                   strokeWeight: 3,
-                  strokeOpacity: 0.5,
+                  strokeOpacity: 0.9,
                 },
               }}
             />
@@ -75,14 +75,14 @@ function RouteTableMap({ googleRoutes, stations, startLocation }) {
                 position={{ lat: station.lat, lng: station.lng }}
                 icon={{
                   url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsb083sMbuVEGx5GoQ_Du6AHOqMquWYNM3zw&usqp=CAU",
-                  scaledSize: new window.google.maps.Size(25, 25),
+                  scaledSize: new window.google.maps.Size(30, 30),
                 }}
                 label={{
                   text: `${station.id}- ${station.price}`,
                   color: "white",
-                  className: "font-roboto px-2 py-1 rounded-lg bg-red-800",
-                  fontSize: "10px",
-                  fontWeight: "bold",
+                  className: "font-roboto px-1 py-[2px] rounded-lg bg-red-600",
+                  fontSize: "8px",
+                  fontWeight: "500",
                 }}
               ></Marker>
             ))}

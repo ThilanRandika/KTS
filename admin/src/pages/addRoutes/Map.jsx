@@ -11,6 +11,8 @@ import {
 
 import PlacesAutocomplete from "./MapSearch";
 import adminAxios from "../../baseURL";
+import StationsOutput from "./StationsOutput";
+import StationsInput from "./StationsInput";
 // ... (existing imports)
 
 function Map() {
@@ -38,7 +40,10 @@ function Map() {
   });
 
   const [directions, setDirections] = useState(null);
-  const [directionsWithWayPoints, setDirectionsWithWayPoints] = useState(null);
+
+  const [stations, setStations] = useState([]);
+
+  const [currentMarker, setCurrentMarker] = useState(null);
 
   const service = new google.maps.DirectionsService();
 
@@ -68,27 +73,27 @@ function Map() {
           travelMode: google.maps.TravelMode.DRIVING,
           provideRouteAlternatives: true,
           waypoints: [
-            {
-              location: new google.maps.LatLng(
-                7.066256254932193,
-                80.01205094665697
-              ),
-              stopover: true,
-            },
-            {
-              location: new google.maps.LatLng(
-                6.984911366726646,
-                79.96610582931704
-              ),
-              stopover: true,
-            },
-            {
-              location: new google.maps.LatLng(
-                6.844217298430227,
-                79.97949870794335
-              ),
-              stopover: true,
-            },
+            // {
+            //   location: new google.maps.LatLng(
+            //     7.066256254932193,
+            //     80.01205094665697
+            //   ),
+            //   stopover: true,
+            // },
+            // {
+            //   location: new google.maps.LatLng(
+            //     6.984911366726646,
+            //     79.96610582931704
+            //   ),
+            //   stopover: true,
+            // },
+            // {
+            //   location: new google.maps.LatLng(
+            //     6.844217298430227,
+            //     79.97949870794335
+            //   ),
+            //   stopover: true,
+            // },
           ],
         },
         (result, status) => {
@@ -138,27 +143,46 @@ function Map() {
     });
   };
 
-  const [route1, setRoute1] = useState(null);
-  const [route2, setRoute2] = useState(null);
-  const [route3, setRoute3] = useState(null);
+  const [route0, setRoute0] = useState(true);
+  const [route1, setRoute1] = useState(true);
+  const [route2, setRoute2] = useState(true);
 
   console.log(startLocation);
   console.log(directions);
   if (directions) {
     // console.log(directions.routes[0].legs[0]);
   }
+
+  const holts = [
+    {
+      id: 1,
+      name: "Gamapha",
+      lat: 6.833813409471106,
+      lng: 79.88634319394335,
+      price: 100,
+      distance: 1000,
+    },
+    {
+      id: 2,
+      name: "Kadawatha",
+      lat: 6.833813409471106,
+      lng: 79.88634319394335,
+      price: 100,
+      distance: 1000,
+    },
+  ];
   return (
-    <div className="flex gap-[40px]">
-      <div>
+    <div className="flex justify-between ">
+      <div className="w-[5ddd00px]">
         <div className="flex place-self-start  items-center gap-[5px]">
           <div className="flex gap-[10px] ">
-            <div className="flex-1">
+            <div className="">
               <PlacesAutocomplete setLocation={setStartLocation} />
             </div>
             <input
               type="number"
               placeholder="Latitude"
-              className=" p-2 py-3 pl-3 border rounded-lg font-roboto focus:outline-none flex-1"
+              className="py-3 pl-3 border rounded-lg font-roboto focus:outline-none w-[150px] "
               onChange={(e) => {
                 setStartLocation({
                   ...startLocation,
@@ -169,7 +193,7 @@ function Map() {
             <input
               type="number"
               placeholder="Langitude"
-              className=" p-2 py-3 pl-3 border rounded-lg font-roboto focus:outline-none flex-1"
+              className="py-3 pl-3 border rounded-lg font-roboto focus:outline-none w-[150px]"
               onChange={(e) => {
                 setStartLocation({
                   ...startLocation,
@@ -212,8 +236,44 @@ function Map() {
         {directions && <div>{directions.routes[1].legs[0].duration.text}</div>}
         {directions && <div>{directions.routes[2].legs[0].distance.text}</div>}
         {directions && <div>{directions.routes[2].legs[0].duration.text}</div>}
+        <div>
+          <div>
+            <input
+              checked={route0}
+              type="checkbox"
+              onChange={(e) => {
+                console.log(e.target.checked);
+                setRoute0(e.target.checked);
+              }}
+            />
+            <input
+              checked={route1}
+              type="checkbox"
+              onChange={(e) => {
+                console.log(e.target.checked);
+                setRoute1(e.target.checked);
+              }}
+            />
+            <input
+              checked={route2}
+              value={route2}
+              type="checkbox"
+              onChange={(e) => {
+                console.log(e.target.checked);
+                setRoute2(e.target.checked);
+              }}
+            />
+          </div>
+        </div>
+        <div className="stations">
+          <div>
+            <StationsOutput stations={stations} />
+          </div>
+          <StationsInput setStations={setStations} />
+        </div>
       </div>
-      <div className="w-[800px] h-[650px] ">
+
+      <div className="min-w-[650px] h-[600px]">
         <GoogleMap
           zoom={10}
           center={center}
@@ -224,23 +284,21 @@ function Map() {
         >
           {/* {directions && <DirectionsRenderer directions={directions} />} */}
           {/* show the route[0]*/}
-
-          {directions && (
+          {directions && route0 && (
             <DirectionsRenderer
               options={{
-                directionsWithWayPoints,
+                directions: directions,
                 routeIndex: 0,
                 suppressMarkers: true,
                 polylineOptions: {
                   strokeColor: "red",
-                  strokeWeight: 10,
+                  strokeWeight: 6,
                   strokeOpacity: 0.5,
                 },
               }}
             />
           )}
-
-          {directions && (
+          {directions && route1 && (
             <DirectionsRenderer
               options={{
                 directions,
@@ -254,7 +312,7 @@ function Map() {
               }}
             />
           )}
-          {directions && (
+          {directions && route2 && (
             <DirectionsRenderer
               options={{
                 directions,

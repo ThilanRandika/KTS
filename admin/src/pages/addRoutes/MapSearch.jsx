@@ -57,7 +57,7 @@ const PlacesAutocomplete = ({ setLocation }) => {
     });
 
   return (
-    <div ref={ref} className="relative w-full">
+    <div ref={ref} className="relative w-[150px]">
       <input
         value={value}
         onChange={handleInput}
@@ -66,7 +66,7 @@ const PlacesAutocomplete = ({ setLocation }) => {
         className="w-full p-2 py-3 pl-3 border rounded-lg font-roboto focus:outline-none"
       />
       {status === "OK" && (
-        <ul className="absolute left-0 right-0 mt-2 bg-white border rounded shadow-md font-roboto">
+        <ul className="absolute left-0 right-0 mt-2 bg-white border rounded shadow-md font-roboto z-50">
           {renderSuggestions()}
         </ul>
       )}

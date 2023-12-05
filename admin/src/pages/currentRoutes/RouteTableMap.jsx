@@ -75,7 +75,7 @@ function RouteTableMap({ googleRoutes, stations, startLocation }) {
                 position={{ lat: station.lat, lng: station.lng }}
                 icon={{
                   url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsb083sMbuVEGx5GoQ_Du6AHOqMquWYNM3zw&usqp=CAU",
-                  scaledSize: new window.google.maps.Size(15, 15),
+                  scaledSize: new window.google.maps.Size(25, 25),
                 }}
                 label={{
                   text: `${station.id}- ${station.price}`,

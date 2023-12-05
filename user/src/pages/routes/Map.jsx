@@ -74,7 +74,12 @@ function Map({ routes }) {
           <Marker
             position={center}
             title="aaaaaaa sd"
-            label={{ text: `dfdsfd`, color: "#fff" }}
+            label={{
+              text: `dfdsfd`,
+              color: "#fff",
+              className: "w-[80px] bg-red-800 ",
+              fontWeight: "600",
+            }}
           >
             <div className="">aaaaaa</div>
           </Marker>

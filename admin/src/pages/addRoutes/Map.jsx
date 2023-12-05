@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { IoAddCircle } from "react-icons/io5";
 import { MdDeleteOutline } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
+import { IoMdCloseCircle } from "react-icons/io";
 import {
   GoogleMap,
   Marker,
@@ -43,10 +44,22 @@ function Map() {
 
   const [stations, setStations] = useState([]);
 
+  const [route0, setRoute0] = useState(true);
+  const [route1, setRoute1] = useState(true);
+  const [route2, setRoute2] = useState(true);
+
   const [currentMarker, setCurrentMarker] = useState({
     lat: 0,
     lng: 0,
   });
+
+  const [rightClickedLocation, setRightClickedLocation] = useState({
+    lat: 0,
+    lng: 0,
+    name: "",
+  });
+
+  const [circles, setCircles] = useState(false);
 
   const service = new google.maps.DirectionsService();
 
@@ -75,44 +88,6 @@ function Map() {
           destination: center,
           travelMode: google.maps.TravelMode.DRIVING,
           provideRouteAlternatives: true,
-          waypoints: [
-            // {
-            //   location: new google.maps.LatLng(
-            //     7.066256254932193,
-            //     80.01205094665697
-            //   ),
-            //   stopover: true,
-            // },
-            // {
-            //   location: new google.maps.LatLng(
-            //     6.984911366726646,
-            //     79.96610582931704
-            //   ),
-            //   stopover: true,
-            // },
-            // {
-            //   location: new google.maps.LatLng(
-            //     6.844217298430227,
-            //     79.97949870794335
-            //   ),
-            //   stopover: true,
-            // },
-          ],
-        },
-        (result, status) => {
-          if (status === google.maps.DirectionsStatus.OK) {
-          } else {
-            console.error(`error fetching directions ${result}`);
-          }
-        }
-      );
-
-      service.route(
-        {
-          origin: startLocation,
-          destination: center,
-          travelMode: google.maps.TravelMode.DRIVING,
-          provideRouteAlternatives: true,
         },
         (result, status) => {
           if (status === google.maps.DirectionsStatus.OK) {
@@ -126,34 +101,24 @@ function Map() {
   }, [startLocation]);
 
   const handleRightClick = (e) => {
-    console.log(e);
-    const latLng = {
-      lat: e.latLng.lat(),
-      lng: e.latLng.lng(),
-    };
+    const latLng = { lat: e.latLng.lat(), lng: e.latLng.lng() };
+
     const geocoder = new google.maps.Geocoder();
     geocoder.geocode({ location: latLng }, (results, status) => {
       if (status === "OK" && results[0]) {
         const placeName = results[0].formatted_address;
         console.log("Right-clicked location:", latLng);
         console.log("Place Name:", placeName);
-
-        // Do something with the right-clicked location and place name, if needed
+        setRightClickedLocation({
+          lat: e.latLng.lat(),
+          lng: e.latLng.lng(),
+          name: placeName,
+        });
       } else {
         console.error("Geocoder failed due to:", status);
       }
     });
   };
-
-  const [route0, setRoute0] = useState(true);
-  const [route1, setRoute1] = useState(true);
-  const [route2, setRoute2] = useState(true);
-
-  // console.log(startLocation);
-  //console.log(directions);
-  if (directions) {
-    // console.log(directions.routes[0].legs[0]);
-  }
 
   const holts = [
     {
@@ -173,10 +138,11 @@ function Map() {
       distance: 1000,
     },
   ];
+
   console.log("marker", currentMarker);
   console.log("start", startLocation);
   return (
-    <div className="flex justify-between ">
+    <div className="flex justify-between mt-[20px]">
       <div className="w-[5ddd00px]">
         <div className="flex place-self-start  items-center gap-[5px]">
           <div className="flex gap-[10px] ">
@@ -234,52 +200,232 @@ function Map() {
             </div>
           </div>
         </div>
-        {directions && <div>{directions.routes[0].legs[0].distance.text}</div>}
-        {directions && <div>{directions.routes[0].legs[0].duration.text}</div>}
-        {directions && <div>{directions.routes[1].legs[0].distance.text}</div>}
-        {directions && <div>{directions.routes[1].legs[0].duration.text}</div>}
-        {directions && <div>{directions.routes[2].legs[0].distance.text}</div>}
-        {directions && <div>{directions.routes[2].legs[0].duration.text}</div>}
-        {currentMarker.lat && currentMarker.lng && <p>{currentMarker.lat}</p>}
-        {/* {currentMarker && <p>{currentMarker}</p>} */}
-        <div>
-          <div>
-            <input
-              checked={route0}
-              type="checkbox"
-              onChange={(e) => {
-                console.log(e.target.checked);
-                setRoute0(e.target.checked);
-              }}
-            />
-            <input
-              checked={route1}
-              type="checkbox"
-              onChange={(e) => {
-                console.log(e.target.checked);
-                setRoute1(e.target.checked);
-              }}
-            />
-            <input
-              checked={route2}
-              value={route2}
-              type="checkbox"
-              onChange={(e) => {
-                console.log(e.target.checked);
-                setRoute2(e.target.checked);
-              }}
-            />
+
+        <div
+          className={`${
+            startLocation.lat && startLocation.lng ? "mt-[15px]" : "hidden"
+          }`}
+        >
+          <div className="flex font-roboto justify-between">
+            <div className="flex flex-col items-center">
+              <input
+                checked={route0}
+                type="checkbox"
+                onChange={(e) => {
+                  console.log(e.target.checked);
+                  setRoute0(e.target.checked);
+                }}
+                className="w-4 h-4  bg-gray-100 border-gray-300 focus:outline-none "
+              />
+              <div className="flex flex-col items-center text-center gap-[7px]">
+                {directions && (
+                  <>
+                    <p
+                      className="text-[18px] font-semibold"
+                      style={{ lineHeight: "normal" }}
+                    >
+                      Route 1
+                    </p>
+                    <div>
+                      <p
+                        className="text-[16px] font-semibold text-gray-900 "
+                        style={{ lineHeight: "normal" }}
+                      >
+                        Distance :
+                      </p>
+                      <p
+                        className="text-[14px] font-medium"
+                        style={{ lineHeight: "normal" }}
+                      >
+                        {directions.routes[0].legs[0].distance.text}
+                      </p>
+                    </div>
+                    <div className="flex flex-col justify-center">
+                      <p
+                        className="text-[16px] font-semibold text-gray-900 "
+                        style={{ lineHeight: "normal" }}
+                      >
+                        Duration :
+                      </p>
+                      <p
+                        className="text-[14px] font-medium"
+                        style={{ lineHeight: "normal" }}
+                      >
+                        {directions.routes[0].legs[0].duration.text}
+                      </p>
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+            <div className="flex flex-col items-center">
+              <input
+                checked={route1}
+                type="checkbox"
+                onChange={(e) => {
+                  console.log(e.target.checked);
+                  setRoute1(e.target.checked);
+                }}
+                className="w-4 h-4  bg-gray-100 border-gray-300 focus:outline-none "
+              />
+              <div className="flex flex-col items-center text-center gap-[7px]">
+                {directions && (
+                  <>
+                    <p
+                      className="text-[18px] font-semibold"
+                      style={{ lineHeight: "normal" }}
+                    >
+                      Route 2
+                    </p>
+                    <div>
+                      <p
+                        className="text-[16px] font-semibold text-gray-900 "
+                        style={{ lineHeight: "normal" }}
+                      >
+                        Distance :
+                      </p>
+                      <p
+                        className="text-[14px] font-medium"
+                        style={{ lineHeight: "normal" }}
+                      >
+                        {directions.routes[1].legs[0].distance.text}
+                      </p>
+                    </div>
+                    <div className="flex flex-col justify-center">
+                      <p
+                        className="text-[16px] font-semibold text-gray-900 "
+                        style={{ lineHeight: "normal" }}
+                      >
+                        Duration :
+                      </p>
+                      <p
+                        className="text-[14px] font-medium"
+                        style={{ lineHeight: "normal" }}
+                      >
+                        {directions.routes[1].legs[0].duration.text}
+                      </p>
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+            <div className="flex flex-col items-center">
+              <input
+                checked={route2}
+                type="checkbox"
+                onChange={(e) => {
+                  console.log(e.target.checked);
+                  setRoute2(e.target.checked);
+                }}
+                className="w-4 h-4  bg-gray-100 border-gray-300 focus:outline-none "
+              />
+              <div className="flex flex-col items-center text-center gap-[7px]">
+                {directions && (
+                  <>
+                    <p
+                      className="text-[18px] font-semibold"
+                      style={{ lineHeight: "normal" }}
+                    >
+                      Route 3
+                    </p>
+                    <div>
+                      <p
+                        className="text-[16px] font-semibold text-gray-900 "
+                        style={{ lineHeight: "normal" }}
+                      >
+                        Distance :
+                      </p>
+                      <p
+                        className="text-[14px] font-medium"
+                        style={{ lineHeight: "normal" }}
+                      >
+                        {directions.routes[2].legs[0].distance.text}
+                      </p>
+                    </div>
+                    <div className="flex flex-col justify-center">
+                      <p
+                        className="text-[16px] font-semibold text-gray-900 "
+                        style={{ lineHeight: "normal" }}
+                      >
+                        Duration :
+                      </p>
+                      <p
+                        className="text-[14px] font-medium"
+                        style={{ lineHeight: "normal" }}
+                      >
+                        {directions.routes[2].legs[0].duration.text}
+                      </p>
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+            <div>
+              <div className="flex items-center ">
+                <input
+                  value={circles}
+                  type="checkbox"
+                  name="colored-radio"
+                  className="w-4 h-4  bg-gray-100 border-gray-300 focus:outline-none "
+                  onClick={(e) => {
+                    setCircles(e.target.checked);
+                  }}
+                />
+                <label className="ms-2 text-sm font-medium text-gray-900 ">
+                  Distance Circles
+                </label>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="stations">
+        <div
+          className={`${
+            startLocation.lat && startLocation.lng ? "outputAndInput" : "hidden"
+          }`}
+        >
           <div>
             <StationsOutput stations={stations} />
           </div>
-          <StationsInput
-            setStations={setStations}
-            currentMarker={currentMarker}
-            setCurrentMaker={setCurrentMarker}
-          />
+          <div className="mt-[10px]">
+            <StationsInput
+              setStations={setStations}
+              currentMarker={currentMarker}
+              setCurrentMaker={setCurrentMarker}
+            />
+          </div>
+        </div>
+        <div>
+          {!rightClickedLocation.lat == 0 &&
+            !rightClickedLocation.lng == 0 &&
+            !rightClickedLocation.name == "" && (
+              <div className="w-full bg-red-100 px-[20px] py-[10px] font-roboto text-[#383838] rounded-lg border-[1px] border-gray-200 relative">
+                <p className="font-semibold">
+                  Lat -
+                  <span className="text-[14px] font-medium ml-3">
+                    {rightClickedLocation.lat}
+                  </span>
+                </p>
+                <p className="font-semibold">
+                  Lng-
+                  <span className="text-[14px] font-medium ml-3">
+                    {rightClickedLocation.lng}
+                  </span>
+                </p>
+                <p className="font-semibold">
+                  Location Name -
+                  <span className="text-[14px] font-medium ml-3">
+                    {rightClickedLocation.name}
+                  </span>
+                </p>
+                <div className="absolute top-1 right-1">
+                  <IoMdCloseCircle
+                    onClick={() => {
+                      setRightClickedLocation({ lat: 0, lng: 0, name: "" });
+                    }}
+                  />
+                </div>
+              </div>
+            )}
         </div>
       </div>
 
@@ -337,7 +483,7 @@ function Map() {
             />
           )}
 
-          {center && (
+          {center && circles && (
             <>
               <Marker
                 title="sadsadddd"

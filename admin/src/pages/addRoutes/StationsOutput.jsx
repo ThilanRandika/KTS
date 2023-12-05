@@ -72,9 +72,10 @@ function StationsOutput({ stations }) {
   return (
     <>
       {stations && (
-        <div className="w-[500px] ">
+        <div
+          className={`${stations.length ? "w-[520px] mt-[15px]" : "hidden"}`}
+        >
           <Box sx={{ height: "100%", width: "100%" }}>
-            <p>ass</p>
             <DataGrid
               rows={stations}
               columns={columns}

@@ -74,7 +74,7 @@ function RouteTableMap({ googleRoutes, stations, startLocation }) {
                 key={`${station.id} ${station.lat} ${station.lng}`}
                 position={{ lat: station.lat, lng: station.lng }}
                 icon={{
-                  scaledSize: new window.google.maps.Size(30, 30),
+                  scaledSize: new window.google.maps.Size(26, 26),
                 }}
                 label={{
                   text: `${station.id}- ${station.price}`,

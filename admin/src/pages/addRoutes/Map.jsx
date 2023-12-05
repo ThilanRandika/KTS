@@ -137,63 +137,82 @@ function Map() {
       }
     });
   };
-  console.log(startLocation);
 
+  const [route1, setRoute1] = useState(null);
+  const [route2, setRoute2] = useState(null);
+  const [route3, setRoute3] = useState(null);
+
+  console.log(startLocation);
+  console.log(directions);
+  if (directions) {
+    // console.log(directions.routes[0].legs[0]);
+  }
   return (
     <div className="flex gap-[40px]">
-      <div className="flex place-self-start  items-center gap-[5px]">
-        <div className="flex gap-[10px] ">
-          <div className="flex-1">
-            <PlacesAutocomplete setLocation={setStartLocation} />
+      <div>
+        <div className="flex place-self-start  items-center gap-[5px]">
+          <div className="flex gap-[10px] ">
+            <div className="flex-1">
+              <PlacesAutocomplete setLocation={setStartLocation} />
+            </div>
+            <input
+              type="number"
+              placeholder="Latitude"
+              className=" p-2 py-3 pl-3 border rounded-lg font-roboto focus:outline-none flex-1"
+              onChange={(e) => {
+                setStartLocation({
+                  ...startLocation,
+                  lat: parseFloat(e.target.value),
+                });
+              }}
+            />
+            <input
+              type="number"
+              placeholder="Langitude"
+              className=" p-2 py-3 pl-3 border rounded-lg font-roboto focus:outline-none flex-1"
+              onChange={(e) => {
+                setStartLocation({
+                  ...startLocation,
+                  lng: parseFloat(e.target.value),
+                });
+              }}
+            />
           </div>
-          <input
-            type="number"
-            placeholder="Latitude"
-            className=" p-2 py-3 pl-3 border rounded-lg font-roboto focus:outline-none flex-1"
-            onChange={(e) => {
-              setStartLocation({
-                ...startLocation,
-                lat: parseFloat(e.target.value),
-              });
-            }}
-          />
-          <input
-            type="number"
-            placeholder="Langitude"
-            className=" p-2 py-3 pl-3 border rounded-lg font-roboto focus:outline-none flex-1"
-            onChange={(e) => {
-              setStartLocation({
-                ...startLocation,
-                lng: parseFloat(e.target.value),
-              });
-            }}
-          />
-        </div>
 
-        <div className="flex items-center justify-center">
-          <button
-            onClick={createRoadRoute}
-            className={`text-[20px] ${
-              startLocation.lat && startLocation.lng ? "hidden" : "text-[20px]"
-            }`}
-          >
-            <IoAddCircle />
-          </button>
-          <div
-            className={`text-[20px] ${
-              startLocation.lat && startLocation.lng ? "text-[20px]" : "hidden"
-            }`}
-          >
-            <button className="" onClick={createRoadRoute}>
-              <MdEdit className="text-[20px]" />
+          <div className="flex items-center justify-center">
+            <button
+              onClick={createRoadRoute}
+              className={`text-[20px] ${
+                startLocation.lat && startLocation.lng
+                  ? "hidden"
+                  : "text-[20px]"
+              }`}
+            >
+              <IoAddCircle />
             </button>
-            <button className="" onClick={createRoadRoute}>
-              <MdDeleteOutline className="text-[20px]" />
-            </button>
+            <div
+              className={`text-[20px] ${
+                startLocation.lat && startLocation.lng
+                  ? "text-[20px]"
+                  : "hidden"
+              }`}
+            >
+              <button className="" onClick={createRoadRoute}>
+                <MdEdit className="text-[20px]" />
+              </button>
+              <button className="" onClick={createRoadRoute}>
+                <MdDeleteOutline className="text-[20px]" />
+              </button>
+            </div>
           </div>
         </div>
+        {directions && <div>{directions.routes[0].legs[0].distance.text}</div>}
+        {directions && <div>{directions.routes[0].legs[0].duration.text}</div>}
+        {directions && <div>{directions.routes[1].legs[0].distance.text}</div>}
+        {directions && <div>{directions.routes[1].legs[0].duration.text}</div>}
+        {directions && <div>{directions.routes[2].legs[0].distance.text}</div>}
+        {directions && <div>{directions.routes[2].legs[0].duration.text}</div>}
       </div>
-
       <div className="w-[800px] h-[650px] ">
         <GoogleMap
           zoom={10}
@@ -215,6 +234,35 @@ function Map() {
                 polylineOptions: {
                   strokeColor: "red",
                   strokeWeight: 10,
+                  strokeOpacity: 0.5,
+                },
+              }}
+            />
+          )}
+
+          {directions && (
+            <DirectionsRenderer
+              options={{
+                directions,
+                routeIndex: 1,
+                suppressMarkers: true,
+                polylineOptions: {
+                  strokeColor: "blue",
+                  strokeWeight: 6,
+                  strokeOpacity: 0.5,
+                },
+              }}
+            />
+          )}
+          {directions && (
+            <DirectionsRenderer
+              options={{
+                directions,
+                routeIndex: 2,
+                suppressMarkers: true,
+                polylineOptions: {
+                  strokeColor: "green",
+                  strokeWeight: 6,
                   strokeOpacity: 0.5,
                 },
               }}

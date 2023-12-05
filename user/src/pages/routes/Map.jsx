@@ -70,6 +70,8 @@ function Map({ routes }) {
               }}
             />
           )}
+
+          <Marker position={center}></Marker>
         </GoogleMap>
       </div>
     </div>

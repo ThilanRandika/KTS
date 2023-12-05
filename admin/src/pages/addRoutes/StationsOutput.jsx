@@ -89,13 +89,13 @@ function StationsOutput({ stations, setStations }) {
               columns={columns}
               rowHeight={30}
               getRowId={(row) => row.id}
-              initialState={{
-                pagination: {
-                  paginationModel: {
-                    pageSize: 6,
-                  },
-                },
-              }}
+              // initialState={{
+              //   pagination: {
+              //     paginationModel: {
+              //       pageSize: 6,
+              //     },
+              //   },
+              // }}
               hideFooter={true}
               slots={
                 {

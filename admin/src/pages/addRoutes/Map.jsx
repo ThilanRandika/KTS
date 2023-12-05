@@ -1,13 +1,14 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { IoAddCircle } from "react-icons/io5";
+import { MdDeleteOutline } from "react-icons/md";
+import { MdEdit } from "react-icons/md";
 import {
   GoogleMap,
   Marker,
   DirectionsRenderer,
   Circle,
-  MarkerClusterer,
-  Autocomplete,
 } from "@react-google-maps/api";
-import MapSearch from "./MapSearch";
+
 import PlacesAutocomplete from "./MapSearch";
 import adminAxios from "../../baseURL";
 // ... (existing imports)
@@ -24,12 +25,17 @@ function Map() {
       mapId: "958725da470cbe5e",
       //disableDefaultUI: true,
       //clickableIcons: false,
+      fullscreenControl: false,
     }),
     []
   );
   const onLoad = useCallback((map) => (mapRef.current = map), []);
 
-  const [startLocation, setStartLocation] = useState(null);
+  //start location
+  const [startLocation, setStartLocation] = useState({
+    lat: 0,
+    lng: 0,
+  });
 
   const [directions, setDirections] = useState(null);
   const [directionsWithWayPoints, setDirectionsWithWayPoints] = useState(null);
@@ -54,7 +60,7 @@ function Map() {
   };
 
   useEffect(() => {
-    if (startLocation) {
+    if (startLocation.lat && startLocation.lng) {
       service.route(
         {
           origin: startLocation,
@@ -112,103 +118,103 @@ function Map() {
     }
   }, [startLocation]);
 
-  console.log(directions);
+  const handleRightClick = (e) => {
+    console.log(e);
+    const latLng = {
+      lat: e.latLng.lat(),
+      lng: e.latLng.lng(),
+    };
+    const geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ location: latLng }, (results, status) => {
+      if (status === "OK" && results[0]) {
+        const placeName = results[0].formatted_address;
+        console.log("Right-clicked location:", latLng);
+        console.log("Place Name:", placeName);
+
+        // Do something with the right-clicked location and place name, if needed
+      } else {
+        console.error("Geocoder failed due to:", status);
+      }
+    });
+  };
+  console.log(startLocation);
 
   return (
-    <div className="flex">
-      <div>
-        <PlacesAutocomplete setLocation={setStartLocation} />
-        <button
-          className="bg-main_blue px-3 py-1 text-white"
-          onClick={createRoadRoute}
-        >
-          Create Route
-        </button>
+    <div className="flex gap-[40px]">
+      <div className="flex place-self-start  items-center gap-[5px]">
+        <div className="flex gap-[10px] ">
+          <div className="flex-1">
+            <PlacesAutocomplete setLocation={setStartLocation} />
+          </div>
+          <input
+            type="number"
+            placeholder="Latitude"
+            className=" p-2 py-3 pl-3 border rounded-lg font-roboto focus:outline-none flex-1"
+            onChange={(e) => {
+              setStartLocation({
+                ...startLocation,
+                lat: parseFloat(e.target.value),
+              });
+            }}
+          />
+          <input
+            type="number"
+            placeholder="Langitude"
+            className=" p-2 py-3 pl-3 border rounded-lg font-roboto focus:outline-none flex-1"
+            onChange={(e) => {
+              setStartLocation({
+                ...startLocation,
+                lng: parseFloat(e.target.value),
+              });
+            }}
+          />
+        </div>
+
+        <div className="flex items-center justify-center">
+          <button
+            onClick={createRoadRoute}
+            className={`text-[20px] ${
+              startLocation.lat && startLocation.lng ? "hidden" : "text-[20px]"
+            }`}
+          >
+            <IoAddCircle />
+          </button>
+          <div
+            className={`text-[20px] ${
+              startLocation.lat && startLocation.lng ? "text-[20px]" : "hidden"
+            }`}
+          >
+            <button className="" onClick={createRoadRoute}>
+              <MdEdit className="text-[20px]" />
+            </button>
+            <button className="" onClick={createRoadRoute}>
+              <MdDeleteOutline className="text-[20px]" />
+            </button>
+          </div>
+        </div>
       </div>
-      <div className="w-[700px] h-[700px] ">
+
+      <div className="w-[800px] h-[650px] ">
         <GoogleMap
           zoom={10}
           center={center}
           mapContainerClassName="map-container"
           options={options}
           onLoad={onLoad}
-          onRightClick={(e) => {
-            const latLng = {
-              lat: e.latLng.lat(),
-              lng: e.latLng.lng(),
-            };
-            console.log("Right-clicked location:", latLng);
-            // Do something with the right-clicked location, if needed
-          }}
+          onRightClick={handleRightClick}
         >
-          {directions && <DirectionsRenderer directions={directions} />}
+          {/* {directions && <DirectionsRenderer directions={directions} />} */}
           {/* show the route[0]*/}
+
           {directions && (
             <DirectionsRenderer
               options={{
-                directions,
+                directionsWithWayPoints,
                 routeIndex: 0,
                 suppressMarkers: true,
                 polylineOptions: {
                   strokeColor: "red",
-                  strokeWeight: 6,
-                  strokeOpacity: 0.5,
-                },
-              }}
-            />
-          )}
-          {/* show the route[0]*/}
-          {/* {directions && (
-            <DirectionsRenderer
-              options={{
-                directionsWithWayPoints,
-                routeIndex: 0,
-                suppressMarkers: true,
-                polylineOptions: {
-                  strokeColor: "black",
-                  strokeWeight: 20,
-                  strokeOpacity: 0.5,
-                },
-              }}
-            />
-          )} */}
-          {directions && (
-            <DirectionsRenderer
-              options={{
-                directionsWithWayPoints,
-                routeIndex: 0,
-                suppressMarkers: true,
-                polylineOptions: {
-                  strokeColor: "blue",
                   strokeWeight: 10,
-                  strokeOpacity: 0.5,
-                },
-              }}
-            />
-          )}
-          {directions && (
-            <DirectionsRenderer
-              options={{
-                directions,
-                routeIndex: 1,
-                suppressMarkers: true,
-                polylineOptions: {
-                  strokeColor: "green",
-                  strokeWeight: 6,
-                  strokeOpacity: 0.5,
-                },
-              }}
-            />
-          )}
-          {directions && (
-            <DirectionsRenderer
-              options={{
-                directions,
-                routeIndex: 2,
-                suppressMarkers: true,
-                polylineOptions: {
-                  strokeColor: "red",
-                  strokeWeight: 6,
                   strokeOpacity: 0.5,
                 },
               }}

@@ -57,16 +57,16 @@ const PlacesAutocomplete = ({ setLocation }) => {
     });
 
   return (
-    <div ref={ref} className="relative">
+    <div ref={ref} className="relative w-full">
       <input
         value={value}
         onChange={handleInput}
         disabled={!ready}
-        placeholder="Where are you going?"
-        className="w-full p-2 border rounded"
+        placeholder="Start location"
+        className="w-full p-2 py-3 pl-3 border rounded-lg font-roboto focus:outline-none"
       />
       {status === "OK" && (
-        <ul className="absolute left-0 right-0 mt-2 bg-white border rounded shadow-md">
+        <ul className="absolute left-0 right-0 mt-2 bg-white border rounded shadow-md font-roboto">
           {renderSuggestions()}
         </ul>
       )}

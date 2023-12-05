@@ -8,8 +8,10 @@ function AddRoute() {
   });
 
   return (
-    <div>
-      <h1>this a route add page</h1>
+    <div className="px-[60px]">
+      <p className="text-main_blue text-[37px] font-semibold font-barlows  mb-[30px] leading-6 ">
+        Manage Route
+      </p>
       {isLoaded ? <Map /> : <h1>not loaded</h1>}
     </div>
   );

@@ -71,7 +71,11 @@ function Map({ routes }) {
             />
           )}
 
-          <Marker position={center} title="aaaaaaa sd" label="Gampaha -45">
+          <Marker
+            position={center}
+            title="aaaaaaa sd"
+            label={{ text: `dfdsfd`, color: "#fff" }}
+          >
             <div className="">aaaaaa</div>
           </Marker>
         </GoogleMap>

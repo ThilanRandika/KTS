@@ -75,7 +75,14 @@ function RouteTableMap({ googleRoutes, stations, startLocation }) {
                 position={{ lat: station.lat, lng: station.lng }}
                 icon={{
                   url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsb083sMbuVEGx5GoQ_Du6AHOqMquWYNM3zw&usqp=CAU",
-                  scaledSize: new window.google.maps.Size(10, 10),
+                  scaledSize: new window.google.maps.Size(15, 15),
+                }}
+                label={{
+                  text: `${station.id}`,
+                  color: "white",
+                  className: "font-roboto px-2 py-1 rounded-lg bg-red-800",
+                  fontSize: "10px",
+                  fontWeight: "bold",
                 }}
               ></Marker>
             ))}

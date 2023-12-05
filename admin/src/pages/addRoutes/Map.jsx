@@ -475,7 +475,7 @@ function Map() {
                 suppressMarkers: true,
                 polylineOptions: {
                   strokeColor: "red",
-                  strokeWeight: 6,
+                  strokeWeight: 3,
                   strokeOpacity: 0.5,
                 },
               }}
@@ -489,7 +489,7 @@ function Map() {
                 suppressMarkers: true,
                 polylineOptions: {
                   strokeColor: "blue",
-                  strokeWeight: 6,
+                  strokeWeight: 4,
                   strokeOpacity: 0.5,
                 },
               }}
@@ -524,18 +524,7 @@ function Map() {
           )}
 
           {currentMarker.lat && currentMarker.lng && (
-            <Marker
-              position={currentMarker}
-              title="aaaaaaa sd"
-              // label={{
-              //   text: `dfdsfd`,
-              //   color: "#fff",
-              //   className: "w-[80px] bg-red-800 ",
-              //   fontWeight: "600",
-              // }}
-            >
-              <div className="">aaaaaa</div>
-            </Marker>
+            <Marker position={currentMarker}></Marker>
           )}
 
           {stations &&
@@ -547,11 +536,27 @@ function Map() {
                 label={{
                   text: `${station.id}`,
                   color: "#fff",
-                  className: "w-[80px] bg-red-800 font-roboto rounded-lg",
+                  className:
+                    " bg-red-800 font-roboto rounded-lg px-[5px] py-[2px] ",
                   fontWeight: "500",
+                  fontSize: "13px",
                 }}
               />
             ))}
+
+          {startLocation.lat && startLocation.lng && (
+            <Marker
+              position={startLocation}
+              icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+            ></Marker>
+          )}
+
+          {center && (
+            <Marker
+              position={center}
+              icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+            ></Marker>
+          )}
         </GoogleMap>
       </div>
     </div>

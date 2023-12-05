@@ -2,7 +2,7 @@ const RoadRoute = require("../models/roadRouteModel");
 const asyncHandler = require("express-async-handler");
 
 const createRoadRoute = asyncHandler(async (req, res) => {
-  const { rId, startLocation, googleRoute, stations } = req.body;
+  const { startLocation, googleRoute, stations } = req.body;
   const roadRoute = new RoadRoute({
     rId: "r1",
     startLocation,

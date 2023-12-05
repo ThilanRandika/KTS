@@ -43,7 +43,10 @@ function Map() {
 
   const [stations, setStations] = useState([]);
 
-  const [currentMarker, setCurrentMarker] = useState(null);
+  const [currentMarker, setCurrentMarker] = useState({
+    lat: 0,
+    lng: 0,
+  });
 
   const service = new google.maps.DirectionsService();
 
@@ -98,7 +101,6 @@ function Map() {
         },
         (result, status) => {
           if (status === google.maps.DirectionsStatus.OK) {
-            setDirectionsWithWayPoints(result);
           } else {
             console.error(`error fetching directions ${result}`);
           }
@@ -147,8 +149,8 @@ function Map() {
   const [route1, setRoute1] = useState(true);
   const [route2, setRoute2] = useState(true);
 
-  console.log(startLocation);
-  console.log(directions);
+  // console.log(startLocation);
+  //console.log(directions);
   if (directions) {
     // console.log(directions.routes[0].legs[0]);
   }
@@ -171,6 +173,8 @@ function Map() {
       distance: 1000,
     },
   ];
+  console.log("marker", currentMarker);
+  console.log("start", startLocation);
   return (
     <div className="flex justify-between ">
       <div className="w-[5ddd00px]">
@@ -236,6 +240,8 @@ function Map() {
         {directions && <div>{directions.routes[1].legs[0].duration.text}</div>}
         {directions && <div>{directions.routes[2].legs[0].distance.text}</div>}
         {directions && <div>{directions.routes[2].legs[0].duration.text}</div>}
+        {currentMarker.lat && currentMarker.lng && <p>{currentMarker.lat}</p>}
+        {/* {currentMarker && <p>{currentMarker}</p>} */}
         <div>
           <div>
             <input
@@ -269,7 +275,11 @@ function Map() {
           <div>
             <StationsOutput stations={stations} />
           </div>
-          <StationsInput setStations={setStations} />
+          <StationsInput
+            setStations={setStations}
+            currentMarker={currentMarker}
+            setCurrentMaker={setCurrentMarker}
+          />
         </div>
       </div>
 
@@ -338,6 +348,20 @@ function Map() {
               <Circle center={center} radius={20000} options={middleOptions} />
               <Circle center={center} radius={30000} options={farOptions} />
             </>
+          )}
+          {currentMarker.lat && currentMarker.lng && (
+            <Marker
+              position={currentMarker}
+              title="aaaaaaa sd"
+              label={{
+                text: `dfdsfd`,
+                color: "#fff",
+                className: "w-[80px] bg-red-800 ",
+                fontWeight: "600",
+              }}
+            >
+              <div className="">aaaaaa</div>
+            </Marker>
           )}
         </GoogleMap>
       </div>

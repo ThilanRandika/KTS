@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { IoAddCircle } from "react-icons/io5";
 
-function StationsInput({ setStations }) {
+function StationsInput({ setStations, currentMarker, setCurrentMaker }) {
   const [name, setName] = useState("");
-  const [lat, setLat] = useState("");
-  const [lng, setLng] = useState("");
-  const [price, setPrice] = useState("");
+  const [lat, setLat] = useState(0);
+  const [lng, setLng] = useState(0);
+  const [price, setPrice] = useState(0);
 
   const addStation = () => {
     setStations((prev) => [
@@ -19,6 +19,7 @@ function StationsInput({ setStations }) {
       },
     ]);
   };
+
   return (
     <div className="flex items-end justify-between">
       <div className="flex gap-2">
@@ -33,17 +34,29 @@ function StationsInput({ setStations }) {
         <div className="">
           <p>Latitude </p>
           <input
-            type="text"
+            type="number"
             className="py-2 border rounded-lg font-roboto focus:outline-none w-[120px] pl-2 text-sm"
-            onChange={(e) => setLat(e.target.value)}
+            onChange={(e) => {
+              setLat(parseFloat(e.target.value));
+              setCurrentMaker({
+                ...currentMarker,
+                lat: parseFloat(e.target.value),
+              });
+            }}
           />
         </div>
         <div className="">
           <p>Longitude</p>
           <input
-            type="text"
+            type="number"
             className="py-2 border rounded-lg font-roboto focus:outline-none w-[120px] pl-2 text-sm"
-            onChange={(e) => setLng(e.target.value)}
+            onChange={(e) => {
+              setLng(parseFloat(e.target.value));
+              setCurrentMaker({
+                ...currentMarker,
+                lng: parseFloat(e.target.value),
+              });
+            }}
           />
         </div>
         <div className="">

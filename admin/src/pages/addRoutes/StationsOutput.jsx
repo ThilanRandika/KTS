@@ -68,7 +68,7 @@ const columns = [
   },
 ];
 function StationsOutput({ stations }) {
-  console.log(stations);
+  //console.log(stations);
   return (
     <>
       {stations && (

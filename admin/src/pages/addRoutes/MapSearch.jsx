@@ -63,7 +63,7 @@ const PlacesAutocomplete = ({ setLocation }) => {
         onChange={handleInput}
         disabled={!ready}
         placeholder="Start location"
-        className="w-full p-2 py-3 pl-3 border rounded-lg font-roboto focus:outline-none"
+        className="w-full p-2 py-3 pl-3 border rounded-lg font-roboto focus:outline-none text-[13px] font-semibold"
       />
       {status === "OK" && (
         <ul className="absolute left-0 right-0 mt-2 bg-white border rounded shadow-md font-roboto z-50">

@@ -2,73 +2,81 @@ import { MdDeleteOutline } from "react-icons/md";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { Box, IconButton } from "@mui/material";
 
-const columns = [
-  {
-    field: "id",
-    headerName: "SId",
-    width: 90,
-    flex: 0.3,
-    align: "center",
-    headerAlign: "center",
-    type: "string",
-  },
-  {
-    field: "lat",
-    headerName: "Latitude",
-    width: 90,
-    flex: 0.3,
-    align: "center",
-    headerAlign: "center",
-    type: "string",
-  },
-  {
-    field: "lng",
-    headerName: "Longitude",
-    width: 90,
-    flex: 0.3,
-    align: "center",
-    headerAlign: "center",
-    type: "string",
-  },
-  {
-    field: "price",
-    headerName: "Price",
-    width: 90,
-    flex: 0.3,
-    align: "center",
-    headerAlign: "center",
-    type: "string",
-  },
-  {
-    field: "distance",
-    headerName: "Distance",
-    width: 90,
-    flex: 0.3,
-    align: "center",
-    headerAlign: "center",
-    type: "string",
-  },
-  {
-    field: "delete",
-    headerName: "Delete",
-    width: 90,
-    flex: 0.3,
-    align: "center",
-    headerAlign: "center",
-    sortable: false,
-    renderCell: (params) => (
-      <IconButton
-        onClick={() => {
-          //handleDeleteBus(params.row._id);
-        }}
-      >
-        <MdDeleteOutline className="text-[18px]" />
-      </IconButton>
-    ),
-  },
-];
-function StationsOutput({ stations }) {
-  //console.log(stations);
+function StationsOutput({ stations, setStations }) {
+  const columns = [
+    {
+      field: "id",
+      headerName: "SId",
+      width: 90,
+      flex: 0.3,
+      align: "center",
+      headerAlign: "center",
+      type: "string",
+    },
+    {
+      field: "lat",
+      headerName: "Latitude",
+      width: 90,
+      flex: 0.3,
+      align: "center",
+      headerAlign: "center",
+      type: "string",
+    },
+    {
+      field: "lng",
+      headerName: "Longitude",
+      width: 90,
+      flex: 0.3,
+      align: "center",
+      headerAlign: "center",
+      type: "string",
+    },
+    {
+      field: "price",
+      headerName: "Price",
+      width: 90,
+      flex: 0.3,
+      align: "center",
+      headerAlign: "center",
+      type: "string",
+    },
+    {
+      field: "distance",
+      headerName: "Distance",
+      width: 90,
+      flex: 0.3,
+      align: "center",
+      headerAlign: "center",
+      type: "string",
+    },
+    {
+      field: "delete",
+      headerName: "Delete",
+      width: 90,
+      flex: 0.3,
+      align: "center",
+      headerAlign: "center",
+      sortable: false,
+      renderCell: (params) => (
+        <IconButton
+          onClick={() => {
+            console.log(params.row.id);
+          }}
+        >
+          <MdDeleteOutline
+            className="text-[18px]"
+            onClick={() => {
+              console.log(params.row.id);
+              setStations(
+                stations.filter((station) => station.id !== params.row.id)
+              );
+            }}
+          />
+        </IconButton>
+      ),
+    },
+  ];
+
   return (
     <>
       {stations && (

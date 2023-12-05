@@ -23,6 +23,7 @@ function Map() {
     () => ({ lat: 6.833813409471106, lng: 79.88634319394335 }),
     []
   );
+
   const options = useMemo(
     () => ({
       mapId: "958725da470cbe5e",
@@ -32,6 +33,7 @@ function Map() {
     }),
     []
   );
+
   const onLoad = useCallback((map) => (mapRef.current = map), []);
 
   //start location
@@ -52,6 +54,8 @@ function Map() {
     lat: 0,
     lng: 0,
   });
+
+  const [currentMakerDistance, setCurrentMakerDistance] = useState(0);
 
   const [rightClickedLocation, setRightClickedLocation] = useState({
     lat: 0,
@@ -99,6 +103,29 @@ function Map() {
       );
     }
   }, [startLocation]);
+
+  useEffect(() => {
+    if (currentMarker.lat && currentMarker.lng) {
+      service.route(
+        {
+          origin: currentMarker,
+          destination: center,
+          travelMode: google.maps.TravelMode.DRIVING,
+          provideRouteAlternatives: true,
+        },
+        (result, status) => {
+          if (status === google.maps.DirectionsStatus.OK) {
+            setCurrentMakerDistance(result.routes[0].legs[0].distance.text);
+          } else {
+            console.error(`error fetching directions ${result}`);
+          }
+        }
+      );
+    }
+  }, [currentMarker]);
+
+  console.log("current", currentMarker);
+  console.log("dis", currentMakerDistance);
 
   const handleRightClick = (e) => {
     const latLng = { lat: e.latLng.lat(), lng: e.latLng.lng() };
@@ -152,7 +179,7 @@ function Map() {
             <input
               type="number"
               placeholder="Latitude"
-              className="py-3 pl-3 border rounded-lg font-roboto focus:outline-none w-[150px] "
+              className="py-3 pl-3 border rounded-lg font-roboto focus:outline-none w-[150px]  text-[13px] font-semibold"
               onChange={(e) => {
                 setStartLocation({
                   ...startLocation,
@@ -163,7 +190,7 @@ function Map() {
             <input
               type="number"
               placeholder="Langitude"
-              className="py-3 pl-3 border rounded-lg font-roboto focus:outline-none w-[150px]"
+              className="py-3 pl-3 border rounded-lg font-roboto focus:outline-none w-[150px] text-[13px] font-semibold"
               onChange={(e) => {
                 setStartLocation({
                   ...startLocation,
@@ -384,13 +411,14 @@ function Map() {
           }`}
         >
           <div>
-            <StationsOutput stations={stations} />
+            <StationsOutput stations={stations} setStations={setStations} />
           </div>
-          <div className="mt-[10px]">
+          <div className="mt-[18px]">
             <StationsInput
               setStations={setStations}
               currentMarker={currentMarker}
               setCurrentMaker={setCurrentMarker}
+              currentMakerDistance={currentMakerDistance}
             />
           </div>
         </div>
@@ -398,7 +426,7 @@ function Map() {
           {!rightClickedLocation.lat == 0 &&
             !rightClickedLocation.lng == 0 &&
             !rightClickedLocation.name == "" && (
-              <div className="w-full bg-red-100 px-[20px] py-[10px] font-roboto text-[#383838] rounded-lg border-[1px] border-gray-200 relative">
+              <div className="mt-[20px] w-full bg-red-100 px-[20px] py-[10px] font-roboto text-[#383838] rounded-lg border-[1px] border-gray-200 relative">
                 <p className="font-semibold">
                   Lat -
                   <span className="text-[14px] font-medium ml-3">
@@ -438,7 +466,6 @@ function Map() {
           onLoad={onLoad}
           onRightClick={handleRightClick}
         >
-          {/* {directions && <DirectionsRenderer directions={directions} />} */}
           {/* show the route[0]*/}
           {directions && route0 && (
             <DirectionsRenderer
@@ -495,20 +522,36 @@ function Map() {
               <Circle center={center} radius={30000} options={farOptions} />
             </>
           )}
+
           {currentMarker.lat && currentMarker.lng && (
             <Marker
               position={currentMarker}
               title="aaaaaaa sd"
-              label={{
-                text: `dfdsfd`,
-                color: "#fff",
-                className: "w-[80px] bg-red-800 ",
-                fontWeight: "600",
-              }}
+              // label={{
+              //   text: `dfdsfd`,
+              //   color: "#fff",
+              //   className: "w-[80px] bg-red-800 ",
+              //   fontWeight: "600",
+              // }}
             >
               <div className="">aaaaaa</div>
             </Marker>
           )}
+
+          {stations &&
+            stations.map((station) => (
+              <Marker
+                key={station.id}
+                position={{ lat: station.lat, lng: station.lng }}
+                title={station.name}
+                label={{
+                  text: `${station.id}`,
+                  color: "#fff",
+                  className: "w-[80px] bg-red-800 font-roboto rounded-lg",
+                  fontWeight: "500",
+                }}
+              />
+            ))}
         </GoogleMap>
       </div>
     </div>

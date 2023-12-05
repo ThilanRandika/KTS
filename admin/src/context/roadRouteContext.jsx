@@ -12,7 +12,11 @@ export const roadRouteContextReducer = (state, action) => {
     case "ADD_ROAD_ROUTE":
       return { roadRoutes: [...state.roadRoutes, action.payload] };
     case "DELETE_ROAD_ROUTE":
-      return state.filter((roadRoute) => roadRoute.id !== action.payload);
+      return {
+        roadRoutes: state.roadRoutes.filter(
+          (roadRoute) => roadRoute._id !== action.payload
+        ),
+      };
     case "UPDATE_ROAD_ROUTE":
       return state.map((roadRoute) =>
         roadRoute.id === action.payload.id ? action.payload : roadRoute

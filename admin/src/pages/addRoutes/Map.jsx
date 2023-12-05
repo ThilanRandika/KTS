@@ -80,11 +80,17 @@ function Map() {
 
   useEffect(() => {
     if (roadRoutes && roadRoutes.length > 0) {
-      setRouteId(`RR#kts${roadRoutes.length + 1}`);
+      setRouteId(
+        `RR#kts${
+          parseInt(roadRoutes[roadRoutes.length - 1].rId.split("RR#kts")[1]) + 1
+        }`
+      );
     } else {
       setRouteId("RR#kts1");
     }
   }, [roadRoutes]);
+
+  console.log("routeId", routeId);
 
   useEffect(() => {
     if (startLocation.lat && startLocation.lng) {

@@ -126,8 +126,22 @@ const getBusById = asyncHandler(async (req, res) => {
   }
 });
 
+//delete bus
+const deleteBusById = asyncHandler(async (req, res) => {
+  const bus = await Bus.findById(req.params.id);
+
+  if (bus) {
+    await bus.deleteOne();
+    res.status(200).json({ message: "Bus removed" });
+  } else {
+    res.status(404);
+    throw new Error("Bus not found");
+  }
+});
+
 module.exports = {
   createBus,
   getAllBuses,
   getBusById,
+  deleteBusById,
 };

@@ -31,9 +31,8 @@ function RouteTableMap({ googleRoutes, stations, startLocation }) {
 
   const onLoad = useCallback((map) => (mapRef.current = map), []);
 
-  console.log("ass", googleRoutes);
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full rounded-xl overflow-hidden">
       {isLoaded ? (
         <GoogleMap
           zoom={12}

@@ -33,11 +33,11 @@ function AddBusPage() {
   const [owner, setOwner] = useState("");
   const [error, setError] = useState("");
 
-  console.log(buses);
-
   useEffect(() => {
     if (buses && buses.length > 0) {
-      setBusId(`B#kts${buses.length + 1}`);
+      setBusId(
+        `B#kts${parseInt(buses[buses.length - 1].busId.split("B#kts")[1]) + 1}`
+      );
     } else {
       setBusId("B#kts1");
     }
@@ -212,7 +212,6 @@ function AddBusPage() {
                 value={chassisNumber}
                 onChange={(e) => {
                   setChassisNumber(e.target.value);
-                  console.log(e.target.value);
                 }}
                 className={normalInputStyle}
                 placeholder="Enter chassis number..."

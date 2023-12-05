@@ -13,6 +13,8 @@ import { Box, IconButton } from "@mui/material";
 import { ImProfile } from "react-icons/im";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import adminAxios from "../../baseURL";
+import { toast } from "react-toastify";
 // function CustomPagination() {
 //   const apiRef = useGridApiContext();
 //   const page = useGridSelector(apiRef, gridPageSelector);
@@ -31,128 +33,156 @@ import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 //   );
 // }
 
-const columns = [
-  {
-    field: "eId",
-    headerName: "ID",
-    width: 90,
-    flex: 0.3,
-    align: "center",
-    headerAlign: "center",
-    type: "string",
-  },
-  {
-    field: "photo",
-    headerName: "Photo",
-    width: 90,
-    flex: 0.2,
-    align: "center",
-    headerAlign: "center",
-    type: "string",
-    renderCell: (params) => (
-      <div className="flex w-full items-center justify-center">
-        <img
-          src={params.row.photo.filePath}
-          alt="employee"
-          className="w-full h-[72px] object-cover"
-        />
-      </div>
-    ),
-  },
-  {
-    field: "fullName",
-    headerName: "Employee Name",
-    width: 90,
-    flex: 0.5,
-    align: "center",
-    headerAlign: "center",
-    type: "string",
-  },
-  {
-    field: "email",
-    headerName: "Email",
-    width: 90,
-    flex: 0.5,
-    align: "center",
-    headerAlign: "center",
-    type: "string",
-  },
-  {
-    field: "mobile",
-    headerName: "mobile Number",
-    width: 90,
-    flex: 0.5,
-    align: "center",
-    headerAlign: "center",
-    type: "string",
-    renderCell: (params) => <>+94{params.row.mobile}</>,
-  },
-
-  {
-    field: "role",
-    headerName: "Position",
-    sortable: false,
-    flex: 0.3,
-    align: "center",
-    headerAlign: "center",
-  },
-  {
-    field: "edit",
-    headerName: "Edit",
-    sortable: false,
-    flex: 0.15,
-    align: "center",
-    headerAlign: "center",
-    renderCell: (params) => (
-      <IconButton
-        onClick={() => {
-          // handleEditBus(params.row);
-        }}
-      >
-        <DriveFileRenameOutlineIcon sx={{ fontSize: 18 }} />
-      </IconButton>
-    ),
-  },
-  {
-    field: "delete",
-    headerName: "Delete",
-    sortable: false,
-    flex: 0.15,
-    align: "center",
-    headerAlign: "center",
-    renderCell: (params) => (
-      <IconButton
-        onClick={() => {
-          //handleDeleteBus(params.row._id);
-        }}
-      >
-        <DeleteOutlinedIcon sx={{ fontSize: 19 }} />
-      </IconButton>
-    ),
-  },
-  {
-    field: "profile",
-    headerName: "Profile",
-    sortable: false,
-    flex: 0.15,
-    align: "center",
-    headerAlign: "center",
-    renderCell: (params) => (
-      <IconButton
-        onClick={() => {
-          // handleEditBus(params.row);
-        }}
-      >
-        <ImProfile className="text-[16px]" />
-      </IconButton>
-    ),
-  },
-];
-
 function EmployeesPage() {
-  const { employees } = useEmployeeContext();
+  const { employees, dispatch } = useEmployeeContext();
   console.log(employees);
 
+  const columns = [
+    {
+      field: "eId",
+      headerName: "ID",
+      width: 90,
+      flex: 0.3,
+      align: "center",
+      headerAlign: "center",
+      type: "string",
+    },
+    {
+      field: "photo",
+      headerName: "Photo",
+      width: 90,
+      flex: 0.2,
+      align: "center",
+      headerAlign: "center",
+      type: "string",
+      renderCell: (params) => (
+        <div className="flex w-full items-center justify-center">
+          <img
+            src={params.row.photo.filePath}
+            alt="employee"
+            className="w-full h-[72px] object-cover"
+          />
+        </div>
+      ),
+    },
+    {
+      field: "fullName",
+      headerName: "Employee Name",
+      width: 90,
+      flex: 0.5,
+      align: "center",
+      headerAlign: "center",
+      type: "string",
+    },
+    {
+      field: "email",
+      headerName: "Email",
+      width: 90,
+      flex: 0.5,
+      align: "center",
+      headerAlign: "center",
+      type: "string",
+    },
+    {
+      field: "mobile",
+      headerName: "mobile Number",
+      width: 90,
+      flex: 0.5,
+      align: "center",
+      headerAlign: "center",
+      type: "string",
+      renderCell: (params) => <>+94{params.row.mobile}</>,
+    },
+
+    {
+      field: "role",
+      headerName: "Position",
+      sortable: false,
+      flex: 0.3,
+      align: "center",
+      headerAlign: "center",
+    },
+    {
+      field: "edit",
+      headerName: "Edit",
+      sortable: false,
+      flex: 0.15,
+      align: "center",
+      headerAlign: "center",
+      renderCell: (params) => (
+        <IconButton
+          onClick={() => {
+            console.log("edit");
+          }}
+        >
+          <DriveFileRenameOutlineIcon sx={{ fontSize: 18 }} />
+        </IconButton>
+      ),
+    },
+    {
+      field: "delete",
+      headerName: "Delete",
+      sortable: false,
+      flex: 0.15,
+      align: "center",
+      headerAlign: "center",
+      renderCell: (params) => (
+        <IconButton
+          onClick={() => {
+            handleEmployeeDelete(params.row._id);
+          }}
+        >
+          <DeleteOutlinedIcon sx={{ fontSize: 19 }} />
+        </IconButton>
+      ),
+    },
+    {
+      field: "profile",
+      headerName: "Profile",
+      sortable: false,
+      flex: 0.15,
+      align: "center",
+      headerAlign: "center",
+      renderCell: (params) => (
+        <IconButton
+          onClick={() => {
+            // handleEditBus(params.row);
+          }}
+        >
+          <ImProfile className="text-[16px]" />
+        </IconButton>
+      ),
+    },
+  ];
+
+  const handleEmployeeDelete = async (id) => {
+    try {
+      const res = await adminAxios.delete(`/api/employees/${id}`);
+      if (res.status === 200) {
+        console.log("deleted");
+        toast.success("Employee deleted successfully", {
+          position: "top-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          draggable: true,
+          theme: "colored",
+        });
+        dispatch({ type: "DELETE_EMPLOYEE", payload: id });
+      }
+    } catch (err) {
+      toast.error(err.response.data.message, {
+        position: "top-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
+  };
   return (
     <div className="mx-[60px] mb-[60px]">
       <p className="text-main_blue text-[37px] font-semibold font-barlows  mb-[15px] leading-6">

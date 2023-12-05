@@ -12,7 +12,7 @@ export const busReducer = (state, action) => {
     case "ADD_BUS":
       return { buses: [...state.buses, action.payload] };
     case "DELETE_BUS":
-      return state.filter((bus) => bus.id !== action.payload);
+      return { buses: state.buses.filter((bus) => bus._id !== action.payload) };
     case "UPDATE_BUS":
       return state.map((bus) =>
         bus.id === action.payload.id ? action.payload : bus

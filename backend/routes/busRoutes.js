@@ -4,6 +4,7 @@ const {
   createBus,
   getAllBuses,
   getBusById,
+  deleteBusById,
 } = require("../controllers/busController");
 const { upload } = require("../util/fileUpload");
 const router = express.Router();
@@ -14,6 +15,8 @@ router.post("/", protect, upload.single("image"), createBus);
 router.get("/", getAllBuses);
 //get a single bus
 router.get("/:id", getBusById);
+//delete bus  --manager
+router.delete("/:id", deleteBusById);
 
 module.exports = router;
 

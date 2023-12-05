@@ -247,13 +247,6 @@ const updateEmployee = asyncHandler(async (req, res) => {
 
 //delete employee --manager
 const deleteEmployee = asyncHandler(async (req, res) => {
-  const personType = req.personType;
-
-  if (personType === "user") {
-    res.status(401);
-    throw new Error("Not authorized , Please login as a manager");
-  }
-
   const employee = await Employee.findById(req.params.id);
 
   if (employee) {

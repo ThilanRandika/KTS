@@ -13,6 +13,8 @@ import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import adminAxios from "../../baseURL";
+import { toast } from "react-toastify";
 
 // function CustomPagination() {
 //   const apiRef = useGridApiContext();
@@ -33,7 +35,7 @@ import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 // }
 
 function BusesPage() {
-  const { buses } = useBusContext();
+  const { buses, dispatch } = useBusContext();
   const { employees } = useEmployeeContext();
 
   const columns = [
@@ -164,7 +166,7 @@ function BusesPage() {
       renderCell: (params) => (
         <IconButton
           onClick={() => {
-            // handleEditBus(params.row);
+            console.log("edit");
           }}
         >
           <DriveFileRenameOutlineIcon sx={{ fontSize: 18 }} />
@@ -181,7 +183,7 @@ function BusesPage() {
       renderCell: (params) => (
         <IconButton
           onClick={() => {
-            //handleDeleteBus(params.row._id);
+            handleBusDelete(params.row._id);
           }}
         >
           <DeleteOutlinedIcon sx={{ fontSize: 19 }} />
@@ -189,6 +191,34 @@ function BusesPage() {
       ),
     },
   ];
+
+  const handleBusDelete = async (id) => {
+    try {
+      const res = await adminAxios.delete(`/api/buses/${id}`);
+      if (res.status === 200) {
+        toast.success("Bus deleted successfully", {
+          position: "top-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          draggable: true,
+          theme: "colored",
+        });
+        dispatch({ type: "DELETE_BUS", payload: id });
+      }
+    } catch (err) {
+      toast.error(err.response.data.message, {
+        position: "top-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
+  };
 
   return (
     <div className="mx-[60px] mb-[60px]">

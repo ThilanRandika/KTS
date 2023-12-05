@@ -94,11 +94,25 @@ function Routes() {
   const { roadRoutes } = useRoadRouteContext();
 
   return (
-    <div className="mx-[60px] mb-[60px]">
+    <div className="mx-[80px] mb-[60px] mt-[30px]">
       <p className="text-main_blue text-[37px] font-semibold font-barlows  mb-[15px] leading-6">
-        Employees Details
+        Read this carefully
       </p>
-      <div className="mt-[20px]">
+      <div
+        className="text-justify text-[18px] "
+        style={{ lineHeight: "normal" }}
+      >
+        <p>
+          Welcome to the services we offer to ensure a brighter future for you.
+          You are the future of our country and the upcoming generation, so it's
+          crucial to utilize these resources wisely and responsibly. Remember,
+          you hold the key to your success. Currently, we operate 15 buses that
+          serve our three universities. You have the option to use any of these
+          buses for your convenience. To travel on our buses, you must possess a
+          valid single ticket or a season ticket.
+        </p>
+      </div>
+      <div className="mt-[40px]">
         <Box sx={{ height: "100%", width: "100%" }}>
           <DataGrid
             rows={roadRoutes}

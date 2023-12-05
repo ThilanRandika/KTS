@@ -38,4 +38,16 @@ const getAllRoadRoutes = asyncHandler(async (req, res) => {
   res.status(201).json(roadRoutes);
 });
 
-module.exports = { createRoadRoute, getAllRoadRoutes };
+const deleteRoadRoute = asyncHandler(async (req, res) => {
+  const roadRoute = await RoadRoute.findById(req.params.id);
+
+  if (roadRoute) {
+    await roadRoute.deleteOne();
+    res.status(200).json({ message: "Road Route removed" });
+  } else {
+    res.status(404);
+    throw new Error("Road Route not found");
+  }
+});
+
+module.exports = { createRoadRoute, getAllRoadRoutes, deleteRoadRoute };

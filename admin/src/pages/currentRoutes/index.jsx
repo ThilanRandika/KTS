@@ -4,183 +4,158 @@ import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutli
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import { useRoadRouteContext } from "../../hooks/useRoadRouteContext";
 import RouteTableMap from "./RouteTableMap";
-
-const columns = [
-  {
-    field: "rId",
-    headerName: "ID",
-    width: 90,
-    flex: 0.3,
-    align: "center",
-    headerAlign: "center",
-
-    renderCell: (params) => <div>{params.row.startLocation.name}</div>,
-  },
-  {
-    field: "stations",
-    headerName: "Stations",
-    width: 90,
-    flex: 0.3,
-    align: "center",
-    headerAlign: "center",
-
-    renderCell: (params) => (
-      <div>
-        {params.row.stations.map((station) => (
-          <div key={`${station.id} ${station.lat} ${station.lng}`}>
-            {station.id}
-          </div>
-        ))}
-      </div>
-    ),
-  },
-  {
-    field: "prices",
-    headerName: "Prices",
-    width: 90,
-    flex: 0.3,
-    align: "center",
-    headerAlign: "center",
-
-    renderCell: (params) => (
-      <div>
-        {params.row.stations.map((station) => (
-          <div key={`${station.id} ${station.lat} ${station.lng}`}>
-            {station.price}
-          </div>
-        ))}
-      </div>
-    ),
-  },
-  {
-    field: "distance",
-    headerName: "Distance",
-    width: 90,
-    flex: 0.3,
-    align: "center",
-    headerAlign: "center",
-
-    renderCell: (params) => (
-      <div>
-        {params.row.stations.map((station) => (
-          <div key={`${station.id} ${station.lat} ${station.lng}`}>
-            {station.distance}
-          </div>
-        ))}
-      </div>
-    ),
-  },
-  {
-    field: "map",
-    headerName: "Map",
-    width: 90,
-    flex: 1,
-    align: "center",
-    headerAlign: "center",
-
-    renderCell: (params) => (
-      <div className="w-full h-full">
-        <RouteTableMap
-          googleRoutes={params.row.googleRoute}
-          stations={params.row.stations}
-          startLocation={params.row.startLocation}
-        />
-      </div>
-    ),
-  },
-  //   {
-  //     field: "photo",
-  //     headerName: "Photo",
-  //     width: 90,
-  //     flex: 0.2,
-  //     align: "center",
-  //     headerAlign: "center",
-  //     type: "string",
-  //     renderCell: (params) => (
-  //       <div className="flex w-full items-center justify-center">
-  //         <img
-  //           src={params.row.photo.filePath}
-  //           alt="employee"
-  //           className="w-full h-[72px] object-cover"
-  //         />
-  //       </div>
-  //     ),
-  //   },
-  //   {
-  //     field: "fullName",
-  //     headerName: "Employee Name",
-  //     width: 90,
-  //     flex: 0.5,
-  //     align: "center",
-  //     headerAlign: "center",
-  //     type: "string",
-  //   },
-  //   {
-  //     field: "email",
-  //     headerName: "Email",
-  //     width: 90,
-  //     flex: 0.5,
-  //     align: "center",
-  //     headerAlign: "center",
-  //     type: "string",
-  //   },
-  //   {
-  //     field: "mobile",
-  //     headerName: "mobile Number",
-  //     width: 90,
-  //     flex: 0.5,
-  //     align: "center",
-  //     headerAlign: "center",
-  //     type: "string",
-  //     renderCell: (params) => <>+94{params.row.mobile}</>,
-  //   },
-
-  //   {
-  //     field: "role",
-  //     headerName: "Position",
-  //     sortable: false,
-  //     flex: 0.3,
-  //     align: "center",
-  //     headerAlign: "center",
-  //   },
-  //   {
-  //     field: "edit",
-  //     headerName: "Edit",
-  //     sortable: false,
-  //     flex: 0.15,
-  //     align: "center",
-  //     headerAlign: "center",
-  //     renderCell: (params) => (
-  //       <IconButton
-  //         onClick={() => {
-  //           // handleEditBus(params.row);
-  //         }}
-  //       >
-  //         <DriveFileRenameOutlineIcon sx={{ fontSize: 18 }} />
-  //       </IconButton>
-  //     ),
-  //   },
-  //   {
-  //     field: "delete",
-  //     headerName: "Delete",
-  //     sortable: false,
-  //     flex: 0.15,
-  //     align: "center",
-  //     headerAlign: "center",
-  //     renderCell: (params) => (
-  //       <IconButton
-  //         onClick={() => {
-  //           //handleDeleteBus(params.row._id);
-  //         }}
-  //       >
-  //         <DeleteOutlinedIcon sx={{ fontSize: 19 }} />
-  //       </IconButton>
-  //     ),
-  //   },
-];
+import adminAxios from "../../baseURL";
+import { toast } from "react-toastify";
 
 function CurrentRoutes() {
-  const { roadRoutes } = useRoadRouteContext();
+  const { roadRoutes, dispatch } = useRoadRouteContext();
+  const columns = [
+    {
+      field: "rId",
+      headerName: "ID",
+      width: 90,
+      flex: 0.3,
+      align: "center",
+      headerAlign: "center",
+
+      renderCell: (params) => <div>{params.row.startLocation.name}</div>,
+    },
+    {
+      field: "stations",
+      headerName: "Stations",
+      width: 90,
+      flex: 0.2,
+      align: "center",
+      headerAlign: "center",
+
+      renderCell: (params) => (
+        <div>
+          {params.row.stations.map((station) => (
+            <div key={`${station.id} ${station.lat} ${station.lng}`}>
+              {station.id}
+            </div>
+          ))}
+        </div>
+      ),
+    },
+    {
+      field: "prices",
+      headerName: "Prices",
+      width: 90,
+      flex: 0.2,
+      align: "center",
+      headerAlign: "center",
+
+      renderCell: (params) => (
+        <div>
+          {params.row.stations.map((station) => (
+            <div key={`${station.id} ${station.lat} ${station.lng}`}>
+              {station.price}
+            </div>
+          ))}
+        </div>
+      ),
+    },
+    {
+      field: "distance",
+      headerName: "Distance",
+      width: 90,
+      flex: 0.2,
+      align: "center",
+      headerAlign: "center",
+
+      renderCell: (params) => (
+        <div>
+          {params.row.stations.map((station) => (
+            <div key={`${station.id} ${station.lat} ${station.lng}`}>
+              {station.distance}
+            </div>
+          ))}
+        </div>
+      ),
+    },
+    {
+      field: "map",
+      headerName: "Map",
+      width: 90,
+      flex: 1,
+      align: "center",
+      headerAlign: "center",
+
+      renderCell: (params) => (
+        <div className="w-full h-full py-[15px]">
+          <RouteTableMap
+            googleRoutes={params.row.googleRoute}
+            stations={params.row.stations}
+            startLocation={params.row.startLocation}
+          />
+        </div>
+      ),
+    },
+
+    {
+      field: "edit",
+      headerName: "Edit",
+      sortable: false,
+      flex: 0.15,
+      align: "center",
+      headerAlign: "center",
+      renderCell: (params) => (
+        <IconButton
+          onClick={() => {
+            console.log("edit");
+          }}
+        >
+          <DriveFileRenameOutlineIcon sx={{ fontSize: 25 }} />
+        </IconButton>
+      ),
+    },
+    {
+      field: "delete",
+      headerName: "Edit",
+      sortable: false,
+      flex: 0.15,
+      align: "center",
+      headerAlign: "center",
+      renderCell: (params) => (
+        <IconButton
+          onClick={() => {
+            handleRoadRouteDelete(params.row._id);
+          }}
+        >
+          <DeleteOutlinedIcon sx={{ fontSize: 25 }} />
+        </IconButton>
+      ),
+    },
+  ];
+
+  const handleRoadRouteDelete = async (id) => {
+    try {
+      const res = await adminAxios.delete(`/api/roadRoutes/${id}`);
+      if (res.status === 200) {
+        toast.success("Route deleted successfully", {
+          position: "top-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          draggable: true,
+          theme: "colored",
+        });
+        dispatch({ type: "DELETE_ROAD_ROUTE", payload: id });
+      }
+    } catch (err) {
+      toast.error(err.response.data.message, {
+        position: "top-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
+  };
 
   return (
     <div className="mx-[60px] mb-[60px]">

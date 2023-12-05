@@ -99,7 +99,7 @@ function TicketsPage() {
   return (
     <div className="mx-[60px] mb-[60px]">
       <p className="text-main_blue text-[37px] font-semibold font-barlows  mb-[15px] leading-6">
-        Employees Details
+        Ticket Details
       </p>
       <div className="mt-[20px]">
         <Box sx={{ height: "100%", width: "100%" }}>

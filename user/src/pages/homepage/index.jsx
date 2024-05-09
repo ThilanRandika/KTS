@@ -21,38 +21,28 @@ function Home() {
     };
   }, []);
 
-  // const unsub = onSnapshot(doc(db, "notices", "13"), (doc) => {
-  //   console.log("Current data: ", doc.data());
-  // });
-
-  // useEffect(() => {
-  //   return () => {
-  //     unsub();
-
-  //   };
-  // }, []);
   return (
     <div>
       <div
-        className="w-full h-[500px] bg-cover bg-no-repeat text-white pl-[100px] pt-[80px]"
+        className="w-full h-[300px] sm:h-[500px] bg-cover bg-no-repeat text-white sm:pl-[30px] md:pl-[100px]  pt-[80px]"
         style={{
           backgroundImage:
             "url(https://res.cloudinary.com/dnoobzfxo/image/upload/v1701410129/pexels-l%C3%AA-minh-977237_jo0kom.png)",
           boxShadow: "0px -81.387px 33.512px 0.798px rgba(0, 0, 0, 0.30) inset",
         }}
       >
-        <div className="font-roboto_slab  text-[57px]  font-bold leading-[92.88%]">
+        <div className="font-roboto_slab  text-[40px]  sm:text-[57px]  font-bold leading-[92.88%] sm:text-left text-center">
           <p>Welcome to General </p>
           <p>Sir John Kotelawala </p>
           <p>Defence University </p>
           <p>Transport Management System </p>
         </div>
-        <p className="font-crimsonPro italic font-semibold text-[50px] mt-[67px]">
+        <p className="font-crimsonPro italic font-semibold leading-8 text-[50px] mt-[67px] md:block hidden">
           “Journey towards a successful future ”
         </p>
       </div>
 
-      <div className="w-full  px-[70px] mt-[20px]">
+      <div className="w-full  px-[30px]  xl:px-[70px] mt-[20px]">
         <div className="font-barlows ">
           <p className="text-main_blue text-[37px] font-semibold">
             Read this carefully
@@ -82,21 +72,22 @@ function Home() {
           </div>
         </div>
 
-        <div className="flex gap-[80px] mt-[20px] mb-[60px]">
-          <div className="w-[63%] ">
-            <div className="images">
-              <p className="text-main_blue text-[37px] font-semibold font-barlows">
+        <div className="flex gap-[30px] xl:gap-[80px] mt-[20px] mb-[60px] md:flex-flow flex-col">
+          <div className="w-[63s%] left side ">
+            <div className="services ">
+              <p className="text-main_blue text-[37px] font-semibold font-barlows lg:text-left text-center">
                 KTS Services
               </p>
               <div className="mt-[7px]">
-                <div className="flex justify-between">
-                  <div className="w-[220px] flex flex-col items-center">
+                <div className="top-servicecs flex justify-between flex-col lg:flex-row">
+                  <div className="one-service lg:w-[220px] flex flex-col items-center">
                     <p className="font-roboto text-xl font-bold text-[#1C1C1C] ">
                       Track your bus online
                     </p>
                     <img
                       src="https://res.cloudinary.com/dnoobzfxo/image/upload/v1701412032/download-removebg-preview_1_1_tbgppc.png"
                       alt=""
+                      className="w-full  md:w-[60%]"
                     />
                     <p
                       className="font-barlows text-xl leading-[100%] text-center "
@@ -105,13 +96,14 @@ function Home() {
                       Bus locations are trackable though apps
                     </p>
                   </div>
-                  <div className="w-[220px] flex flex-col items-center">
+                  <div className="one-service lg:w-[220px] flex flex-col items-center">
                     <p className="font-roboto text-xl font-bold text-[#1C1C1C] ">
                       Book your seat early
                     </p>
                     <img
                       src="https://res.cloudinary.com/dnoobzfxo/image/upload/v1701412031/download-removebg-preview_3_1_nu19r9.png"
                       alt=""
+                      className="w-full  md:w-[60%]"
                     />
                     <p
                       className="font-barlows text-xl leading-[100%] text-center "
@@ -120,13 +112,14 @@ function Home() {
                       Buy your seat even two or three days before
                     </p>
                   </div>
-                  <div className="w-[220px] flex flex-col items-center">
+                  <div className="one-service lg:w-[220px] flex flex-col items-center">
                     <p className="font-roboto text-xl font-bold text-[#1C1C1C] ">
                       Buy ticket for friends
                     </p>
                     <img
                       src="https://res.cloudinary.com/dnoobzfxo/image/upload/v1701412031/hq720-removebg-preview_1_wrnknx.png"
                       alt=""
+                      className="w-full  md:w-[60%]"
                     />
                     <p
                       className="font-barlows text-xl leading-[100%] text-center "
@@ -136,14 +129,15 @@ function Home() {
                     </p>
                   </div>
                 </div>
-                <div className="flex justify-between mt-[30px]">
-                  <div className="w-[220px] flex flex-col items-center">
+                <div className="bottom-services flex justify-between flex-col lg:flex-row  mt-[30px]">
+                  <div className="one-service lg:w-[220px]  flex flex-col items-center">
                     <p className="font-roboto text-xl font-bold text-[#1C1C1C] ">
                       E-Ticket with QR
                     </p>
                     <img
                       src="https://res.cloudinary.com/dnoobzfxo/image/upload/v1701412032/download-removebg-preview_2_1_zi9sku.png"
                       alt=""
+                      className="w-full  md:w-[60%]"
                     />
                     <p
                       className="font-barlows text-xl leading-[100%] text-center "
@@ -152,13 +146,14 @@ function Home() {
                       Do not have to carry a physical ticket
                     </p>
                   </div>
-                  <div className="w-[220px] flex flex-col items-center">
+                  <div className="one-service  lg:w-[220px]  flex flex-col items-center">
                     <p className="font-roboto text-xl font-bold text-[#1C1C1C] ">
                       Seasons for low prices
                     </p>
                     <img
                       src="https://res.cloudinary.com/dnoobzfxo/image/upload/v1701412032/images-removebg-preview_1_1_uavnqe.png"
                       alt=""
+                      className="w-full  md:w-[60%]"
                     />
                     <p
                       className="font-barlows text-xl leading-[100%] text-center "
@@ -167,13 +162,14 @@ function Home() {
                       More season tickets are lower in prices
                     </p>
                   </div>
-                  <div className="w-[220px] flex flex-col items-center">
+                  <div className="one-service lg:w-[220px]  flex flex-col items-center">
                     <p className="font-roboto text-xl font-bold text-[#1C1C1C] ">
                       Daily solid service
                     </p>
                     <img
                       src="https://res.cloudinary.com/dnoobzfxo/image/upload/v1701412031/4-Ways_To_Track_The_School_Bus_Of_Your_Children-1-removebg-preview_1_fvzfns.png"
                       alt=""
+                      className="w-full  md:w-[60%]"
                     />
                     <p
                       className="font-barlows text-xl leading-[100%] text-center "
@@ -186,55 +182,63 @@ function Home() {
               </div>
             </div>
             <div className="prices mt-[17px]">
-              <p className="text-main_blue text-[37px] font-semibold font-barlows">
+              <p className="text-main_blue text-[37px] font-semibold font-barlows lg:text-left text-center">
                 Prices
               </p>
               <div className="flex gap-6 items-center mt-[10px]">
                 <div className="h-[27px] w-[27px] flex justify-center items-center bg-main_blue rounded-full ">
                   <LocalActivityIcon fontSize="14px" sx={{ color: "white" }} />
                 </div>
-                <p className="font-barlows text-[23px]">
+                <p className="font-barlows text-[23px] lg:text-left text-center">
                   For normal tickets only get charge according to the distance
                 </p>
               </div>
-              <div className="tickets flex justify-between mt-[15px]">
-                <div className="w-[245px]">
+              <div className="tickets flex  mt-[15px] flex-col lg:flex-row gap-5 lg:gap-3 justify-center">
+                <div className="lg:w-[245px] w-full">
                   <img
                     src="https://res.cloudinary.com/dnoobzfxo/image/upload/v1701414396/Frame_1000001446_o0dnnm.png"
                     alt=""
+                    className="lg:w-full w-[80%] mx-auto"
                   />
                 </div>
-                <div className="w-[245px]">
+                <div className="lg:w-[245px] w-full">
                   <img
                     src="https://res.cloudinary.com/dnoobzfxo/image/upload/v1701414396/Frame_1000001447_lcewsy.png"
                     alt=""
+                    className="lg:w-full w-[80%] mx-auto"
                   />
                 </div>
-                <div className="w-[245px]">
+                <div className="lg:w-[245px] w-full">
                   <img
                     src="https://res.cloudinary.com/dnoobzfxo/image/upload/v1701414397/Frame_1000001448_oy5ccm.png"
                     alt=""
+                    className="lg:w-full w-[80%] mx-auto"
                   />
                 </div>
               </div>
-              <div className="flex gap-6 items-center mt-[20px]">
-                <div className="h-[27px] w-[27px] flex justify-center items-center bg-main_blue rounded-full ">
-                  <LocalActivityIcon fontSize="14px" sx={{ color: "white" }} />
+              <div className="lg:block hidden">
+                <div className="flex gap-6 items-center mt-[20px] ">
+                  <div className="h-[27px] w-[27px] flex justify-center items-center bg-main_blue rounded-full ">
+                    <LocalActivityIcon
+                      fontSize="14px"
+                      sx={{ color: "white" }}
+                    />
+                  </div>
+                  <p className="font-barlows text-[23px]">
+                    If you want season ticket you can buy from here
+                  </p>
                 </div>
-                <p className="font-barlows text-[23px]">
-                  If you want season ticket you can buy from here
-                </p>
-              </div>
-              <div className="mt-[20px]">
-                <img
-                  src="https://res.cloudinary.com/dnoobzfxo/image/upload/v1701414661/Frame_1000001542_hqkzqy.png"
-                  alt=""
-                  className="w-full"
-                />
+                <div className="mt-[20px]">
+                  <img
+                    src="https://res.cloudinary.com/dnoobzfxo/image/upload/v1701414661/Frame_1000001542_hqkzqy.png"
+                    alt=""
+                    className="w-full"
+                  />
+                </div>
               </div>
             </div>
           </div>
-          <div className="flex-1 ">
+          <div className="flex-1 right side">
             <div className="flex flex-col gap-7">
               <div className="top bg-[#F8F8F8]">
                 <div className="font-roboto text-[19px] font-medium text-center py-[7px] bg-main_red text-white">

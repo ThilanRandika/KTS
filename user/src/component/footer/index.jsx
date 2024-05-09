@@ -2,88 +2,91 @@ import { AiOutlineMail } from "react-icons/ai";
 import { LuPhone } from "react-icons/lu";
 function Footer() {
   return (
-    <div className="h-[340px] bg-main_blue flex flex-col items-center text-white font-roboto">
-      <div className="flex gap-[187px] mt-[22px]">
-        <div className="flex flex-col items-center">
-          <p className="font-roboto_slab text-[20px] mb-[8px]">Contact Us</p>
-          <p className="w-[272px] text-justify font-medium leading-[151%] text-[14px]">
-            Leverage agile frameworks to provide a robust synopsis for strategy
-            collaborative thinking to further the overall value proposition.
-          </p>
-          <div className="flex flex-col gap-4 mt-3 text-[12px]">
-            <div className="flex items-center gap-4">
-              <div className="p-3 rounded-full bg-[#111C55] border-[1px] border-[#3c4ba2]">
-                <AiOutlineMail className="text-[25px]" />
+    <div className=" bg-main_blue flex flex-col items-center text-white font-roboto pb-[10px]">
+      <div className="flex gap-[40px] md:gap-[80px] lg:gap-[187px] mt-[40px] md:mt-[22px] md:flex-row flex-col">
+        <div className="flex  gap-[80px] lg:gap-[187px] sm:flex-row flex-col">
+          <div className="flex flex-col items-center">
+            <p className="font-roboto_slab text-[20px] mb-[8px]">Contact Us</p>
+            <p className="w-[272px] text-justify font-medium leading-[151%] text-[14px]">
+              Leverage agile frameworks to provide a robust synopsis for
+              strategy collaborative thinking to further the overall value
+              proposition.
+            </p>
+            <div className="flex flex-col gap-4 mt-3 text-[12px]">
+              <div className="flex items-center gap-4">
+                <div className="p-3 rounded-full bg-[#111C55] border-[1px] border-[#3c4ba2]">
+                  <AiOutlineMail className="text-[25px]" />
+                </div>
+                <div>
+                  <p>Email</p>
+                  <p>contactkts@gmail.com</p>
+                </div>
               </div>
-              <div>
-                <p>Email</p>
-                <p>contactkts@gmail.com</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="p-3 rounded-full bg-[#111C55] border-[1px] border-[#3c4ba2]">
-                <LuPhone className="text-[25px]" />
-              </div>
-              <div>
-                <p>Phone</p>
-                <p>(+94)011546342</p>
+              <div className="flex items-center gap-4">
+                <div className="p-3 rounded-full bg-[#111C55] border-[1px] border-[#3c4ba2]">
+                  <LuPhone className="text-[25px]" />
+                </div>
+                <div>
+                  <p>Phone</p>
+                  <p>(+94)011546342</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="flex flex-col items-center">
-          <p className="font-roboto_slab text-[20px] mb-[8px]">Site Links</p>
-          <div className="flex flex-col items-center gap-[8px]">
-            <p className="text-[14px]  font-medium">Home</p>
-            <p className="text-[14px]  font-medium">Routes</p>
-            <p className="text-[14px]  font-medium">Journey</p>
-            <p className="text-[14px]  font-medium">Booking</p>
-            <p className="text-[14px]  font-medium">Prices</p>
-            <p className="text-[14px]  font-medium">Contact Us</p>
+          <div className="flex flex-col items-center sm:block hidden">
+            <p className="font-roboto_slab text-[20px] mb-[8px]">Site Links</p>
+            <div className="flex flex-col items-center gap-[8px]">
+              <p className="text-[14px]  font-medium">Home</p>
+              <p className="text-[14px]  font-medium">Routes</p>
+              <p className="text-[14px]  font-medium">Journey</p>
+              <p className="text-[14px]  font-medium">Booking</p>
+              <p className="text-[14px]  font-medium">Prices</p>
+              <p className="text-[14px]  font-medium">Contact Us</p>
+            </div>
           </div>
         </div>
-        <div>
+        <div className="flex flex-col justify-center mx-auto">
           <img
             src="https://kdu.ac.lk/wp-content/uploads/2023/06/kdu-logo2.png.webp"
             alt=""
-            className="w-[250px]"
+            className="w-[400px] md:w-[250px]  sm:mx-0 mx-auto hidden sm:block"
           />
-          <div className="flex flex-col gap-[13px] mt-[10px]">
-            <div className="flex gap-2">
+          <div className="flex flex-col gap-[13px] mt-[10px] ">
+            <div className="flex gap-2 place-items-start sm:justify-start justify-center">
               <img
                 src="https://kdu.ac.lk/wp-content/uploads/2023/05/MOD.png.webp"
                 alt=""
-                className="w-[14px]"
+                className="w-[14px] flex-shrink-0"
               />
               <p className="text-sm font-medium">
                 Sri Lanka Embassy in Katmandu
               </p>
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-2 place-items-start  sm:justify-start justify-center">
               <img
                 src="https://kdu.ac.lk/wp-content/uploads/2023/05/MOD.png.webp"
                 alt=""
-                className="w-[14px]"
+                className="w-[14px] "
               />
               <p className="text-sm font-medium">
                 The Embassy of Sri Lanka in the People’s Republic of China
               </p>
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-2 place-items-start sm:justify-start justify-center">
               <img
                 src="https://kdu.ac.lk/wp-content/uploads/2023/05/MOD.png.webp"
                 alt=""
-                className="w-[14px]"
+                className="w-[14px]  "
               />
               <p className="text-sm font-medium">
                 Scholarships – High Commission of Sri Lanka in Pakistan
               </p>
-            </div>{" "}
-            <div className="flex gap-2">
+            </div>
+            <div className="flex gap-2 place-items-start  sm:justify-start justify-center">
               <img
                 src="https://kdu.ac.lk/wp-content/uploads/2023/05/logo-wide.png.webp"
                 alt=""
-                className="w-[14px]"
+                className="w-[14px] "
               />
               <p className="text-sm font-medium">
                 Grand Royal Education Pvt Ltd

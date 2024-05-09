@@ -24,7 +24,7 @@ function Home() {
   return (
     <div>
       <div
-        className="w-full h-[300px] sm:h-[500px] bg-cover bg-no-repeat text-white sm:pl-[30px] md:pl-[100px]  pt-[80px]"
+        className="w-full h-[300px] sm:h-[500px] bg-cover bg-no-repeat text-white sm:pl-[30px] md:pl-[100px]  pt-[30px] sm:pt-[80px]"
         style={{
           backgroundImage:
             "url(https://res.cloudinary.com/dnoobzfxo/image/upload/v1701410129/pexels-l%C3%AA-minh-977237_jo0kom.png)",
@@ -44,7 +44,7 @@ function Home() {
 
       <div className="w-full  px-[30px]  xl:px-[70px] mt-[20px]">
         <div className="font-barlows ">
-          <p className="text-main_blue text-[37px] font-semibold">
+          <p className="text-main_blue text-[37px] font-semibold md:text-left text-center">
             Read this carefully
           </p>
 
@@ -52,7 +52,7 @@ function Home() {
             className="text-justify text-[18px] "
             style={{ lineHeight: "normal" }}
           >
-            <p>
+            <p className="md:text-left text-center">
               Welcome to the services we offer to ensure a brighter future for
               you. You are the future of our country and the upcoming
               generation, so it's crucial to utilize these resources wisely and
@@ -62,7 +62,7 @@ function Home() {
               convenience. To travel on our buses, you must possess a valid
               single ticket or a season ticket.
             </p>
-            <p>
+            <p className="md:text-left text-center">
               Please be aware that any violations or improper behavior may
               result in a penalty of Rs. 2500. We are committed to providing you
               with a safe and efficient transportation service to support your
@@ -72,7 +72,7 @@ function Home() {
           </div>
         </div>
 
-        <div className="flex gap-[30px] xl:gap-[80px] mt-[20px] mb-[60px] md:flex-flow flex-col">
+        <div className="flex gap-[30px] xl:gap-[80px] mt-[20px] mb-[60px] md:flex-row flex-col">
           <div className="w-[63s%] left side ">
             <div className="services ">
               <p className="text-main_blue text-[37px] font-semibold font-barlows lg:text-left text-center">

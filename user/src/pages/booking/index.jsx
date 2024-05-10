@@ -7,7 +7,7 @@ function Booking() {
   const { tickets } = useTicketContext();
 
   return (
-    <div className="px-[100px] mb-[40px]">
+    <div className="px-[20px] xl:px-[100px] mb-[40px]">
       <p className="text-main_blue text-[37px] font-semibold font-barlows mt-[12px]">
         Recent Tickets
       </p>
@@ -17,22 +17,22 @@ function Booking() {
           .map((ticket) => (
             <div
               key={ticket._id}
-              className="ticket w-full rounded-[16px] flex pt-[14px] px-[32px] pb-[14px] justify-between relative"
+              className="ticket w-full rounded-[16px] flex pt-[14px] px-[32px] pb-[14px] justify-between relative sm:flex-row flex-col"
               style={{
                 border: "1px solid #BBB",
                 background: "#F5F5F5",
                 boxShadow: "0px 3.199px 3.199px 0px rgba(0, 0, 0, 0.25)",
               }}
             >
-              <div className="flex flex-col">
+              <div className="flex flex-col ">
                 <p
-                  className="font-barlows text-[37px] font-medium mb-[3px]"
+                  className="font-barlows text-[25px] sm:text-[37px] font-medium mb-[3px]"
                   style={{ lineHeight: "normal" }}
                 >
                   Ticket ID - {ticket.ticketId}
                 </p>
-                <div className="flex gap-[100px]">
-                  <div className="left">
+                <div className="flex lg:flex-row flex-col lg:gap-[30px] xl:gap-[100px] ">
+                  <div className="left-details">
                     <p className="font-barlows text-[23px] font-medium border-b-[3px] border-[#000] max-w-fit">
                       User Details
                     </p>
@@ -54,7 +54,7 @@ function Booking() {
                       </div>
                     </div>
                   </div>
-                  <div className="right">
+                  <div className="right-details">
                     <p className="font-barlows text-[23px] font-medium border-b-[3px] border-[#000] max-w-fit">
                       Journey Details
                     </p>
@@ -83,10 +83,14 @@ function Booking() {
                   </button>
                 </div>
               </div>
-              <div className="">
-                <img src={ticket.qrCode} alt="" className="w-[230px] " />
+              <div className="qr flex justify-end items-end">
+                <img
+                  src={ticket.qrCode}
+                  alt=""
+                  className="md:w-[80%] lg:w-[220px] xl:w-[230px] "
+                />
               </div>
-              <div className="absolute top-[0px] left-[360px] text-white h-[45px] w-[100px] bg-main_red pt-[10px] flex justify-center rounded-b-[10px]  text-[18px] font-roboto font-medium">
+              <div className="absolute top-[0px] left-[70%] sm:left-[360px] text-white h-[45px] sm:w-[100px] w-[80px] bg-main_red pt-[10px] flex justify-center rounded-b-[10px]  text-[18px] font-roboto font-medium">
                 Valid
               </div>
             </div>

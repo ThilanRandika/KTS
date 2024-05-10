@@ -31,7 +31,7 @@ function Home() {
           boxShadow: "0px -81.387px 33.512px 0.798px rgba(0, 0, 0, 0.30) inset",
         }}
       >
-        <div className="font-roboto_slab  text-[40px]  sm:text-[57px]  font-bold leading-[92.88%] sm:text-left text-center">
+        <div className="font-roboto_slab  text-[32px]   xsm:text-[40px]   sm:text-[57px]  font-bold leading-[92.88%] sm:text-left text-center">
           <p>Welcome to General </p>
           <p>Sir John Kotelawala </p>
           <p>Defence University </p>
@@ -73,7 +73,7 @@ function Home() {
         </div>
 
         <div className="flex gap-[30px] xl:gap-[80px] mt-[20px] mb-[60px] md:flex-row flex-col">
-          <div className="w-[63s%] left side ">
+          <div className="md:w-[63%] left side mx-auto">
             <div className="services ">
               <p className="text-main_blue text-[37px] font-semibold font-barlows lg:text-left text-center">
                 KTS Services
@@ -286,22 +286,24 @@ function Home() {
                   </div>
                 </div>
                 <div className="px-8 flex justify-between mt-2 mb-4">
-                  <div className="flex border-[1px] border-black rounded-[7px] font-roboto items-center gap-1 pr-2 h-[46px] w-[155px]">
+                  <div className="flex border-[1px] border-black rounded-[7px] font-roboto items-center gap-1 pr-2 h-[46px] w-[130px] xsm:w-[155px]">
                     <div>
                       <img
                         src="https://res.cloudinary.com/dnoobzfxo/image/upload/v1701422022/google-play-icon-2048x2048-487quz63-removebg-preview_x8k77l.png"
                         alt=""
-                        className="w-[46px]"
+                        className="w-[46px] "
                       />
                     </div>
                     <div className="">
-                      <p className="font-medium text-[11px]">GET IT ON</p>
-                      <p className="font-bold text-[17px] leading-none">
+                      <p className="font-medium text-[8px]  xsm:text-[11px] ">
+                        GET IT ON
+                      </p>
+                      <p className="font-bold text-[13px]  xsm:text-[17px] leading-none">
                         Google Play
                       </p>
                     </div>
                   </div>
-                  <div className="flex border-[1px] border-black rounded-[7px] font-roboto items-center gap-1 pr-2 h-[46px] w-[155px]">
+                  <div className="flex border-[1px] border-black rounded-[7px] font-roboto items-center gap-1 pr-2 h-[46px] w-[130px] xsm:w-[155px]">
                     <div>
                       <img
                         src="https://res.cloudinary.com/dnoobzfxo/image/upload/v1701422090/2560px-Apple_Pay_logo.svg-removebg-preview_qe2h9a.png"
@@ -310,9 +312,11 @@ function Home() {
                       />
                     </div>
                     <div className="">
-                      <p className="font-medium text-[11px]">GET IT ON</p>
-                      <p className="font-bold text-[17px] leading-none">
-                        Google Play
+                      <p className="font-medium text-[8px]  xsm:text-[11px]">
+                        GET IT ON
+                      </p>
+                      <p className="font-bold text-[13px]  xsm:text-[17px] leading-none">
+                        Apple Pay
                       </p>
                     </div>
                   </div>

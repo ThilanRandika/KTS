@@ -56,19 +56,19 @@ function Footer() {
               <img
                 src="https://kdu.ac.lk/wp-content/uploads/2023/05/MOD.png.webp"
                 alt=""
-                className="w-[14px] flex-shrink-0"
+                className="w-[14px] flex-shrink-0 xsm:block hidden "
               />
-              <p className="text-sm font-medium">
+              <p className="text-sm font-medium xsm:text-left text-center">
                 Sri Lanka Embassy in Katmandu
               </p>
             </div>
-            <div className="flex gap-2 place-items-start  sm:justify-start justify-center">
+            <div className="flex gap-2 place-items-start  sm:justify-start justify-center  ">
               <img
                 src="https://kdu.ac.lk/wp-content/uploads/2023/05/MOD.png.webp"
                 alt=""
-                className="w-[14px] "
+                className="w-[14px] xsm:block hidden "
               />
-              <p className="text-sm font-medium">
+              <p className="text-sm font-medium xsm:text-left text-center">
                 The Embassy of Sri Lanka in the People’s Republic of China
               </p>
             </div>
@@ -76,9 +76,9 @@ function Footer() {
               <img
                 src="https://kdu.ac.lk/wp-content/uploads/2023/05/MOD.png.webp"
                 alt=""
-                className="w-[14px]  "
+                className="w-[14px]  xsm:block hidden "
               />
-              <p className="text-sm font-medium">
+              <p className="text-sm font-medium xsm:text-left text-center">
                 Scholarships – High Commission of Sri Lanka in Pakistan
               </p>
             </div>
@@ -86,17 +86,17 @@ function Footer() {
               <img
                 src="https://kdu.ac.lk/wp-content/uploads/2023/05/logo-wide.png.webp"
                 alt=""
-                className="w-[14px] "
+                className="w-[14px] xsm:block hidden "
               />
-              <p className="text-sm font-medium">
+              <p className="text-sm font-medium xsm:text-left text-center">
                 Grand Royal Education Pvt Ltd
               </p>
             </div>
           </div>
         </div>
       </div>
-      <div className="h-[1px] bg-[#848E99] w-full mt-[15px]" />
-      <div className="text-sm mt-[14px] font-medium">
+      <div className="h-[1px] bg-[#848E99] w-full mt-[15px] " />
+      <div className="text-sm mt-[14px] font-medium xsm:text-left text-center">
         Copyright © 2022 General Sir John Kotelawala Defence University
       </div>
     </div>

@@ -191,7 +191,7 @@ function Login() {
               </div>
             </div>
             <div className="flex flex-col items-center">
-              <div className="w-[100%] flex justify-between items-center">
+              <div className="w-[100%] lg:w-[75%] flex justify-between items-center">
                 <div className="flex items-center">
                   <Checkbox
                     defaultChecked

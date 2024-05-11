@@ -9,6 +9,8 @@ import Footer from "./component/footer";
 import Login from "./pages/loginpage";
 import { useUserContext } from "./hooks/useUserAuthContext";
 import ProfilePage from "./pages/profilepage";
+import ResetPasswordEmailPage from "./pages/ResetPasswordEmialPage";
+import ResetPassword from "./pages/resetpassword";
 
 function App() {
   const { user } = useUserContext();
@@ -42,6 +44,11 @@ function App() {
             path="/login"
             element={user ? <Navigate to="/" /> : <Login />}
           />
+          <Route
+            path="/resetpasswordemail"
+            element={<ResetPasswordEmailPage />}
+          />
+          <Route path="/resetpassword/:token" element={<ResetPassword />} />
         </Routes>
       </div>
       {user && <Footer />}

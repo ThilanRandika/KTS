@@ -4,12 +4,16 @@ import { useState } from "react";
 import userAxios from "../../baseURL";
 import { useUserContext } from "../../hooks/useUserAuthContext";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const normalStyle =
   "w-full  h-[56px] pl-[20px] py-[7px] font-normal text-sm text-[#515151] focus:outline-none ";
 const errorStyle =
   "w-full  h-[56px] pl-[20px] py-[7px] font-normal text-sm text-red-400 focus:outline-none ";
+
 function Login() {
+  const navigate = useNavigate();
+
   const { dispatch } = useUserContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -193,7 +197,12 @@ function Login() {
                   </span>
                 </div>
 
-                <div className="text-red-500 text-[15px] font-normal">
+                <div
+                  className="text-red-500 text-[15px] font-normal cursor-pointer hover:font-bold "
+                  onClick={() => {
+                    navigate("/resetpasswordemail");
+                  }}
+                >
                   Reset Password
                 </div>
               </div>

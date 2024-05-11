@@ -200,7 +200,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
   }).save();
 
   //construct reset URL
-  const resetURL = `${process.env.FRONTEND_URL}/resetpassword/${resetToken}`;
+  const resetURL = `${process.env.FRONTEND_URL}/resetPassword/${resetToken}`;
 
   //Reset email
   const message = `

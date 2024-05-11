@@ -101,8 +101,8 @@ function ResetPasswordEmailPage() {
           Enter your email address below and we'll send you a link to reset your
           password.
         </p>
-        <form className="flex flex-col mt-[15px]">
-          <div className="w-full">
+        <form className="flex flex-col mt-[10px]">
+          <div className="w-full flex flex-col items-center sm:items-start">
             <label
               htmlFor="email"
               className={` text-[17px] font-bold font-roboto ${

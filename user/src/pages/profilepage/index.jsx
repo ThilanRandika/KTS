@@ -125,35 +125,32 @@ function ProfilePage() {
   };
 
   return (
-    <div className="px-[90px] mb-[50px]">
+    <div className="sm:px-[90px] px-[40px] mb-[50px]">
       <p className="text-main_blue text-[37px] font-semibold font-barlows mt-[12px] mb-[15px]">
         Profile Page
       </p>
-      <div className="flex gap-[50px]">
+      <div className="flex gap-[50px] lg:flex-row flex-col">
         <div className="flex-1 ">
-          <div className="flex gap-6">
+          <div className="flex gap-6 sm:flex-row flex-col">
             <div>
-              <img
-                src={user.photo}
-                className="w-[250px] h-[250px] object-cover"
-              />
+              <img src={user.photo} className="w-[250px]  object-cover" />
             </div>
             <div className="flex-col">
               <p
-                className="text-[35px]  font-bold font-barlows mb-[10px] "
+                className="xl:text-[35px]  lg:text-[30px] text-[30px] font-bold font-barlows mb-[10px] "
                 style={{ lineHeight: "normal" }}
               >
                 {user ? user.fullName : "loading"}
               </p>
-              <p className="text-[25px]  font-semibold font-barlows text-gray-800 mt-[10px] leading-6">
+              <p className="xl:text-[25px] lg:text-[20px]  text-[20px] font-semibold font-barlows text-gray-800 mt-[10px] leading-6">
                 {user ? user.sId : "loading"}
               </p>
-              <p className="text-[25px]  font-semibold font-barlows text-gray-700">
+              <p className="xl:text-[25px] lg:text-[20px]  text-[20px] font-semibold font-barlows text-gray-700">
                 {user ? user.email : "loading"}
               </p>
             </div>
           </div>
-          <div className="flex justify-between gap-[30px]  mt-[30px] font-roboto">
+          <div className="flex justify-between gap-[30px]  mt-[30px] font-roboto sm:flex-row flex-col">
             <div className="border-2 flex-1 pl-4 pt-1 pb-2 border-gray-200 rounded-md">
               <p className=" text-[24px] font-semibold pt-1 font-barlows ">
                 User Information
@@ -212,7 +209,7 @@ function ProfilePage() {
             </div>
           </div>
         </div>
-        <div className="w-[380px] border-2 border-gray-200 rounded-[12px] py-[8px] px-[19px] place-self-start">
+        <div className="sm:w-[380px] w-full border-2 border-gray-200 rounded-[12px] py-[8px] px-[19px] place-self-start">
           <p className="font-barlows text-[22px] font-semibold ">
             Change your password
           </p>

@@ -5,12 +5,16 @@ import { useState } from "react";
 import { ImCancelCircle } from "react-icons/im";
 import { BsFillPersonFill } from "react-icons/bs";
 import { HiMiniInboxArrowDown } from "react-icons/hi2";
+import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
 const linkClassNames =
   "w-[125px]  pt-[2px]  pl-[6px]  pr-[6px]  pb-[7px] flex justify-center items-center border-l-[1px]";
 
+const linkClassNames_in_sidebar =
+  "sm:text-[20px] text-[18px] w-full p-2 hover:bg-gray-800  rounded-lg  w-[60%] cursor-pointer text-center";
 function Navbar() {
   const { user, dispatch } = useUserContext();
+  const [nav, setNav] = useState(false);
   const [profileClicked, setProfileClicked] = useState(false);
   const navigate = useNavigate();
 
@@ -19,22 +23,28 @@ function Navbar() {
     localStorage.removeItem("user");
   };
 
+  const handleNav = () => {
+    setNav(!nav);
+  };
+
   const clickToProfile = () => {
     setProfileClicked(false);
     navigate("/profile");
   };
   return (
     <div className="bg-main_blue h-[60px] flex justify-between font-roboto text-white">
-      <div>
+      <div className="xl:block  lg:hidden md:block  flex items-center">
         <img
           src="https://kdu.ac.lk/wp-content/uploads/2023/06/kdu-logo2.png.webp"
           alt=""
-          className="h-[60px]"
+          className="xsm:h-[60px] h-[50px]"
         />
       </div>
-      <div className="mt-[14px] flex items-center text-[17px] font-medium">
+      <div className="mt-[14px] items-center text-[17px] font-medium md:hidden lg:flex hidden">
         <NavLink to="/">
-          <div className={linkClassNames}>Home</div>
+          <div className={`${linkClassNames} xl:border-l-[1px] border-l-[0px]`}>
+            Home
+          </div>
         </NavLink>
         <NavLink to="/routes">
           <div className={linkClassNames}>Routes</div>
@@ -49,14 +59,17 @@ function Navbar() {
           <div className={linkClassNames}>Prices</div>
         </NavLink>
         <NavLink to="/contact-us">
-          <div className={`${linkClassNames} border-r-[1px]`}>Contact Us</div>
+          <div
+            className={`${linkClassNames} xl:border-r-[1px] border-r-[0px] `}
+          >
+            Contact Us
+          </div>
         </NavLink>
       </div>
       <div
-        className="font-roboto_slab flex items-center mr-3 gap-3 relative cursor-pointer"
+        className="font-roboto_slab items-center mr-3 gap-3 relative cursor-pointer lg:flex md:hidden hidden"
         onClick={() => {
           setProfileClicked(!profileClicked);
-          console.log(profileClicked);
         }}
       >
         <img
@@ -68,7 +81,7 @@ function Navbar() {
           alt=""
           className="h-[60px]"
         />
-        <div>
+        <div className="leading-4">
           <p>{user ? user.sId : "loading"}</p>
           <p className="text-[17px]">{user ? user.shortName : "loading"}</p>
         </div>
@@ -79,8 +92,72 @@ function Navbar() {
           </span>
         </div>
       </div>
+      {/* Mobile Navigation Icon */}
+      <div
+        onClick={handleNav}
+        className="flex items-center mr-[15px] xsm:mr-[30px] lg:hidden "
+      >
+        <div className="xsm:w-[40px] xsm:h-[40px] w-[30px] h-[30px] flex items-center justify-center rounded-full bg-gray-500 xsm:bg-main_blue z-50 opacity-40 xsm:opacity-100">
+          {nav ? (
+            <AiOutlineClose
+              strokeWidth={100}
+              className="xsm:text-[20px] text-[16px] text-black xsm:text-white "
+            />
+          ) : (
+            <AiOutlineMenu className="xsm:text-[20px] text-[16px] text-black xsm:text-white " />
+          )}
+        </div>
+      </div>
+      <div
+        className={
+          nav
+            ? "fixed lg:hidden left-0 top-0  sm:w-[50%] xsm:w-[70%] w-[75%] h-full border-r  bg-main_blue ease-in-out duration-500 bg-opacity-[92%]  bg-[#000300] z-40 "
+            : "ease-in-out w-[70%] duration-500 fixed top-0 bottom-0 left-[-100%]"
+        }
+      >
+        <div className="px-[15px] mt-[15px]">
+          <img
+            src="https://kdu.ac.lk/wp-content/uploads/2023/06/kdu-logo2.png.webp"
+            alt=""
+            className="w-full "
+          />
+        </div>
+        <div className="border-b-[1px] border-white" />
+        <div className="mt-[14px] items-center  font-medium flex flex-col w-full">
+          <NavLink to="/" className="w-full flex justify-center">
+            <div className={`${linkClassNames_in_sidebar} `}>Home</div>
+          </NavLink>
+          <NavLink to="/routes" className="w-full flex justify-center">
+            <div className={linkClassNames_in_sidebar}>Routes</div>
+          </NavLink>
+          <NavLink to="/journey" className="w-full flex justify-center">
+            <div className={linkClassNames_in_sidebar}>Journey</div>
+          </NavLink>
+          <NavLink to="/booking" className="w-full flex justify-center">
+            <div className={linkClassNames_in_sidebar}>Booking</div>
+          </NavLink>
+          <NavLink to="/prices" className="w-full flex justify-center">
+            <div className={linkClassNames_in_sidebar}>Prices</div>
+          </NavLink>
+          <NavLink to="/contact-us" className="w-full flex justify-center">
+            <div className={`${linkClassNames_in_sidebar} `}>Contact Us</div>
+          </NavLink>
+          <NavLink to="/profile" className="w-full flex justify-center">
+            <div className={`${linkClassNames_in_sidebar} `}>My Profile</div>
+          </NavLink>
+        </div>
+        <div
+          className="absolute bottom-0 w-full bg-black opacity-60 text-white flex justify-center py-[15px]
+        font-roboto  cursor-pointer  font-extrabold text-[20px] xsm:text-[24px]"
+        >
+          <button className="w-full" onClick={logoutFun}>
+            Log out
+          </button>
+        </div>
+      </div>
+
       {profileClicked && (
-        <div className=" bg-white absolute right-[160px] top-[40px] w-[230px]  z-10 font-roboto border-[1px] rounded-md border-gray-400 text-black">
+        <div className=" bg-white absolute right-[160px] top-[40px] w-[230px]  z-10 font-roboto border-[1px] rounded-md border-gray-400 text-black lg:block hidden">
           <div className="px-3 py-2 w-full h-full text-sm font-normal flex-col flex">
             <div className="flex  items-center justify-between px-1">
               <div className="font-roboto font-medium text-[16px]">

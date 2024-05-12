@@ -11,7 +11,7 @@ const linkClassNames =
   "w-[125px]  pt-[2px]  pl-[6px]  pr-[6px]  pb-[7px] flex justify-center items-center border-l-[1px]";
 
 const linkClassNames_in_sidebar =
-  "sm:text-[20px] text-[18px] w-full p-2 hover:bg-gray-800  rounded-lg  w-[60%] cursor-pointer text-center";
+  "sm:text-[20px] text-[18px] w-full p-2 hover:bg-main_blue hover:opacity-80 rounded-lg  w-[60%] cursor-pointer text-center";
 function Navbar() {
   const { user, dispatch } = useUserContext();
   const [nav, setNav] = useState(false);

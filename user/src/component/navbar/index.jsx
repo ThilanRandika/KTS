@@ -34,11 +34,13 @@ function Navbar() {
   return (
     <div className="bg-main_blue h-[60px] flex justify-between font-roboto text-white">
       <div className="xl:block  lg:hidden md:block  flex items-center">
-        <img
-          src="https://kdu.ac.lk/wp-content/uploads/2023/06/kdu-logo2.png.webp"
-          alt=""
-          className="xsm:h-[60px] h-[50px]"
-        />
+        <NavLink to="/">
+          <img
+            src="https://kdu.ac.lk/wp-content/uploads/2023/06/kdu-logo2.png.webp"
+            alt=""
+            className="xsm:h-[60px] h-[50px]"
+          />
+        </NavLink>
       </div>
       <div className="mt-[14px] items-center text-[17px] font-medium md:hidden lg:flex hidden">
         <NavLink to="/">
@@ -120,6 +122,9 @@ function Navbar() {
             src="https://kdu.ac.lk/wp-content/uploads/2023/06/kdu-logo2.png.webp"
             alt=""
             className="w-full "
+            onClick={() => {
+              setNav(false);
+            }}
           />
         </div>
         <div className="border-b-[1px] border-white" />

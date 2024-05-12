@@ -32,7 +32,7 @@ function Navbar() {
     navigate("/profile");
   };
   return (
-    <div className="bg-main_blue h-[60px] flex justify-between font-roboto text-white">
+    <div className="bg-main_blue h-[60px] flex justify-between font-roboto text-white  fixed lg:relative w-full  z-50">
       <div className="xl:block  lg:hidden md:block  flex items-center">
         <NavLink to="/">
           <img

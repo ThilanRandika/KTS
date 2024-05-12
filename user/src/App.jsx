@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="app flex flex-col overflow-y-scroll min-h-screen">
       {user && <Navbar />}
-      <div className="w-full h-full flex-1">
+      <div className="w-full h-full flex-1 lg:mt-0 mt-[45px]">
         <Routes>
           <Route
             path="/"

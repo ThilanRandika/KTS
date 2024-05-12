@@ -8,7 +8,7 @@ import { ImCancelCircle } from "react-icons/im";
 import { BsFillPersonFill } from "react-icons/bs";
 import { HiMiniInboxArrowDown } from "react-icons/hi2";
 
-function Navbar() {
+function Navbar({ setSidebar, sidebar }) {
   const { user, dispatch } = useUserContext();
   const [profileClicked, setProfileClicked] = useState(false);
 
@@ -20,7 +20,13 @@ function Navbar() {
 
   return (
     <div className="flex justify-between pt-1 items-center pr-4 pl-3">
-      <div className="text-[25px] text-main_blue">
+      <div
+        className="text-[25px] text-main_blue"
+        onClick={() => {
+          setSidebar(!sidebar);
+          console.log(sidebar);
+        }}
+      >
         <IoGridSharp />
       </div>
       <div className="flex items-center">

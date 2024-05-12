@@ -15,18 +15,22 @@ import Journey from "./pages/journey";
 import CurrentRoutes from "./pages/currentRoutes";
 import UsersPage from "./pages/users";
 import TicketsPage from "./pages/tickets";
+import { useState } from "react";
 
 function App() {
   const { user } = useUserContext();
+  const [sidebar, setSidebar] = useState(true);
 
   return (
     <div className="flex h-screen ">
-      <div className={user ? "w-[300px] bg-red-100 h-screen" : "hidden"}>
+      <div
+        className={user && sidebar ? "w-[300px] bg-red-100 h-screen" : "hidden"}
+      >
         <Sidebar />
       </div>
       <div className=" max-h-screen overflow-y-scroll w-full">
         <div className={user ? "" : "hidden"}>
-          <Navbar />
+          <Navbar setSidebar={setSidebar} sidebar={sidebar} />
         </div>
 
         <div className=" min-h-full">

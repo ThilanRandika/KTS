@@ -111,8 +111,8 @@ function Navbar() {
       <div
         className={
           nav
-            ? "fixed lg:hidden left-0 top-0  sm:w-[50%] xsm:w-[70%] w-[75%] h-full border-r  bg-main_blue ease-in-out duration-500 bg-opacity-[92%]  bg-[#000300] z-40 "
-            : "ease-in-out w-[70%] duration-500 fixed top-0 bottom-0 left-[-100%]"
+            ? "fixed lg:hidden left-0 top-0  sm:w-[50%] xsm:w-[70%] w-[75%] h-full border-r  bg-main_blue ease-in-out duration-500 bg-opacity-[92%]   z-40 "
+            : "ease-in-out w-[70%] duration-500 fixed top-0 bottom-0 left-[-100%] z-40"
         }
       >
         <div className="px-[15px] mt-[15px]">

@@ -3,7 +3,7 @@ import { LuPhone } from "react-icons/lu";
 function Footer() {
   return (
     <div className=" bg-main_blue flex flex-col items-center text-white font-roboto pb-[10px]">
-      <div className="flex gap-[40px] md:gap-[80px] lg:gap-[187px] mt-[40px] md:mt-[22px] md:flex-row flex-col">
+      <div className="flex gap-[40px] md:gap-[60px] lg:gap-[130px] xl:gap-[187px] mt-[40px] md:mt-[22px] md:flex-row flex-col">
         <div className="flex  gap-[80px] lg:gap-[187px] sm:flex-row flex-col">
           <div className="flex flex-col items-center">
             <p className="font-roboto_slab text-[20px] mb-[8px]">Contact Us</p>
@@ -45,7 +45,7 @@ function Footer() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col justify-center mx-auto">
+        <div className="flex flex-col justify-centerd mx-auto xsm:px-0 px-[5px] ">
           <img
             src="https://kdu.ac.lk/wp-content/uploads/2023/06/kdu-logo2.png.webp"
             alt=""
@@ -58,7 +58,7 @@ function Footer() {
                 alt=""
                 className="w-[14px] flex-shrink-0 xsm:block hidden "
               />
-              <p className="text-sm font-medium xsm:text-left text-center">
+              <p className="xsm:text-[14px] text-[12px]  font-medium xsm:text-left text-center">
                 Sri Lanka Embassy in Katmandu
               </p>
             </div>
@@ -68,7 +68,7 @@ function Footer() {
                 alt=""
                 className="w-[14px] xsm:block hidden "
               />
-              <p className="text-sm font-medium xsm:text-left text-center">
+              <p className="xsm:text-[14px] text-[12px]  font-medium xsm:text-left text-center">
                 The Embassy of Sri Lanka in the People’s Republic of China
               </p>
             </div>
@@ -78,7 +78,7 @@ function Footer() {
                 alt=""
                 className="w-[14px]  xsm:block hidden "
               />
-              <p className="text-sm font-medium xsm:text-left text-center">
+              <p className="xsm:text-[14px] text-[12px]  font-medium xsm:text-left text-center">
                 Scholarships – High Commission of Sri Lanka in Pakistan
               </p>
             </div>
@@ -88,7 +88,7 @@ function Footer() {
                 alt=""
                 className="w-[14px] xsm:block hidden "
               />
-              <p className="text-sm font-medium xsm:text-left text-center">
+              <p className="xsm:text-[14px] text-[12px]  font-medium xsm:text-left text-center">
                 Grand Royal Education Pvt Ltd
               </p>
             </div>

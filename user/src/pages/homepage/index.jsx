@@ -52,7 +52,7 @@ function Home() {
             className="text-justify text-[18px] "
             style={{ lineHeight: "normal" }}
           >
-            <p className="md:text-left text-center">
+            <p className="md:text-left text-justify ">
               Welcome to the services we offer to ensure a brighter future for
               you. You are the future of our country and the upcoming
               generation, so it's crucial to utilize these resources wisely and
@@ -62,7 +62,7 @@ function Home() {
               convenience. To travel on our buses, you must possess a valid
               single ticket or a season ticket.
             </p>
-            <p className="md:text-left text-center">
+            <p className="md:text-left text-justify">
               Please be aware that any violations or improper behavior may
               result in a penalty of Rs. 2500. We are committed to providing you
               with a safe and efficient transportation service to support your

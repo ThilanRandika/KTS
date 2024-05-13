@@ -14,7 +14,7 @@ import { FaBusAlt } from "react-icons/fa";
 import { RiBusWifiLine } from "react-icons/ri";
 import { GrUserWorker } from "react-icons/gr";
 import { FaUserCog } from "react-icons/fa";
-
+import { AiOutlineClose } from "react-icons/ai";
 const links = [
   {
     title: "Dashboard",
@@ -124,14 +124,23 @@ const activeLink =
 const normalLink =
   "flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg  text-md text-gray-400  hover:text-white  hover:text-lg  m-2 ";
 
-function Sidebar() {
+function Sidebar({ setSidebar, sidebar }) {
   return (
-    <div className="bg-main_blue h-full overflow-y-scroll">
-      <div className="pr-[10px] pt-[10px]">
+    <div className="bg-main_blue h-full overflow-y-scroll  sm:relative absolute top-0 left-0 z-50">
+      <div className="pr-[10px] pt-[10px] flex items-center gap-[30px]">
         <img
           src="https://kdu.ac.lk/wp-content/uploads/2023/06/kdu-logo2.png.webp"
           alt=""
-          className="w-[294px]"
+          className="sm:w-[294px] w-[200px]"
+        />
+
+        <AiOutlineClose
+          strokeWidth={50}
+          className="text-white text-[20px] sm:hidden block mr-[10px]"
+          onClick={() => {
+            setSidebar(!sidebar);
+            console.log(sidebar);
+          }}
         />
       </div>
       <div className="w-full h-[1px] bg-[#5879ad] mt-1" />

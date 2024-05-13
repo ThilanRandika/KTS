@@ -14,6 +14,9 @@ export default {
         main_blue: "#002147",
         main_red: "#7A0736",
       },
+      screens: {
+        xsm: "480px",
+      },
     },
   },
   plugins: [],

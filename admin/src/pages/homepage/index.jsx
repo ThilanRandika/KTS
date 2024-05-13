@@ -5,51 +5,31 @@ import MiddleD from "./middleD";
 import MiddleE from "./middleE";
 import LastF from "./lastF";
 import LastG from "./lastG";
-
-const gridTemplate = `
-"a b b e f"
-"a b b e f"
-"a b b e f"
-"a c c e f"
-"a c c g g"
-"a c c g g"
-"a d d g g"
-"a d d g g"
-`;
+import "./dashboard.css";
 
 function HomePage() {
   return (
     <div className="mx-2  h-full mt-3">
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "grid",
-          gap: "12px",
-          gridTemplateAreas: gridTemplate,
-          gridTemplateColumns: "repeat(5, minmax(150px, 1fr))",
-          gridTemplateRows: "repeat(8, minmax(67px, 1fr))",
-        }}
-      >
-        <div className="h-full" style={{ gridArea: "a" }}>
+      <div className="dashboard-container">
+        <div className="h-full w-full" style={{ gridArea: "a" }}>
           <LeftRowA />
         </div>
-        <div className="h-full" style={{ gridArea: "b" }}>
+        <div className="h-full w-full" style={{ gridArea: "b" }}>
           <MiddleB />
         </div>
-        <div className="h-full" style={{ gridArea: "c" }}>
+        <div className="h-full w-full" style={{ gridArea: "c" }}>
           <MiddleC />
         </div>
-        <div className="h-full" style={{ gridArea: "d" }}>
+        <div className="h-full w-full" style={{ gridArea: "d" }}>
           <MiddleD />
         </div>
-        <div className="h-full" style={{ gridArea: "e" }}>
+        <div className="h-full w-full" style={{ gridArea: "e" }}>
           <MiddleE />
         </div>
-        <div className="h-full" style={{ gridArea: "f" }}>
+        <div className="h-full w-full" style={{ gridArea: "f" }}>
           <LastF />
         </div>
-        <div className="h-full" style={{ gridArea: "g" }}>
+        <div className="h-full w-full" style={{ gridArea: "g" }}>
           <LastG />
         </div>
       </div>

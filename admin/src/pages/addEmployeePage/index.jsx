@@ -171,64 +171,66 @@ function AddEmployeePage() {
   };
 
   return (
-    <div className="mx-[80px]">
-      <p className="text-main_blue text-[37px] font-semibold font-barlows  mb-[30px] leading-6 ">
+    <div className="lg:mx-[80px] sm:mx-[20px] ">
+      <p className="text-main_blue xsm:text-[37px] text-[27px] font-semibold font-barlows  mb-[30px] leading-6 ">
         Insert Employee Details
       </p>
       <form onSubmit={handleSubmit}>
-        <div className="flex gap-[50px]">
-          <div className="w-[400px] h-[500px]">
-            <label htmlFor="busImage" className="w-fit">
-              <div
-                className={`${
-                  employeeImage
-                    ? "border-[1px] border-solid rounded-[6px] border-gray-300"
-                    : "border-2 border-dashed rounded-[8px] border-main_blue"
-                }  h-[450px]  flex items-center justify-center overflow-hidden px-3 py-3`}
-              >
-                {employeeImage ? (
-                  <img
-                    src={URL.createObjectURL(employeeImage)}
-                    alt="bus"
-                    className="w-full h-full object-cover "
-                  />
-                ) : (
-                  <div className="flex flex-col items-center font-roboto">
-                    <MdCloudUpload className="text-[42px] text-main_blue" />
-                    <p className="text-gray-800 text-[20px] font-semibold">
-                      Click here to upload the image
-                    </p>
-                    <p className="text-[14px]">
-                      SVG, PNG, JPG or GIF (MAX. 800x400px)
-                    </p>
-                  </div>
-                )}
-              </div>
-            </label>
-            <div className="h-[40px] bg-main_blue  flex mt-[5px] rounded-lg items-center  justify-between px-[20px]">
-              <label htmlFor="busImage">
-                <FaImage className="text-[17px] text-white" />
+        <div className="flex lg:gap-[50px] sm:gap-[20px] flex-col md:flex-row  gap-[120px]d">
+          <div className="flex justify-center">
+            <div className="md:w-[400px] sm:w-[500px] xsm:w-[400px] xsm:mx-0 mx-2  md:place-content-start">
+              <label htmlFor="busImage" className="w-fit">
+                <div
+                  className={`${
+                    employeeImage
+                      ? "border-[1px] border-solid rounded-[6px] border-gray-300"
+                      : "border-2 border-dashed rounded-[8px] border-main_blue"
+                  } md:h-[450px] sm:h-[550px] xsm:h-[450px] h-[300px]  flex items-center justify-center overflow-hidden px-3 py-3`}
+                >
+                  {employeeImage ? (
+                    <img
+                      src={URL.createObjectURL(employeeImage)}
+                      alt="bus"
+                      className="w-full h-full object-cover "
+                    />
+                  ) : (
+                    <div className="flex flex-col items-center font-roboto">
+                      <MdCloudUpload className="text-[42px] text-main_blue" />
+                      <p className="text-gray-800 text-[20px] font-semibold">
+                        Click here to upload the image
+                      </p>
+                      <p className="text-[14px]">
+                        SVG, PNG, JPG or GIF (MAX. 800x400px)
+                      </p>
+                    </div>
+                  )}
+                </div>
               </label>
-              <RiDeleteBin5Fill
-                className="text-[17px] text-white"
-                onClick={() => {
-                  setEmployeeImage(null);
+              <div className="h-[40px] bg-main_blue  flex mt-[5px] rounded-lg items-center  justify-between px-[20px]">
+                <label htmlFor="busImage">
+                  <FaImage className="text-[17px] text-white" />
+                </label>
+                <RiDeleteBin5Fill
+                  className="text-[17px] text-white"
+                  onClick={() => {
+                    setEmployeeImage(null);
+                  }}
+                />
+              </div>
+              <input
+                type="file"
+                name="busImage"
+                id="busImage"
+                className="hidden"
+                onChange={(e) => {
+                  setEmployeeImage(e.target.files[0]);
                 }}
               />
             </div>
-            <input
-              type="file"
-              name="busImage"
-              id="busImage"
-              className="hidden"
-              onChange={(e) => {
-                setEmployeeImage(e.target.files[0]);
-              }}
-            />
           </div>
-          <div className="flex-1 flex flex-col gap-[20px]">
-            <div className="flex gap-7">
-              <div className="flex flex-col flex-1 gap-[5px]">
+          <div className="flex-1 flex flex-col gap-[20px] xsm:w-auto sm:px-0 px-[30px] sm:mt-0 mt-[20px] md:mb-0 mb-[40px]">
+            <div className="flex gap-7 w-full xsm:flex-row flex-col">
+              <div className="flex flex-col w-full gap-[5px]">
                 <label htmlFor="empId" className={normalLabelStyle}>
                   Employee ID
                 </label>
@@ -241,7 +243,7 @@ function AddEmployeePage() {
                   placeholder="Enter Employee ID..."
                 />
               </div>
-              <div className="flex flex-col flex-1 gap-[5px]">
+              <div className="flex flex-col w-full gap-[5px]">
                 <label htmlFor="busID" className={normalLabelStyle}>
                   Employee Position
                 </label>
@@ -262,7 +264,7 @@ function AddEmployeePage() {
               </div>
             </div>
             <div className="flex gap-7">
-              <div className="flex flex-col flex-1 gap-[5px]">
+              <div className="flex flex-col w-full gap-[5px]">
                 <label htmlFor="empName" className={normalLabelStyle}>
                   Employee Name
                 </label>
@@ -277,7 +279,7 @@ function AddEmployeePage() {
               </div>
             </div>
             <div className="flex gap-7">
-              <div className="flex flex-col flex-1 gap-[5px]">
+              <div className="flex flex-col w-full gap-[5px]">
                 <label htmlFor="email" className={normalLabelStyle}>
                   Employee Email
                 </label>
@@ -291,8 +293,8 @@ function AddEmployeePage() {
                 />
               </div>
             </div>
-            <div className="flex gap-7">
-              <div className="flex flex-col flex-1 gap-[5px]">
+            <div className="flex gap-7 w-full xsm:flex-row flex-col">
+              <div className="flex flex-col w-full gap-[5px]">
                 <label htmlFor="mobile" className={normalLabelStyle}>
                   Mobile Number
                 </label>
@@ -305,7 +307,7 @@ function AddEmployeePage() {
                   placeholder="Enter Mobile Number..."
                 />
               </div>
-              <div className="flex flex-col flex-1 gap-[5px]">
+              <div className="flex flex-col w-full gap-[5px]">
                 <label htmlFor="password" className={normalLabelStyle}>
                   Password
                 </label>
@@ -327,7 +329,7 @@ function AddEmployeePage() {
               )}
               <button
                 type="submit"
-                className="bg-main_blue text-[16px] font-roboto text-white font-medium   px-[50px] py-[14px] rounded-md place-self-center
+                className="bg-main_blue text-[14px] xsm:text-[16px] font-roboto text-white font-medium  px-[20px] xsm:px-[30px]   py-[14px] rounded-md place-self-center
             "
               >
                 Submit Employee Credentials

@@ -7,7 +7,7 @@ const chartData = [
 ];
 function MiddleB() {
   return (
-    <div className="w-full h-full bg-gray-200 rounded-[10px] ">
+    <div className="w-full h-full bg-gray-200 rounded-[10px]  flex justify-center">
       <div className="flex justify-between items-center h-full pl-7 pr-7 gap-14 pt-1">
         <div className="chart  h-full  flex flex-col  items-center relative">
           <div className="font-tinos font-semibold text-lg text-gray-700">
@@ -52,7 +52,7 @@ function MiddleB() {
           </div>
         </div>
 
-        <div className="flex flex-col flex-1 gap-3 font-openSans ">
+        <div className="flex flex-col flex-1 gap-3 font-openSans xsm:block hidden ">
           <div className="bg-[#F0F0F0] py-2 flex justify-between px-3 rounded-lg shadow-xl text-gray-800  text-sm border-2 border-gray-200">
             <div>Safe Journeys</div>
 

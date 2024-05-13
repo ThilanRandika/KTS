@@ -19,21 +19,21 @@ import { useState } from "react";
 
 function App() {
   const { user } = useUserContext();
-  const [sidebar, setSidebar] = useState(true);
+  const [sidebar, setSidebar] = useState(false);
 
   return (
     <div className="flex h-screen ">
       <div
         className={user && sidebar ? "w-[300px] bg-red-100 h-screen" : "hidden"}
       >
-        <Sidebar />
+        <Sidebar setSidebar={setSidebar} sidebar={sidebar} />
       </div>
       <div className=" max-h-screen overflow-y-scroll w-full">
         <div className={user ? "" : "hidden"}>
           <Navbar setSidebar={setSidebar} sidebar={sidebar} />
         </div>
 
-        <div className=" min-h-full">
+        <div className=" min-h-full ">
           <Routes>
             <Route
               path="/"

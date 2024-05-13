@@ -169,132 +169,140 @@ function AddBusPage() {
   };
 
   return (
-    <div className="mx-[80px]">
-      <p className="text-main_blue text-[37px] font-semibold font-barlows  mb-[15px] leading-6">
+    <div className="xl:mx-[80px] mx-[30px] mb-[50px] sm:mt-0 mt-4">
+      <p className="text-main_blue xsm:text-[37px] text-[27px] font-semibold font-barlows  mb-[15px] leading-6">
         Insert Bus Details
       </p>
 
       <form onSubmit={handleSubmit}>
-        <div className="flex flex-col mt-[20px] gap-[10px]">
-          <div className="flex gap-[40px]">
-            <div className="flex flex-col flex-1 gap-[5px]">
-              <label htmlFor="busID" className={normalLabelStyle}>
-                Bus ID
-              </label>
-              <input
-                type="text"
-                id="busID"
-                className={normalInputStyle}
-                value={busId}
-                onChange={(e) => setBusId(e.target.value)}
-              />
-            </div>
-            <div className="flex flex-col flex-1 gap-[5px]">
-              <label htmlFor="registrationNumber" className={normalLabelStyle}>
-                Registration Number
-              </label>
-              <input
-                type="text"
-                id="registrationNumber"
-                className={normalInputStyle}
-                value={registrationNumber}
-                onChange={(e) => setRegistrationNumber(e.target.value)}
-                placeholder="Enter registration number..."
-              />
-            </div>
-            <div className="flex flex-col flex-1 gap-[5px]">
-              <label htmlFor="chassisNumber" className={normalLabelStyle}>
-                Chassis Number
-              </label>
-              <input
-                type="text"
-                id="chassisNumber"
-                value={chassisNumber}
-                onChange={(e) => {
-                  setChassisNumber(e.target.value);
-                }}
-                className={normalInputStyle}
-                placeholder="Enter chassis number..."
-              />
-            </div>
-          </div>
-          <div className="flex gap-[40px]">
-            <div className="flex flex-col flex-1 gap-[5px]">
-              <label htmlFor="model" className={normalLabelStyle}>
-                Model
-              </label>
-              <select
-                id="model"
-                className={`py-3 px-4  w-full rounded-md border-[1px] border-gray-300 text-sm font-normal focus:outline-none h-[53.6px] model-select ${
-                  model ? "text-[#000]" : "text-gray-400"
-                } `}
-                value={model}
-                onChange={(e) => setModel(e.target.value)}
-              >
-                <option value="0" className="">
-                  Select a model
-                </option>
-                <option value="single-deck">Single-deck</option>
-                <option value="double-deck">Double-decker</option>
-                <option value="coach">Coach</option>
-                <option value="minibus">Minibus</option>
-                <option value="school-bus">School Bus</option>
-              </select>
-            </div>
-            <div className="flex flex-col flex-1 gap-[5px] ">
-              <label htmlFor="registrationNumber" className={normalLabelStyle}>
-                Seat Capacity
-              </label>
-              <div className="w-full  h-full rounded-md border-[1px] border-gray-300 text-sm text-[#000] font-normal flex justify-between overflow-hidden pl-3">
+        <div className="flex flex-col mt-[20px] gap-[10px] ">
+          <div className="flex lg:flex-col md:flex-row flex-col w-full gap-[30px] lg:gap-[10px]">
+            <div className="flex lg:gap-[40px] gap-[15px] lg:flex-row flex-col w-full">
+              <div className="flex flex-col flex-1 gap-[5px]">
+                <label htmlFor="busID" className={normalLabelStyle}>
+                  Bus ID
+                </label>
                 <input
-                  type={seatingCapacity === 0 ? "text" : "number"}
-                  className={`focus:outline-none seat-input w-full ${
-                    seatingCapacity === 0 ? "text-gray-400" : ""
-                  }`}
-                  placeholder="Enter seat capacity..."
-                  value={seatingCapacity ? seatingCapacity : ""}
-                  //convert to number
-                  onChange={(e) => setSeatingCapacity(e.target.value)}
+                  type="text"
+                  id="busID"
+                  className={normalInputStyle}
+                  value={busId}
+                  onChange={(e) => setBusId(e.target.value)}
                 />
-                <div className="flex flex-col w-7 bg-gray-100 border-r-[1px] border-gray-300">
-                  <button
-                    type="button"
-                    className="flex-1 border-b-[1px] flex justify-center items-center text-gray-600"
-                    onClick={() => {
-                      setSeatingCapacity((prev) => prev + 1);
-                    }}
-                  >
-                    <IoMdAdd />
-                  </button>
-                  <button
-                    type="button"
-                    className="flex-1 flex justify-center items-center text-gray-600 text-[12px]"
-                    onClick={() => {
-                      setSeatingCapacity((prev) => prev - 1);
-                    }}
-                  >
-                    <FaMinus />
-                  </button>
-                </div>
+              </div>
+              <div className="flex flex-col flex-1 gap-[5px]">
+                <label
+                  htmlFor="registrationNumber"
+                  className={normalLabelStyle}
+                >
+                  Registration Number
+                </label>
+                <input
+                  type="text"
+                  id="registrationNumber"
+                  className={normalInputStyle}
+                  value={registrationNumber}
+                  onChange={(e) => setRegistrationNumber(e.target.value)}
+                  placeholder="Enter registration number..."
+                />
+              </div>
+              <div className="flex flex-col flex-1 gap-[5px]">
+                <label htmlFor="chassisNumber" className={normalLabelStyle}>
+                  Chassis Number
+                </label>
+                <input
+                  type="text"
+                  id="chassisNumber"
+                  value={chassisNumber}
+                  onChange={(e) => {
+                    setChassisNumber(e.target.value);
+                  }}
+                  className={normalInputStyle}
+                  placeholder="Enter chassis number..."
+                />
               </div>
             </div>
-            <div className="flex flex-col flex-1 gap-[5px]">
-              <label htmlFor="color" className={normalLabelStyle}>
-                Color
-              </label>
-              <input
-                type="text"
-                id="color"
-                value={color}
-                onChange={(e) => {
-                  setColor(e.target.value);
-                }}
-                className={normalInputStyle}
-                placeholder="Enter bus color..."
-              />
+            <div className="flex lg:gap-[40px] gap-[15px] lg:flex-row flex-col w-full">
+              <div className="flex flex-col flex-1 gap-[5px]">
+                <label htmlFor="model" className={normalLabelStyle}>
+                  Model
+                </label>
+                <select
+                  id="model"
+                  className={`py-3 px-4  w-full rounded-md border-[1px] border-gray-300 text-sm font-normal focus:outline-none h-[53.6px] model-select ${
+                    model ? "text-[#000]" : "text-gray-400"
+                  } `}
+                  value={model}
+                  onChange={(e) => setModel(e.target.value)}
+                >
+                  <option value="0" className="">
+                    Select a model
+                  </option>
+                  <option value="single-deck">Single-deck</option>
+                  <option value="double-deck">Double-decker</option>
+                  <option value="coach">Coach</option>
+                  <option value="minibus">Minibus</option>
+                  <option value="school-bus">School Bus</option>
+                </select>
+              </div>
+              <div className="flex flex-col flex-1 gap-[5px] relative ">
+                <label
+                  htmlFor="registrationNumber"
+                  className={normalLabelStyle}
+                >
+                  Seat Capacity
+                </label>
+                <div className="w-full   rounded-md border-[1px] border-gray-300 text-sm text-[#000] font-normal flex justify-between overflow-hidden pl-3  py-4">
+                  <input
+                    type={seatingCapacity === 0 ? "text" : "number"}
+                    className={`focus:outline-none seat-input w-full ${
+                      seatingCapacity === 0 ? "text-gray-400" : ""
+                    }`}
+                    placeholder="Enter seat capacity..."
+                    value={seatingCapacity ? seatingCapacity : ""}
+                    //convert to number
+                    onChange={(e) => setSeatingCapacity(e.target.value)}
+                  />
+                  <div className="flex flex-col w-7 bg-gray-100 border-r-[1px] border-gray-300 h-12 absolute top-[23px] right-[1px]">
+                    <button
+                      type="button"
+                      className="flex-1 border-b-[1px] flex justify-center items-center text-gray-600"
+                      onClick={() => {
+                        setSeatingCapacity((prev) => prev + 1);
+                      }}
+                    >
+                      <IoMdAdd />
+                    </button>
+                    <button
+                      type="button"
+                      className="flex-1 flex justify-center items-center text-gray-600 text-[12px]"
+                      onClick={() => {
+                        setSeatingCapacity((prev) => prev - 1);
+                      }}
+                    >
+                      <FaMinus />
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col flex-1 gap-[5px]">
+                <label htmlFor="color" className={normalLabelStyle}>
+                  Color
+                </label>
+                <input
+                  type="text"
+                  id="color"
+                  value={color}
+                  onChange={(e) => {
+                    setColor(e.target.value);
+                  }}
+                  className={normalInputStyle}
+                  placeholder="Enter bus color..."
+                />
+              </div>
             </div>
           </div>
-          <div className="flex gap-[40px]">
+          <div className="flex lg:gap-[40px] gap-[15px] lg:flex-row flex-col w-full">
             <div className="flex flex-col flex-1 gap-[5px]">
               <label htmlFor="driver" className={normalLabelStyle}>
                 Driver
@@ -366,21 +374,21 @@ function AddBusPage() {
             </div>
           </div>
         </div>
-        <div className="w-full mt-[15px] flex justify-between">
-          <div className="w-[40%]">
+        <div className="w-full mt-[15px] flex justify-between sm:flex-row flex-col">
+          <div className="lg:w-[50%] md:w-[65%] w-[100%]">
             <label htmlFor="busImage" className="w-fit">
               <div
                 className={`${
                   busImage
                     ? "border-[1px] border-solid rounded-[6px] border-gray-300"
                     : "border-2 border-dashed rounded-[8px] border-main_blue"
-                }  h-[300px]  flex items-center justify-center overflow-hidden px-3 py-3`}
+                } h-[300px] flex items-center justify-center overflow-hidden px-3 py-3`}
               >
                 {busImage ? (
                   <img
                     src={URL.createObjectURL(busImage)}
                     alt="bus"
-                    className="w-full h-full object-fill "
+                    className="w-full h-full object-cover "
                   />
                 ) : (
                   <div className="flex flex-col items-center font-roboto">
@@ -416,7 +424,7 @@ function AddBusPage() {
               }}
             />
           </div>
-          <div className="place-self-start">
+          <div className="place-self-start sm:w-auto w-full sm:mt-0 mt-3 ">
             {error && (
               <p className="text-red-500 text-[15px] font-normal text-center mt-1">
                 {error}
@@ -424,7 +432,7 @@ function AddBusPage() {
             )}
             <button
               type="submit"
-              className="bg-main_blue text-[15px] font-roboto text-white font-medium   px-[50px] py-2 rounded-md 
+              className="bg-main_blue text-[15px] font-roboto text-white font-medium  px-[20px]  lg:px-[50px] sm:py-2 py-4 rounded-md  w-full
             "
             >
               Submit Bus Credentials

@@ -24,18 +24,17 @@ function Navbar({ setSidebar, sidebar }) {
         className="text-[25px] text-main_blue"
         onClick={() => {
           setSidebar(!sidebar);
-          console.log(sidebar);
         }}
       >
         <IoGridSharp />
       </div>
       <div className="flex items-center">
-        <div className="flex text-main_blue items-center gap-7">
-          <FaSearch className="text-[20px]" />{" "}
-          <IoSettings className="text-[22px]" />
+        <div className="flex text-main_blue items-center gap-1 sm:gap-7">
+          <FaSearch className="xsm:text-[20px] text-[18px]" />{" "}
+          <IoSettings className="xsm:text-[22px] text-[18px]" />
         </div>
         <div
-          className="flex items-center ml-7 gap-3 relative"
+          className="flex items-center sm:ml-7 ml-1 sm:gap-3 gap-[4px] relative"
           onClick={() => {
             setProfileClicked(!profileClicked);
           }}
@@ -48,24 +47,24 @@ function Navbar({ setSidebar, sidebar }) {
                   : "https://res.cloudinary.com/dnoobzfxo/image/upload/v1698320073/360_F_64675209_7ve2XQANuzuHjMZXP3aIYIpsDKEbF5dD_g5ncwh.jpg"
               }
               alt=""
-              className="h-[40px] w-[40px]  object-cover rounded-full "
+              className="xsm:h-[40px] xsm:w-[40px] w-[30px] h-[30px] object-cover rounded-full "
               style={{ filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))" }}
             />
           </div>
 
-          <p className="font-roboto font-bold text-main_blue">
+          <p className="font-roboto font-bold text-main_blue text-[14px] sm:text-[16px]">
             {user ? user.shortName : "loading.."}
           </p>
         </div>
-        <div className="relative ml-5">
-          <IoIosNotifications className="text-[25px]" />
-          <span className="absolute top-[-4px] right-[-3px] bg-main_blue text-white font-bold w-4 h-4 text-xs flex  items-center justify-center rounded-full">
+        <div className="relative sm:ml-5 sml-1">
+          <IoIosNotifications className="xsm:text-[25px] text-[20px]" />
+          <span className="absolute top-[-4px] right-[-3px] bg-main_blue text-white font-bold xsm:w-4 xsm:h-4 h-[14px] w-[14px] text-[10px] xsm:text-xs flex  items-center justify-center rounded-full">
             1
           </span>
         </div>
       </div>
       {profileClicked && (
-        <div className=" bg-white absolute right-[160px] top-[40px] w-[230px]  z-10 font-roboto border-[1px] rounded-md border-gray-400 text-black">
+        <div className=" bg-white absolute right-[160px] top-[40px] w-[230px]  z-10 font-roboto border-[1px] rounded-md border-gray-400 text-black sm:block hidden">
           <div className="px-3 py-2 w-full h-full text-sm font-normal flex-col flex">
             <div className="flex  items-center justify-between px-1">
               <div className="font-roboto font-medium text-[16px]">

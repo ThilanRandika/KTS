@@ -65,8 +65,15 @@ function Login() {
         password,
       });
       if (res.status === 200) {
+        const now = new Date();
         if (rememberMe) {
-          localStorage.setItem("user", JSON.stringify(res.data));
+          localStorage.setItem(
+            "user",
+            JSON.stringify({
+              ...res.data,
+              expiry: now.getTime() + 3600000 * 24,
+            })
+          );
         }
         dispatch({ type: "LOGIN", payload: res.data });
         toast.dismiss();
@@ -116,7 +123,7 @@ function Login() {
             alt=""
             className="w-[210px]"
           />
-          <div className="font-roboto_slab text-[25px] md:text-[25px] sm:text-[30px] font-bold flex flex-col items-center leading-[92%] text-center">
+          <div className="font-roboto_slab  text-[20px] xsm:text-[25px] md:text-[25px] sm:text-[30px] font-bold flex flex-col items-center leading-[92%] text-center">
             <p>General</p>
             <p>Sir John Kotelawala</p>
             <p>Defence University</p>

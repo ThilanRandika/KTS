@@ -18,8 +18,14 @@ export const UserContextProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-
+    let user = JSON.parse(localStorage.getItem("user"));
+    const now = new Date();
+    if (user) {
+      if (now.getTime() > user.expiry) {
+        localStorage.removeItem("user");
+      }
+    }
+    user = JSON.parse(localStorage.getItem("user"));
     if (user) {
       dispatch({ type: "LOGIN", payload: user });
     }

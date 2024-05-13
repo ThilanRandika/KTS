@@ -6,9 +6,10 @@ import { useUserContext } from "../../hooks/useUserAuthContext";
 import { toast } from "react-toastify";
 
 const normalStyle =
-  "w-full  h-[56px] pl-[20px] py-[7px] font-normal text-sm text-[#515151] focus:outline-none ";
+  "w-full  h-[45px]  md:h-[50px] sm:h-[56px] pl-[20px] py-[7px] font-normal text-sm text-[#515151] focus:outline-none ";
 const errorStyle =
-  "w-full  h-[56px] pl-[20px] py-[7px] font-normal text-sm text-red-400 focus:outline-none ";
+  "w-full  h-[45px] md:h-[50px] sm:h-[56px] pl-[20px] py-[7px] font-normal text-sm text-red-400 focus:outline-none ";
+
 function Login() {
   const { dispatch } = useUserContext();
   const [email, setEmail] = useState("");
@@ -16,7 +17,7 @@ function Login() {
   const [error, setError] = useState(null);
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
-
+  const [rememberMe, setRememberMe] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
 
   const login = async (e) => {
@@ -61,7 +62,16 @@ function Login() {
         password,
       });
       if (res.status === 200) {
-        localStorage.setItem("manager", JSON.stringify(res.data));
+        const now = new Date();
+        if (rememberMe) {
+          localStorage.setItem(
+            "manager",
+            JSON.stringify({
+              ...res.data,
+              expiry: now.getTime() + 3600000 * 24,
+            })
+          );
+        }
         dispatch({ type: "LOGIN", payload: res.data });
         toast.dismiss();
       }
@@ -102,22 +112,22 @@ function Login() {
     }
   };
   return (
-    <div className="flex h-screen w-full font-roboto ">
+    <div className="flex h-screen w-full font-roboto justify-center ">
       <div
-        className="flex-1 bg-no-repeat bg-cover bg-center"
+        className="flex-1 bg-no-repeat bg-cover bg-center  lg:block hidden"
         style={{
           backgroundImage:
             "url(https://res.cloudinary.com/dnoobzfxo/image/upload/v1701395916/valentyn-chernetskyi-m0_o8QB-JGg-unsplash_1_jcfwxf.png)",
         }}
       ></div>
-      <div className="w-[34%] flex items-center flex-col justify-center">
+      <div className="w-[90%] xsm:w-[80%] md:w-[60%] lg:w-[34%] flex items-center flex-col justify-center">
         <div className="flex flex-col items-center">
           <img
             src="https://res.cloudinary.com/dnoobzfxo/image/upload/v1701275328/Kotelawala_Defence_University_crest-removebg-preview_1_qprg9r.png"
             alt=""
             className="w-[210px]"
           />
-          <div className="font-roboto_slab text-[30px] font-bold flex flex-col items-center leading-[92%]">
+          <div className="font-roboto_slab text-[20px] xsm:text-[25px]  md:text-[25px] sm:text-[30px] font-bold flex flex-col items-center leading-[92%] text-center">
             <p>General</p>
             <p>Sir John Kotelawala</p>
             <p>Defence University</p>
@@ -127,7 +137,7 @@ function Login() {
         <div className="mt-[40px] w-full items-center">
           <form action="">
             <div className="flex flex-col items-center">
-              <div className="w-[75%]">
+              <div className="w-[100%] lg:w-[75%]">
                 <label
                   htmlFor="email"
                   className={`font-semibold ${
@@ -155,7 +165,7 @@ function Login() {
               </div>
             </div>
             <div className="flex flex-col items-center mt-[12px]">
-              <div className="w-[75%] relative">
+              <div className="w-[100%] lg:w-[75%] relative">
                 <label
                   htmlFor="password"
                   className={`font-semibold ${
@@ -192,15 +202,26 @@ function Login() {
               </div>
             </div>
             <div className="flex flex-col items-center">
-              <div className="w-[75%] flex justify-between items-center">
-                <div>
-                  <Checkbox />
-                  <span className="text-gray-400 text-base font-medium">
+              <div className="w-[100%] lg:w-[75%] flex justify-between items-center">
+                <div className="flex items-center">
+                  <Checkbox
+                    defaultChecked
+                    onChange={(e) => {
+                      setRememberMe(e.target.checked);
+                    }}
+                  />
+
+                  <p className="text-gray-400 font-medium  sm:text-[16px] text-[13px] font-roboto">
                     Remember me
-                  </span>
+                  </p>
                 </div>
 
-                <div className="text-red-500 text-[15px] font-normal">
+                <div
+                  className="text-red-500   cursor-pointer hover:font-bold leading-[92%] sm:text-[16px] text-[13px] sm:font-normal font-bold"
+                  onClick={() => {
+                    navigate("/resetpasswordemail");
+                  }}
+                >
                   Reset Password
                 </div>
               </div>
@@ -218,7 +239,7 @@ function Login() {
               <div className="w-[75%] ">
                 <button
                   type="submit"
-                  className="w-full text-white bg-main_blue h-[60px] rounded-lg text-[20px] font-medium"
+                  className="w-full text-white bg-main_blue  h-[45px]  xl:h-[60px] rounded-lg text-[18px] xl:text-[20px] font-medium "
                   onClick={(e) => {
                     login(e);
                   }}

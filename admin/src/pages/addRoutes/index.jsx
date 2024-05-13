@@ -8,7 +8,7 @@ function AddRoute() {
   });
 
   return (
-    <div className="px-[40px]">
+    <div className="sm:px-[40px] px-[10px]">
       <p className="text-main_blue text-[37px] font-semibold font-barlows   leading-6 ">
         Manage Route
       </p>

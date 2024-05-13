@@ -45,8 +45,8 @@ function StationsInput({
   };
 
   return (
-    <div className="flex items-end justify-between">
-      <div className="flex gap-2">
+    <div className="flex items-end justify-between ">
+      <div className="flex gap-2 xl:flex-row flex-col">
         <div className="">
           <p>Station Name</p>
           <input

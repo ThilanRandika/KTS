@@ -308,10 +308,10 @@ function Map() {
   };
 
   return (
-    <div className="flex justify-between mt-[20px]">
-      <div className="w-[5ddd00px]">
-        <div className="flex place-self-start  items-center gap-[5px]">
-          <div className="flex gap-[10px] ">
+    <div className="flex justify-between mt-[20px] xsm:flex-row flex-col">
+      <div className="flex flex-col items-center">
+        <div className="flex   items-center gap-[5px] ">
+          <div className="flex gap-[10px] flex-col xl:flex-row">
             <div className="">
               <PlacesAutocomplete
                 setLocation={setStartLocation}
@@ -375,7 +375,7 @@ function Map() {
             startLocation.lat && startLocation.lng ? "mt-[15px]" : "hidden"
           }`}
         >
-          <div className="flex font-roboto justify-between">
+          <div className="flex font-roboto xl:justify-between xl:flex-row flex-col items-start">
             {/*  */}
 
             {directions && directions.routes[0] && (
@@ -576,7 +576,7 @@ function Map() {
             />
           </div>
         </div>
-        <div>
+        <div className="w-full">
           {!rightClickedLocation.lat == 0 &&
             !rightClickedLocation.lng == 0 &&
             !rightClickedLocation.name == "" && (
@@ -619,7 +619,7 @@ function Map() {
         </button>
       </div>
 
-      <div className="min-w-[650px] h-[600px]">
+      <div className="w-full  xsm:h-[400px] sm:h-[500px] h-[300px]">
         <GoogleMap
           zoom={10}
           center={center}

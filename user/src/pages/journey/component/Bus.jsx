@@ -58,12 +58,12 @@ function Bus({ setSeatCount }) {
   const fourthRowDown = [28, 32, 36];
 
   return (
-    <div className="w-[338px]  border-[2px] h-[530px] rounded-lg ">
+    <div className="xsm:w-[338px] w-full  border-[2px] h-[530px] rounded-lg ">
       <div className="px-[30px] flex justify-end mt-[30px]">
         <DriverSeat />
       </div>
-      <div className="flex  justify-between px-[30px]">
-        <div className="flex gap-[20px]">
+      <div className="flex  justify-between xsm:px-[30px]  px-[15px] ">
+        <div className="flex xsm:gap-[20px] gap-[15px]">
           <div>
             <ReservedSeat />
             {firstRow.map((num, i) => (
@@ -87,7 +87,7 @@ function Bus({ setSeatCount }) {
             ))}
           </div>
         </div>
-        <div className="flex gap-[20px]">
+        <div className="flex xsm:gap-[20px] gap-[15px]">
           <div>
             <div>
               {thirdRowUp.map((num, i) => (

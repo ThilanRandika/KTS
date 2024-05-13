@@ -64,7 +64,7 @@ function Navbar({ setSidebar, sidebar }) {
         </div>
       </div>
       {profileClicked && (
-        <div className=" bg-white absolute right-[160px] top-[40px] w-[230px]  z-10 font-roboto border-[1px] rounded-md border-gray-400 text-black sm:block hidden">
+        <div className=" bg-white absolute xsm:right-[160px] xsm:top-[40px] top-[30px] right-[50px] xsm:w-[230px] w-[70%]  z-10 font-roboto border-[1px] rounded-md border-gray-400 text-black ">
           <div className="px-3 py-2 w-full h-full text-sm font-normal flex-col flex">
             <div className="flex  items-center justify-between px-1">
               <div className="font-roboto font-medium text-[16px]">

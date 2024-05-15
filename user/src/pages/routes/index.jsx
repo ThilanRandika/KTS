@@ -117,12 +117,12 @@ function Routes() {
   ];
 
   return (
-    <div className="mx-[80px] mb-[60px] mt-[30px]">
-      <p className="text-main_blue text-[37px] font-semibold font-barlows  mb-[15px] leading-6">
+    <div className="lg:mx-[30px]  px-[15px] mb-[60px] mt-[30px]">
+      <p className="text-main_blue xsm:text-[37px] text-[30px]  font-semibold font-barlows  mb-[15px] leading-6">
         Read this carefully
       </p>
       <div
-        className="text-justify text-[18px] "
+        className="text-justify xsm:text-[18px] text-[15px]"
         style={{ lineHeight: "normal" }}
       >
         <p>
@@ -135,62 +135,64 @@ function Routes() {
           valid single ticket or a season ticket.
         </p>
       </div>
-      <div className="mt-[40px]">
-        <Box sx={{ height: "100%", width: "100%" }}>
-          <DataGrid
-            rows={roadRoutes}
-            columns={columns}
-            rowHeight={400}
-            getRowId={(row) => row._id}
-            initialState={{
-              pagination: {
-                paginationModel: {
-                  pageSize: 6,
+      <div className="overflow-x-scroll mt-[20px]">
+        <div className="lg:w-full w-[1400px]">
+          <Box sx={{ height: "100%", width: "100%" }}>
+            <DataGrid
+              rows={roadRoutes}
+              columns={columns}
+              rowHeight={400}
+              getRowId={(row) => row._id}
+              initialState={{
+                pagination: {
+                  paginationModel: {
+                    pageSize: 6,
+                  },
                 },
-              },
-            }}
-            slots={{
-              toolbar: GridToolbar,
-              //pagination: CustomPagination,
-            }}
-            //showColumnVerticalBorder={true}
-            showCellVerticalBorder={true}
-            sx={{
-              "& .MuiDataGrid-columnHeaders": {
-                fontFamily: "Barlow Semi Condensed",
-                fontSize: "18px",
-                fontWeight: "400",
-                backgroundColor: "#002147",
-                color: "#fff",
-                // border: "none",
-              },
-              "& .MuiDataGrid-virtualScroller": {
-                backgroundColor: "#fff",
-                color: "#000",
-                fontFamily: "roboto",
-                fontSize: "16px",
-                fontWeight: "500",
-              },
-              // "& .MuiDataGrid-footerContainer": {
-              //   backgroundColor: "#fff",
-              //   paddingRight: "45%",
-              // },
-              "& .MuiDataGrid-toolbarContainer": {
-                backgroundColor: "#fff",
-                //center the toolbar
-                //paddingLeft: "10%",
+              }}
+              slots={{
+                toolbar: GridToolbar,
+                //pagination: CustomPagination,
+              }}
+              //showColumnVerticalBorder={true}
+              showCellVerticalBorder={true}
+              sx={{
+                "& .MuiDataGrid-columnHeaders": {
+                  fontFamily: "Barlow Semi Condensed",
+                  fontSize: "18px",
+                  fontWeight: "400",
+                  backgroundColor: "#002147",
+                  color: "#fff",
+                  // border: "none",
+                },
+                "& .MuiDataGrid-virtualScroller": {
+                  backgroundColor: "#fff",
+                  color: "#000",
+                  fontFamily: "roboto",
+                  fontSize: "16px",
+                  fontWeight: "500",
+                },
+                // "& .MuiDataGrid-footerContainer": {
+                //   backgroundColor: "#fff",
+                //   paddingRight: "45%",
+                // },
+                "& .MuiDataGrid-toolbarContainer": {
+                  backgroundColor: "#fff",
+                  //center the toolbar
+                  //paddingLeft: "10%",
 
-                "& .MuiButton-text": {
-                  color: "#002147",
+                  "& .MuiButton-text": {
+                    color: "#002147",
+                  },
                 },
-              },
-              //remove cell horizontal border
-              "& .MuiDataGrid-cell": {
-                //borderBottom: "none",
-              },
-            }}
-          />
-        </Box>
+                //remove cell horizontal border
+                "& .MuiDataGrid-cell": {
+                  //borderBottom: "none",
+                },
+              }}
+            />
+          </Box>
+        </div>
       </div>
     </div>
   );

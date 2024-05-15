@@ -184,12 +184,12 @@ function EmployeesPage() {
     }
   };
   return (
-    <div className="lg:mx-[60px] px-[10px] mb-[60px]">
-      <p className="text-main_blue text-[37px] font-semibold font-barlows  mb-[15px] leading-6">
+    <div className="lg:mx-[30px] px-[15px] mb-[60px] xsm:mt-[5px] mt-[20px]">
+      <p className="text-main_blue xsm:text-[37px] text-[30px] font-semibold font-barlows  mb-[15px] leading-6">
         Employees Details
       </p>
       <div className="overflow-x-scroll">
-        <div className="mt-[20px] md:w-full w-[1600px]">
+        <div className="md:w-full w-[1000px]">
           <Box sx={{ height: "100%", width: "100%" }}>
             <DataGrid
               rows={employees}

@@ -61,7 +61,7 @@ function BusesPage() {
           <img
             src={params.row.photo.filePath}
             alt="employee"
-            className="w-full h-[65px] object-cover"
+            className="w-full h-[65px] object-contain"
           />
         </div>
       ),

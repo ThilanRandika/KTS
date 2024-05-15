@@ -171,8 +171,8 @@ function AddEmployeePage() {
   };
 
   return (
-    <div className="lg:mx-[80px] sm:mx-[20px] ">
-      <p className="text-main_blue xsm:text-[37px] text-[27px] font-semibold font-barlows  mb-[30px] leading-6 ">
+    <div className="lg:mx-[80px] sm:mx-[20px] xsm:mt-0 mt-[15px]">
+      <p className="text-main_blue xsm:text-[37px] text-[27px] font-semibold font-barlows  mb-[30px] leading-6 md:ml-0 ml-[30px] ">
         Insert Employee Details
       </p>
       <form onSubmit={handleSubmit}>

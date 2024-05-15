@@ -50,8 +50,8 @@ function MiddleD() {
             <p className="font-tinos text-sm">month </p>
           </div>
         </div>
-        <div className="w-full px-10 flex flex-col gap-2 mt-1 ">
-          <div className="bg-[#F0F0F0] py-1 flex justify-between px-3 rounded-lg shadow-xl text-gray-800  text-sm border-2 border-gray-200 xsm:text-[16px] text-[11px]">
+        <div className="w-full xsl:px-10 lg:px-3 px-8 flex flex-col gap-2 mt-1 ">
+          <div className="bg-[#F0F0F0] py-1 flex justify-between px-3  rounded-lg shadow-xl text-gray-800  text-sm border-2 border-gray-200 xsm:text-[16px] text-[11px]">
             <div>Total Presence</div>
 
             <div>1010</div>

@@ -176,7 +176,7 @@ function AddBusPage() {
 
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col mt-[20px] gap-[10px] ">
-          <div className="flex lg:flex-col md:flex-row flex-col w-full gap-[30px] lg:gap-[10px]">
+          <div className="flex lg:flex-col md:flex-row flex-col w-full md:gap-[30px] gap-[15px] lg:gap-[10px]">
             <div className="flex lg:gap-[40px] gap-[15px] lg:flex-row flex-col w-full">
               <div className="flex flex-col flex-1 gap-[5px]">
                 <label htmlFor="busID" className={normalLabelStyle}>

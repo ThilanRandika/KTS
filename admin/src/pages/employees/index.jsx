@@ -60,7 +60,7 @@ function EmployeesPage() {
           <img
             src={params.row.photo.filePath}
             alt="employee"
-            className="w-full h-[72px] object-cover"
+            className="w-full h-[72px] object-contain"
           />
         </div>
       ),

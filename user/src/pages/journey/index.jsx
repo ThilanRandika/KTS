@@ -121,7 +121,9 @@ function Journey() {
       <p className="text-main_blue text-[37px] font-semibold font-barlows  mb-[20px] leading-6">
         Choose your seat
       </p>
+
       <div className="flex  xl:justify-between gap-[20px] xl:flex-row flex-col ">
+        {/* map */}
         <div className="xl:w-[500px] w-full xsm:h-[500px] h-[350px]">
           <JourneyMap
             googleRoutes={
@@ -133,24 +135,29 @@ function Journey() {
             }
           />
         </div>
-        <div className="flex md:flex-row flex-col">
+        {/* bus and payment */}
+        <div className="flex md:flex-row flex-col  flex-1 gap-[20px]">
+          {/* bus */}
           <div className="">
             <Bus setSeatCount={setSeatCount} />
           </div>
+          {/* payment */}
           <div className="flex-1  bg-[#f8f8f8]">
             <div className="">
+              {/* payment header */}
               <div className="py-2 bg-main_blue text-center text-white font-semibold text-[18px]">
                 Payment
               </div>
-              <div className="px-[20px] flex mt-[10px] mb-[10px] items-center justify-center">
+              {/* stations */}
+              <div className="px-[20px] flex mt-[10px] mb-[10px] items-center justify-center ">
                 <p className="font-roboto font-semibold text-[16px] text-[#383838] mt-[10px] ">
                   Select a Station :
                 </p>
                 <select
                   style={{ lineHeight: "normal" }}
-                  className={`py-3 px-4  w-full rounded-md border-[1px] border-gray-300 text-basefont-normal focus:outline-none h-[53.6px] role-select ${
+                  className={`xsm:py-3 py-2 xsm:px-4  w-full rounded-md border-[1px] border-gray-300 text-basefont-normal focus:outline-none h-[53.6px] role-select ${
                     selectedStation
-                      ? "text-[#000] text-[18px] font-semibold"
+                      ? "text-[#000] md:text-[18px] font-semibold"
                       : "text-gray-400"
                   } `}
                   value={selectedStation}
@@ -172,7 +179,8 @@ function Journey() {
                 </select>
               </div>
             </div>
-            <div className="px-[20px] font-roboto_slab">
+            {/* seat count and distance */}
+            <div className="px-[20px] font-roboto_slab ">
               <div className="flex gap-[20px] font-semibold text-[18px]">
                 <p>Seat Count - </p>
                 <p>{seatCount}</p>
@@ -191,8 +199,12 @@ function Journey() {
                 </p>
               </div>
             </div>
+
+            {/* line */}
             <div className="w-full h-[1px] bg-slate-600 mt-[5px]" />
-            <div className="mt-[5px] px-[20px]">
+
+            {/* total */}
+            <div className="mt-[5px] px-[20px] ">
               <div className="flex font-semibold font-roboto_slab text-[24px] m">
                 <p>Total-</p>
                 <p>
@@ -207,10 +219,10 @@ function Journey() {
                 </p>
               </div>
             </div>
-
+            {/* payment images adn inputs */}
             <div className="bottom px-[20px] mt-[10px] w-full">
               <div className="flex items-center justify-between w-full">
-                <div className="w-full">
+                <div className="w-full  ">
                   <img
                     className=""
                     src="https://res.cloudinary.com/dnoobzfxo/image/upload/v1701802268/Frame_1000001526_vodxmk.png"
@@ -219,12 +231,12 @@ function Journey() {
                 </div>
                 <div className="w-full">
                   <img
-                    className="w-full"
+                    className="w-auto"
                     src="https://res.cloudinary.com/dnoobzfxo/image/upload/v1701802268/Frame_1000001528_acgdut.png"
                     alt=""
                   />
                 </div>
-                <div className="w-full">
+                <div className="w-full ">
                   <img
                     className="full"
                     src="https://res.cloudinary.com/dnoobzfxo/image/upload/v1701802268/Frame_1000001527_fspdik.png"

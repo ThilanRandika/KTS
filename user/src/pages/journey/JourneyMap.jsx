@@ -32,7 +32,7 @@ function JourneyMap({ googleRoutes, stations, startLocation }) {
   const onLoad = useCallback((map) => (mapRef.current = map), []);
 
   return (
-    <div className="w-full h-full rounded-[12px] overflow-hidden">
+    <div className="w-full h-full  overflow-hidden">
       {isLoaded ? (
         <GoogleMap
           zoom={12}

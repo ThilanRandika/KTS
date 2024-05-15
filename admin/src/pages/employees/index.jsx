@@ -184,66 +184,68 @@ function EmployeesPage() {
     }
   };
   return (
-    <div className="mx-[60px] mb-[60px]">
+    <div className="lg:mx-[60px] px-[10px] mb-[60px]">
       <p className="text-main_blue text-[37px] font-semibold font-barlows  mb-[15px] leading-6">
         Employees Details
       </p>
-      <div className="mt-[20px]">
-        <Box sx={{ height: "100%", width: "100%" }}>
-          <DataGrid
-            rows={employees}
-            columns={columns}
-            rowHeight={75}
-            getRowId={(row) => row._id}
-            initialState={{
-              pagination: {
-                paginationModel: {
-                  pageSize: 6,
+      <div className="overflow-x-scroll">
+        <div className="mt-[20px] md:w-full w-[1600px]">
+          <Box sx={{ height: "100%", width: "100%" }}>
+            <DataGrid
+              rows={employees}
+              columns={columns}
+              rowHeight={75}
+              getRowId={(row) => row._id}
+              initialState={{
+                pagination: {
+                  paginationModel: {
+                    pageSize: 6,
+                  },
                 },
-              },
-            }}
-            slots={{
-              toolbar: GridToolbar,
-              //pagination: CustomPagination,
-            }}
-            //showColumnVerticalBorder={true}
-            showCellVerticalBorder={true}
-            sx={{
-              "& .MuiDataGrid-columnHeaders": {
-                fontFamily: "Barlow Semi Condensed",
-                fontSize: "18px",
-                fontWeight: "400",
-                backgroundColor: "#002147",
-                color: "#fff",
-                // border: "none",
-              },
-              "& .MuiDataGrid-virtualScroller": {
-                backgroundColor: "#fff",
-                color: "#000",
-                fontFamily: "roboto",
-                fontSize: "12px",
-                fontWeight: "400",
-              },
-              // "& .MuiDataGrid-footerContainer": {
-              //   backgroundColor: "#fff",
-              //   paddingRight: "45%",
-              // },
-              "& .MuiDataGrid-toolbarContainer": {
-                backgroundColor: "#fff",
-                //center the toolbar
-                //paddingLeft: "10%",
+              }}
+              slots={{
+                toolbar: GridToolbar,
+                //pagination: CustomPagination,
+              }}
+              //showColumnVerticalBorder={true}
+              showCellVerticalBorder={true}
+              sx={{
+                "& .MuiDataGrid-columnHeaders": {
+                  fontFamily: "Barlow Semi Condensed",
+                  fontSize: "18px",
+                  fontWeight: "400",
+                  backgroundColor: "#002147",
+                  color: "#fff",
+                  // border: "none",
+                },
+                "& .MuiDataGrid-virtualScroller": {
+                  backgroundColor: "#fff",
+                  color: "#000",
+                  fontFamily: "roboto",
+                  fontSize: "12px",
+                  fontWeight: "400",
+                },
+                // "& .MuiDataGrid-footerContainer": {
+                //   backgroundColor: "#fff",
+                //   paddingRight: "45%",
+                // },
+                "& .MuiDataGrid-toolbarContainer": {
+                  backgroundColor: "#fff",
+                  //center the toolbar
+                  //paddingLeft: "10%",
 
-                "& .MuiButton-text": {
-                  color: "#002147",
+                  "& .MuiButton-text": {
+                    color: "#002147",
+                  },
                 },
-              },
-              //remove cell horizontal border
-              "& .MuiDataGrid-cell": {
-                //borderBottom: "none",
-              },
-            }}
-          />
-        </Box>
+                //remove cell horizontal border
+                "& .MuiDataGrid-cell": {
+                  //borderBottom: "none",
+                },
+              }}
+            />
+          </Box>
+        </div>
       </div>
     </div>
   );

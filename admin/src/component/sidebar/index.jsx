@@ -15,6 +15,9 @@ import { RiBusWifiLine } from "react-icons/ri";
 import { GrUserWorker } from "react-icons/gr";
 import { FaUserCog } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
+
+import "./Sidebar.css";
+
 const links = [
   {
     title: "Dashboard",
@@ -126,7 +129,7 @@ const normalLink =
 
 function Sidebar({ setSidebar, sidebar }) {
   return (
-    <div className="bg-main_blue h-full overflow-y-scroll  sm:relative absolute top-0 left-0 z-50">
+    <div className="bg-main_blue    sm:relative absolute top-0 left-0 z-50 ">
       <div className="pr-[10px] pt-[10px] flex items-center gap-[30px]">
         <img
           src="https://kdu.ac.lk/wp-content/uploads/2023/06/kdu-logo2.png.webp"
@@ -144,6 +147,7 @@ function Sidebar({ setSidebar, sidebar }) {
         />
       </div>
       <div className="w-full h-[1px] bg-[#5879ad] mt-1" />
+      <div className="overflow-y-scroll h-screen scroll-hide ">
       {links.map((item) => (
         <div key={item.title}>
           <p className="text-gray-400 ml-3 mt-4 uppercase">{item.title}</p>
@@ -161,7 +165,7 @@ function Sidebar({ setSidebar, sidebar }) {
             </NavLink>
           ))}
         </div>
-      ))}
+      ))}</div>
     </div>
   );
 }

@@ -7,6 +7,7 @@ const errorStyle =
   "w-full  h-[56px] pl-[20px] py-[7px] font-normal text-sm text-red-400 focus:outline-none ";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useNavigate, useParams } from "react-router-dom";
+import logo from "./logo.png";
 
 function ResetPassword() {
   const navigate = useNavigate();
@@ -87,16 +88,16 @@ function ResetPassword() {
       <div className="px-[15px] sm:px-[30px] py-[20px] rounded-lg md:bg-gray-100  border-gray-300  md:border-[1px]">
         <div className="flex justify-center items-center flex-col sm:flex-row">
           <img
-            src="https://res.cloudinary.com/dnoobzfxo/image/upload/v1701275328/Kotelawala_Defence_University_crest-removebg-preview_1_qprg9r.png"
+            src={logo}
             alt="logo"
             className="w-[150px] sm:w-[210px]"
           />
           <div className="">
             <p className="sm:text-[40px] text-[30px] font-roboto_slab font-bold sm:block hidden leading-[92%]">
-              General Sir John Kotelawala
+            International
             </p>
             <p className="sm:text-[40px] text-[30px] font-roboto_slab font-bold sm:block hidden leading-[92%]">
-              Defence University
+            Academic Institution
             </p>
             <p className="text-[30px] font-roboto_slab font-bold sm:text-left text-center leading-[82%]">
               Transport Management System

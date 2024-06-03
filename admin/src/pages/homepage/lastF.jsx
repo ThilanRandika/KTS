@@ -1,10 +1,10 @@
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
 const chartData = [
-  { name: "Colombo", value: 5554, color: "#002147 " },
-  { name: "Gampaha", value: 3424, color: "#E3AC2E" },
-  { name: "Kaluthara", value: 4347, color: "#7A0736" },
-  { name: "Galle", value: 6446, color: "#078A92" },
+  { name: "London", value: 5554, color: "#002147 " },
+  { name: "Manchester", value: 3424, color: "#E3AC2E" },
+  { name: "Birmingham", value: 4347, color: "#7A0736" },
+  { name: "Liverpool", value: 6446, color: "#078A92" },
 ];
 var total = chartData.reduce(
   (accumulator, city) => accumulator + city.value,

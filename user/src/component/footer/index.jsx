@@ -1,6 +1,7 @@
 import { AiOutlineMail } from "react-icons/ai";
 import { LuPhone } from "react-icons/lu";
 import logo from './new.png'
+import logo_f from './logo_f.png'
 function Footer() {
   return (
     <div className=" bg-main_blue flex flex-col items-center text-white font-roboto pb-[10px]">
@@ -20,7 +21,7 @@ function Footer() {
                 </div>
                 <div>
                   <p>Email</p>
-                  <p>contactkts@gmail.com</p>
+                  <p>contacticit@gmail.com</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -29,7 +30,7 @@ function Footer() {
                 </div>
                 <div>
                   <p>Phone</p>
-                  <p>(+94)011546342</p>
+                  <p>(+44)011546342</p>
                 </div>
               </div>
             </div>
@@ -55,37 +56,37 @@ function Footer() {
           <div className="flex flex-col gap-[13px] mt-[10px] ">
             <div className="flex gap-2 place-items-start sm:justify-start justify-center">
               <img
-                src="https://kdu.ac.lk/wp-content/uploads/2023/05/MOD.png.webp"
+                src={logo_f}
                 alt=""
                 className="w-[14px] flex-shrink-0 xsm:block hidden "
               />
               <p className="xsm:text-[14px] text-[12px]  font-medium xsm:text-left text-center">
-                Sri Lanka Embassy in Katmandu
+              England Embassy in America
               </p>
             </div>
             <div className="flex gap-2 place-items-start  sm:justify-start justify-center  ">
               <img
-                src="https://kdu.ac.lk/wp-content/uploads/2023/05/MOD.png.webp"
+                src={logo_f}
                 alt=""
                 className="w-[14px] xsm:block hidden "
               />
               <p className="xsm:text-[14px] text-[12px]  font-medium xsm:text-left text-center">
-                The Embassy of Sri Lanka in the People’s Republic of China
+                The Embassy of England in the People’s Republic of Europe 
               </p>
             </div>
             <div className="flex gap-2 place-items-start sm:justify-start justify-center">
               <img
-                src="https://kdu.ac.lk/wp-content/uploads/2023/05/MOD.png.webp"
+                src={logo_f}
                 alt=""
                 className="w-[14px]  xsm:block hidden "
               />
               <p className="xsm:text-[14px] text-[12px]  font-medium xsm:text-left text-center">
-                Scholarships – High Commission of Sri Lanka in Pakistan
+                Scholarships – High Commission of England in Asia
               </p>
             </div>
             <div className="flex gap-2 place-items-start  sm:justify-start justify-center">
               <img
-                src="https://kdu.ac.lk/wp-content/uploads/2023/05/logo-wide.png.webp"
+                src={logo_f}
                 alt=""
                 className="w-[14px] xsm:block hidden "
               />
@@ -98,7 +99,7 @@ function Footer() {
       </div>
       <div className="h-[1px] bg-[#848E99] w-full mt-[15px] " />
       <div className="text-sm mt-[14px] font-medium xsm:text-left text-center">
-        Copyright © 2022 General Sir John Kotelawala Defence University
+        Copyright © 2022  International Academic Institution
       </div>
     </div>
   );

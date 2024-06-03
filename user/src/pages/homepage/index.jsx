@@ -7,7 +7,7 @@ import { db } from "../../firebase";
 import { useState } from "react";
 
 function Home() {
-  const [notices, setNotices] = useState([]);
+  const [notices, setNotices] = useState(['Bus started at london from 6am','London bus arrives to the university at 8am']);
   //get real time snapshot from firebase and update notices
 
   useEffect(() => {
@@ -63,7 +63,7 @@ function Home() {
             </p>
             <p className="md:text-left text-justify">
               Please be aware that any violations or improper behavior may
-              result in a penalty of Rs. 2500. We are committed to providing you
+              result in a penalty of GBP. 100. We are committed to providing you
               with a safe and efficient transportation service to support your
               journey towards a successful future." If you need any more
               information or have specific questions, please feel free to ask
@@ -75,7 +75,7 @@ function Home() {
           <div className="md:w-[63%] left side mx-auto">
             <div className="services ">
               <p className="text-main_blue text-[37px] font-semibold font-barlows lg:text-left text-center">
-                KTS Services
+                OUR Services
               </p>
               <div className="mt-[7px]">
                 <div className="top-servicecs flex justify-between flex-col lg:flex-row">
@@ -253,7 +253,7 @@ function Home() {
                   </div>
                   <div className="flex-1">
                     <p className="font-barlows text-[24px] leading-5">
-                      KTS-Mobile
+                      ICIT-Mobile
                     </p>
                     <p className="text-[#087506] text-[12px] font-semibold">
                       Student and staff only - with seasons
@@ -382,7 +382,7 @@ function Home() {
                         className="text-[13px] text-[#545454]"
                         style={{ lineHeight: "normal" }}
                       >
-                        S.Malinda Gamage Disanayake
+                        Clementine Annabelle Wellington
                       </p>
                       <p className="font-barlows font-medium text-[18px]">
                         0112386480
@@ -399,13 +399,13 @@ function Home() {
                         className="text-[19px]"
                         style={{ lineHeight: "normal" }}
                       >
-                        Defence University - Dehiwala
+                        Science University - Dehiwala
                       </p>
                       <p
                         className="text-[13px] text-[#545454]"
                         style={{ lineHeight: "normal" }}
                       >
-                        p.Muthuhetti Rajakaruana
+                       Felicity Evangeline Beaumont
                       </p>
                       <p className="font-barlows font-medium text-[18px]">
                         0114334564
@@ -422,13 +422,13 @@ function Home() {
                         className="text-[19px]"
                         style={{ lineHeight: "normal" }}
                       >
-                        Defence University - Hambanthta
+                        Computer University - Hambanthta
                       </p>
                       <p
                         className="text-[13px] text-[#545454]"
                         style={{ lineHeight: "normal" }}
                       >
-                        K.P.Priyantha Gamage
+                        Nicholas Archibald Cunningham
                       </p>
                       <p className="font-barlows font-medium text-[18px]">
                         0113456789

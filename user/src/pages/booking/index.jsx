@@ -76,7 +76,7 @@ function Booking() {
                       <div className="lg:text-[18px]  text-[15px] flex flex-col gap-[6px] sm:ml-0 xsm:ml-[40px] ml-0">
                         <p>{ticket.station}</p>
                         <p>{ticket.seatCount}</p>
-                        <p>RS.{ticket.total}.00</p>
+                        <p>GBP.{ticket.total}.00</p>
                       </div>
                     </div>
                   </div>

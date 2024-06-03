@@ -208,7 +208,7 @@ function Journey() {
               <div className="flex font-semibold font-roboto_slab text-[24px] m">
                 <p>Total-</p>
                 <p>
-                  Rs .
+                GBP .
                   {roadRoutes != null && selectedStation != "0"
                     ? roadRoutes
                         .find((route) => route._id == id)

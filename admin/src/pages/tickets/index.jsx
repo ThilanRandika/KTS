@@ -84,7 +84,7 @@ function TicketsPage() {
       align: "center",
       headerAlign: "center",
       type: "string",
-      renderCell: (params) => <>Rs.{params.row.total}.00</>,
+      renderCell: (params) => <>GBP.{params.row.total}.00</>,
     },
 
     {

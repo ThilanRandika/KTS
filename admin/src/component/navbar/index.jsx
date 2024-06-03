@@ -79,8 +79,8 @@ function Navbar({ setSidebar, sidebar }) {
                 <ImCancelCircle size="16px" />
               </div>
             </div>
-            <div className="flex justify-between p-1 ">
-              <div>
+            <div className="flex justify-between p-1 gap-[10px]">
+              <div >
                 <img
                   className="w-[70px] h-[70px]  object-cover "
                   src={

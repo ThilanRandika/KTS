@@ -60,7 +60,7 @@ function UsersPage() {
       align: "center",
       headerAlign: "center",
       type: "string",
-      renderCell: (params) => <>+94{params.row.mobileNo}</>,
+      renderCell: (params) => <>+44{params.row.mobileNo}</>,
     },
 
     {

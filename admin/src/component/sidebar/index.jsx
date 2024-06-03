@@ -17,7 +17,7 @@ import { FaUserCog } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 
 import "./Sidebar.css";
-
+import logo_img from './new.png'
 const links = [
   {
     title: "Dashboard",
@@ -132,7 +132,7 @@ function Sidebar({ setSidebar, sidebar }) {
     <div className="bg-main_blue    sm:relative absolute top-0 left-0 z-50 ">
       <div className="pr-[10px] pt-[10px] flex items-center gap-[30px]">
         <img
-          src="https://kdu.ac.lk/wp-content/uploads/2023/06/kdu-logo2.png.webp"
+          src={logo_img}
           alt=""
           className="sm:w-[294px] w-[200px]"
         />

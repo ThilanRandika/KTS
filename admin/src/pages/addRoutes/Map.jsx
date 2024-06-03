@@ -308,7 +308,7 @@ function Map() {
   };
 
   return (
-    <div className="flex justify-between mt-[20px] xsm:flex-row flex-col">
+    <div className="flex justify-between mt-[20px] xsm:flex-row flex-col gap-[10px]">
       <div className="flex flex-col items-center">
         <div className="flex   items-center gap-[5px] ">
           <div className="flex gap-[10px] flex-col xl:flex-row">
@@ -612,11 +612,14 @@ function Map() {
         <button
           type="submit"
           className="bg-main_blue text-[14px] font-roboto text-white font-medium   px-[20px] py-[7px] rounded-md place-self-center mt-[20px]
+          w-full
             "
           onClick={createRoadRoute}
         >
           Submit Route
         </button>
+
+        
       </div>
 
       <div className="w-full  xsm:h-[400px] sm:h-[500px] h-[300px]">

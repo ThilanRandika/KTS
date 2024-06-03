@@ -4,6 +4,7 @@ import { useState } from "react";
 import userAxios from "../../baseURL";
 import { useUserContext } from "../../hooks/useUserAuthContext";
 import { toast } from "react-toastify";
+import logo from "./logo.png";
 
 const normalStyle =
   "w-full  h-[45px]  md:h-[50px] sm:h-[56px] pl-[20px] py-[7px] font-normal text-sm text-[#515151] focus:outline-none ";
@@ -123,14 +124,13 @@ function Login() {
       <div className="w-[90%] xsm:w-[80%] md:w-[60%] lg:w-[34%] flex items-center flex-col justify-center">
         <div className="flex flex-col items-center">
           <img
-            src="https://res.cloudinary.com/dnoobzfxo/image/upload/v1701275328/Kotelawala_Defence_University_crest-removebg-preview_1_qprg9r.png"
+            src={logo}
             alt=""
-            className="w-[210px]"
+            className="w-[260px]"
           />
           <div className="font-roboto_slab text-[20px] xsm:text-[25px]  md:text-[25px] sm:text-[30px] font-bold flex flex-col items-center leading-[92%] text-center">
-            <p>General</p>
-            <p>Sir John Kotelawala</p>
-            <p>Defence University</p>
+            <p>International</p>
+            <p>Academic Institution</p>
             <p>Transport Management System</p>
           </div>
         </div>

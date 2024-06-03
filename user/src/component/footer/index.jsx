@@ -1,5 +1,6 @@
 import { AiOutlineMail } from "react-icons/ai";
 import { LuPhone } from "react-icons/lu";
+import logo from './new.png'
 function Footer() {
   return (
     <div className=" bg-main_blue flex flex-col items-center text-white font-roboto pb-[10px]">
@@ -47,7 +48,7 @@ function Footer() {
         </div>
         <div className="flex flex-col justify-centerd mx-auto xsm:px-0 px-[5px] ">
           <img
-            src="https://kdu.ac.lk/wp-content/uploads/2023/06/kdu-logo2.png.webp"
+            src={logo}
             alt=""
             className="w-[400px] md:w-[250px]  sm:mx-0 mx-auto hidden sm:block"
           />

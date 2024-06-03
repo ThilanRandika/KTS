@@ -6,7 +6,7 @@ import { ImCancelCircle } from "react-icons/im";
 import { BsFillPersonFill } from "react-icons/bs";
 import { HiMiniInboxArrowDown } from "react-icons/hi2";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-
+import logo_img from './new_logo.png'
 const linkClassNames =
   "w-[125px]  pt-[2px]  pl-[6px]  pr-[6px]  pb-[7px] flex justify-center items-center border-l-[1px]";
 
@@ -36,7 +36,7 @@ function Navbar() {
       <div className="xl:block  lg:hidden md:block  flex items-center">
         <NavLink to="/">
           <img
-            src="https://kdu.ac.lk/wp-content/uploads/2023/06/kdu-logo2.png.webp"
+            src={logo_img}
             alt=""
             className="xsm:h-[60px] h-[50px]"
           />
@@ -119,7 +119,7 @@ function Navbar() {
       >
         <div className="px-[15px] mt-[15px]">
           <img
-            src="https://kdu.ac.lk/wp-content/uploads/2023/06/kdu-logo2.png.webp"
+            src={logo_img}
             alt=""
             className="w-full "
             onClick={() => {

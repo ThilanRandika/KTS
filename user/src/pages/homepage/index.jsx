@@ -32,9 +32,8 @@ function Home() {
         }}
       >
         <div className="font-roboto_slab  text-[32px]   xsm:text-[40px]   sm:text-[57px]  font-bold leading-[92.88%] sm:text-left text-center">
-          <p>Welcome to General </p>
-          <p>Sir John Kotelawala </p>
-          <p>Defence University </p>
+          <p>Welcome to International</p>
+          <p>Academic Institution</p>
           <p>Transport Management System </p>
         </div>
         <p className="font-crimsonPro italic font-semibold leading-8 text-[50px] mt-[67px] md:block hidden">

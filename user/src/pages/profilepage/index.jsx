@@ -159,7 +159,7 @@ function ProfilePage() {
                 <div>
                   <p className=" font-medium leading-4">Mobile Number :</p>
                   <p className="font- text-[14px]">
-                    (+94){user ? user.mobileNo : "loading"}
+                    (+44){user ? user.mobileNo : "loading"}
                   </p>
                 </div>
                 <div className="mt-[10px]">

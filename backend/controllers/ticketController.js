@@ -72,7 +72,7 @@ const addTicket = asyncHandler(async (req, res) => {
     <p>You have purchase a QR code from KTS</p>
     <p>Ticket is only valid for 2 days</p>
      <img src=${qrCode} width="300" height="300"/>
-     <p>Regards KTS</p>
+     <p>Regards ICI</p>
     
     `;
 

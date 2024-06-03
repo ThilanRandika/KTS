@@ -14,11 +14,11 @@ function CurrentRoutes() {
       field: "rId",
       headerName: "ID",
       width: 90,
-      flex: 0.3,
+      flex: 0.25,
       align: "center",
       headerAlign: "center",
 
-      renderCell: (params) => <div>{params.row.startLocation.name}</div>,
+      renderCell: (params) => <div>{params.row.startLocation.name.replace(/, UK$/, '')}</div>,
     },
     {
       field: "stations",

@@ -677,14 +677,14 @@ function Map() {
 
           {center && circles && (
             <>
-              <Marker
+              {/* <Marker
                 title="sadsadddd"
                 position={center}
                 label={{ text: `assadas sadsadasdasd`, color: "#fff" }}
-              />
-              <Circle center={center} radius={10000} options={closeOptions} />
-              <Circle center={center} radius={20000} options={middleOptions} />
-              <Circle center={center} radius={30000} options={farOptions} />
+              /> */}
+              <Circle center={center} radius={100000} options={closeOptions} />
+              <Circle center={center} radius={250000} options={middleOptions} />
+              <Circle center={center} radius={400000} options={farOptions} />
             </>
           )}
 

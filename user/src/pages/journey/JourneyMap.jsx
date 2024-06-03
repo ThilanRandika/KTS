@@ -15,7 +15,7 @@ function JourneyMap({ googleRoutes, stations, startLocation }) {
   const mapRef = useRef();
 
   const center = useMemo(
-    () => ({ lat: 6.833813409471106, lng: 79.88634319394335 }),
+    () => ({ lat:53.79377638417939, lng: -1.7563649007954596 }),
     []
   );
 

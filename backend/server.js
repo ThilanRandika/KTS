@@ -10,6 +10,7 @@ const busRoutes = require("./routes/busRoutes");
 const roadRouteRoutes = require("./routes/roadRouteRoutes");
 const errorHandler = require("./middleware/errorMiddleware");
 const ticketRoutes = require("./routes/ticketRoutes");
+
 //middleware
 const morgan = require("morgan");
 const app = express();

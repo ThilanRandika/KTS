@@ -123,11 +123,7 @@ function Login() {
       ></div>
       <div className="w-[90%] xsm:w-[80%] md:w-[60%] lg:w-[34%] flex items-center flex-col justify-center">
         <div className="flex flex-col items-center">
-          <img
-            src={logo}
-            alt=""
-            className="w-[260px]"
-          />
+          <img src={logo} alt="" className="w-[260px]" />
           <div className="font-roboto_slab text-[20px] xsm:text-[25px]  md:text-[25px] sm:text-[30px] font-bold flex flex-col items-center leading-[92%] text-center">
             <p>International</p>
             <p>Academic Institution</p>
@@ -144,7 +140,7 @@ function Login() {
                     emailError ? "text-red-500" : "text-[#383838]"
                   }`}
                 >
-                  Manager Email Address
+                  Manager Email address
                 </label>
                 <input
                   id="email"

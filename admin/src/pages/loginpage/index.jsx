@@ -140,7 +140,7 @@ function Login() {
                     emailError ? "text-red-500" : "text-[#383838]"
                   }`}
                 >
-                  Manager Email address
+                  Manager Email Address
                 </label>
                 <input
                   id="email"

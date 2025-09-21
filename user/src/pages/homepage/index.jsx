@@ -10,16 +10,16 @@ function Home() {
   const [notices, setNotices] = useState(['Bus started at london from 6am','London bus arrives to the university at 8am']);
   //get real time snapshot from firebase and update notices
 
-  useEffect(() => {
-    const unsub = onSnapshot(doc(db, "notices", "13"), (doc) => {
-      console.log("Current data: ", doc.data());
-      setNotices((prev) => [...prev, doc.data().messages1]);
-    });
+  // useEffect(() => {
+  //   const unsub = onSnapshot(doc(db, "notices", "13"), (doc) => {
+  //     console.log("Current data: ", doc.data());
+  //     setNotices((prev) => [...prev, doc.data().messages1]);
+  //   });
 
-    return () => {
-      unsub();
-    };
-  }, []);
+  //   return () => {
+  //     unsub();
+  //   };
+  // }, []);
 
   return (
     <div>
